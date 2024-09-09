@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DeviceVsGBReport" targetNamespace="http://tempuri.org/DeviceVsGBReport.xsd" xmlns:mstns="http://tempuri.org/DeviceVsGBReport.xsd" xmlns="http://tempuri.org/DeviceVsGBReport.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DeviceVsGBReport" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DeviceVsGBReport" msprop:Generator_UserDSName="DeviceVsGBReport">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DeviceVsGBReport" msprop:Generator_TableClassName="DeviceVsGBReportDataTable" msprop:Generator_TableVarName="tableDeviceVsGBReport" msprop:Generator_RowChangedName="DeviceVsGBReportRowChanged" msprop:Generator_TablePropName="_DeviceVsGBReport" msprop:Generator_RowDeletingName="DeviceVsGBReportRowDeleting" msprop:Generator_RowChangingName="DeviceVsGBReportRowChanging" msprop:Generator_RowEvHandlerName="DeviceVsGBReportRowChangeEventHandler" msprop:Generator_RowDeletedName="DeviceVsGBReportRowDeleted" msprop:Generator_RowClassName="DeviceVsGBReportRow" msprop:Generator_UserTableName="DeviceVsGBReport" msprop:Generator_RowEvArgName="DeviceVsGBReportRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Model" msprop:Generator_ColumnVarNameInTable="columnModel" msprop:Generator_ColumnPropNameInRow="Model" msprop:Generator_ColumnPropNameInTable="ModelColumn" msprop:Generator_UserColumnName="Model" type="xs:string" minOccurs="0" />
+              <xs:element name="FgItemCode" msprop:Generator_ColumnVarNameInTable="columnFgItemCode" msprop:Generator_ColumnPropNameInRow="FgItemCode" msprop:Generator_ColumnPropNameInTable="FgItemCodeColumn" msprop:Generator_UserColumnName="FgItemCode" type="xs:string" minOccurs="0" />
+              <xs:element name="DeviceMac" msprop:Generator_ColumnVarNameInTable="columnDeviceMac" msprop:Generator_ColumnPropNameInRow="DeviceMac" msprop:Generator_ColumnPropNameInTable="DeviceMacColumn" msprop:Generator_UserColumnName="DeviceMac" type="xs:string" minOccurs="0" />
+              <xs:element name="DeviceRSN" msprop:Generator_ColumnVarNameInTable="columnDeviceRSN" msprop:Generator_ColumnPropNameInRow="DeviceRSN" msprop:Generator_ColumnPropNameInTable="DeviceRSNColumn" msprop:Generator_UserColumnName="DeviceRSN" type="xs:string" minOccurs="0" />
+              <xs:element name="DeviceQRCode" msprop:Generator_ColumnVarNameInTable="columnDeviceQRCode" msprop:Generator_ColumnPropNameInRow="DeviceQRCode" msprop:Generator_ColumnPropNameInTable="DeviceQRCodeColumn" msprop:Generator_UserColumnName="DeviceQRCode" type="xs:string" minOccurs="0" />
+              <xs:element name="DeviceAddQRCode" msprop:Generator_ColumnVarNameInTable="columnDeviceAddQRCode" msprop:Generator_ColumnPropNameInRow="DeviceAddQRCode" msprop:Generator_ColumnPropNameInTable="DeviceAddQRCodeColumn" msprop:Generator_UserColumnName="DeviceAddQRCode" type="xs:string" minOccurs="0" />
+              <xs:element name="GBQRCode" msprop:Generator_ColumnVarNameInTable="columnGBQRCode" msprop:Generator_ColumnPropNameInRow="GBQRCode" msprop:Generator_ColumnPropNameInTable="GBQRCodeColumn" msprop:Generator_UserColumnName="GBQRCode" type="xs:string" minOccurs="0" />
+              <xs:element name="ScannedBy" msprop:Generator_ColumnVarNameInTable="columnScannedBy" msprop:Generator_ColumnPropNameInRow="ScannedBy" msprop:Generator_ColumnPropNameInTable="ScannedByColumn" msprop:Generator_UserColumnName="ScannedBy" type="xs:string" minOccurs="0" />
+              <xs:element name="ScannedOn" msprop:Generator_ColumnVarNameInTable="columnScannedOn" msprop:Generator_ColumnPropNameInRow="ScannedOn" msprop:Generator_ColumnPropNameInTable="ScannedOnColumn" msprop:Generator_UserColumnName="ScannedOn" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
