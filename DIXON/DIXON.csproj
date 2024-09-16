@@ -3410,6 +3410,7 @@
     <Content Include="INE\Reports\ASNWifiAPSAPReport.aspx" />
     <Content Include="INE\Reports\BOMMasterDataReport.aspx" />
     <Content Include="INE\Reports\QCVerificationReport.aspx" />
+    <Content Include="INE\Reports\WIPRsnAndMacIDMappingReport.aspx" />
     <Content Include="INE\Reports\WallMountKitReport.aspx" />
     <Content Include="INE\Reports\MSNvsSecPackingComparisonReport.aspx" />
     <Content Include="INE\Reports\MSNvsGBComparisonReport.aspx" />
@@ -4598,6 +4599,13 @@
     </Compile>
     <Compile Include="INE\Reports\QCVerificationReport.aspx.designer.cs">
       <DependentUpon>QCVerificationReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="INE\Reports\WIPRsnAndMacIDMappingReport.aspx.cs">
+      <DependentUpon>WIPRsnAndMacIDMappingReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="INE\Reports\WIPRsnAndMacIDMappingReport.aspx.designer.cs">
+      <DependentUpon>WIPRsnAndMacIDMappingReport.aspx</DependentUpon>
     </Compile>
     <Compile Include="INE\Reports\WallMountKitReport.aspx.cs">
       <DependentUpon>WallMountKitReport.aspx</DependentUpon>
@@ -5841,6 +5849,7 @@
     <EmbeddedResource Include="ReportViewer\WIPFPYReportDetails.rdlc" />
     <EmbeddedResource Include="ReportViewer\WIPHoldPartReport.rdlc" />
     <EmbeddedResource Include="ReportViewer\WIPIMEIandEIDUnbindReport.rdlc" />
+    <EmbeddedResource Include="ReportViewer\WIPRsnAndMacIDMappingReport.rdlc" />
     <EmbeddedResource Include="ReportViewer\WIPSubPCBUnbindReport.rdlc" />
     <EmbeddedResource Include="ReportViewer\WIPWavePalletReport.rdlc" />
     <EmbeddedResource Include="ReportViewer\WIPRSNUpdateReport.rdlc" />

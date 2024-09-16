@@ -419,6 +419,7 @@
                                 <li><a class="menu-link" href="../Reports/WIPPcbTrackingNew.aspx"><i class="fa fa-circle-o"></i>WIP PCB Tracking Report</a></li>
                                 <li><a class="menu-link" href="../Reports/WIPReworkReport.aspx"><i class="fa fa-circle-o"></i>WIP Rework Report</a></li>
                                 <li><a class="menu-link" href="../Reports/WIPPrimaryPackingReport.aspx"><i class="fa fa-circle-o"></i>Primary Packing</a></li>
+                                <li><a class="menu-link" href="../Reports/WIPRsnAndMacIDMappingReport.aspx"><i class="fa fa-circle-o"></i>WIP Rsn And MacID Mapping Report</a></li>
                                 <%--<li><a class="menu-link" href="../Reports/WIPQualityReport.aspx"><i class="fa fa-circle-o"></i>FG Quality Report</a></li>--%>
                                 <%--<li><a class="menu-link" href="../Reports/StageWisePCBreportNew.aspx"><i class="fa fa-circle-o"></i>Machine Wise PCB Report</a></li>
                                 <li><a class="menu-link" href="../Reports/WIPFQAReport.aspx"><i class="fa fa-circle-o"></i>WIP FQA Report</a></li>
