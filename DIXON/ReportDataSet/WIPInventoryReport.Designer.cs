@@ -32,6 +32,8 @@ namespace DIXON.ReportDataSet {
         
         private IMEIandEIDUnbindDataTable tableIMEIandEIDUnbind;
         
+        private WIPRsnAndMacIDMappingReportDataTable tableWIPRsnAndMacIDMappingReport;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -71,6 +73,9 @@ namespace DIXON.ReportDataSet {
                 }
                 if ((ds.Tables["IMEIandEIDUnbind"] != null)) {
                     base.Tables.Add(new IMEIandEIDUnbindDataTable(ds.Tables["IMEIandEIDUnbind"]));
+                }
+                if ((ds.Tables["WIPRsnAndMacIDMappingReport"] != null)) {
+                    base.Tables.Add(new WIPRsnAndMacIDMappingReportDataTable(ds.Tables["WIPRsnAndMacIDMappingReport"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -127,6 +132,16 @@ namespace DIXON.ReportDataSet {
         public IMEIandEIDUnbindDataTable IMEIandEIDUnbind {
             get {
                 return this.tableIMEIandEIDUnbind;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public WIPRsnAndMacIDMappingReportDataTable WIPRsnAndMacIDMappingReport {
+            get {
+                return this.tableWIPRsnAndMacIDMappingReport;
             }
         }
         
@@ -209,6 +224,9 @@ namespace DIXON.ReportDataSet {
                 if ((ds.Tables["IMEIandEIDUnbind"] != null)) {
                     base.Tables.Add(new IMEIandEIDUnbindDataTable(ds.Tables["IMEIandEIDUnbind"]));
                 }
+                if ((ds.Tables["WIPRsnAndMacIDMappingReport"] != null)) {
+                    base.Tables.Add(new WIPRsnAndMacIDMappingReportDataTable(ds.Tables["WIPRsnAndMacIDMappingReport"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -266,6 +284,12 @@ namespace DIXON.ReportDataSet {
                     this.tableIMEIandEIDUnbind.InitVars();
                 }
             }
+            this.tableWIPRsnAndMacIDMappingReport = ((WIPRsnAndMacIDMappingReportDataTable)(base.Tables["WIPRsnAndMacIDMappingReport"]));
+            if ((initTable == true)) {
+                if ((this.tableWIPRsnAndMacIDMappingReport != null)) {
+                    this.tableWIPRsnAndMacIDMappingReport.InitVars();
+                }
+            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -284,6 +308,8 @@ namespace DIXON.ReportDataSet {
             base.Tables.Add(this.tableSubPCBUnbind);
             this.tableIMEIandEIDUnbind = new IMEIandEIDUnbindDataTable();
             base.Tables.Add(this.tableIMEIandEIDUnbind);
+            this.tableWIPRsnAndMacIDMappingReport = new WIPRsnAndMacIDMappingReportDataTable();
+            base.Tables.Add(this.tableWIPRsnAndMacIDMappingReport);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -307,6 +333,12 @@ namespace DIXON.ReportDataSet {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private bool ShouldSerializeIMEIandEIDUnbind() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private bool ShouldSerializeWIPRsnAndMacIDMappingReport() {
             return false;
         }
         
@@ -376,6 +408,9 @@ namespace DIXON.ReportDataSet {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public delegate void IMEIandEIDUnbindRowChangeEventHandler(object sender, IMEIandEIDUnbindRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public delegate void WIPRsnAndMacIDMappingReportRowChangeEventHandler(object sender, WIPRsnAndMacIDMappingReportRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -1828,6 +1863,344 @@ namespace DIXON.ReportDataSet {
         }
         
         /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class WIPRsnAndMacIDMappingReportDataTable : global::System.Data.TypedTableBase<WIPRsnAndMacIDMappingReportRow> {
+            
+            private global::System.Data.DataColumn columnFG_ITEM_CODE;
+            
+            private global::System.Data.DataColumn columnMODEL_CODE;
+            
+            private global::System.Data.DataColumn columnBARCODE_DATA;
+            
+            private global::System.Data.DataColumn columnPCB_SN;
+            
+            private global::System.Data.DataColumn columnBARCODE_TYPE;
+            
+            private global::System.Data.DataColumn columnMAPPED_BY;
+            
+            private global::System.Data.DataColumn columnMAPPED_ON;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public WIPRsnAndMacIDMappingReportDataTable() {
+                this.TableName = "WIPRsnAndMacIDMappingReport";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal WIPRsnAndMacIDMappingReportDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected WIPRsnAndMacIDMappingReportDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn FG_ITEM_CODEColumn {
+                get {
+                    return this.columnFG_ITEM_CODE;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn MODEL_CODEColumn {
+                get {
+                    return this.columnMODEL_CODE;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn BARCODE_DATAColumn {
+                get {
+                    return this.columnBARCODE_DATA;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn PCB_SNColumn {
+                get {
+                    return this.columnPCB_SN;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn BARCODE_TYPEColumn {
+                get {
+                    return this.columnBARCODE_TYPE;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn MAPPED_BYColumn {
+                get {
+                    return this.columnMAPPED_BY;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn MAPPED_ONColumn {
+                get {
+                    return this.columnMAPPED_ON;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public WIPRsnAndMacIDMappingReportRow this[int index] {
+                get {
+                    return ((WIPRsnAndMacIDMappingReportRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event WIPRsnAndMacIDMappingReportRowChangeEventHandler WIPRsnAndMacIDMappingReportRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event WIPRsnAndMacIDMappingReportRowChangeEventHandler WIPRsnAndMacIDMappingReportRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event WIPRsnAndMacIDMappingReportRowChangeEventHandler WIPRsnAndMacIDMappingReportRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event WIPRsnAndMacIDMappingReportRowChangeEventHandler WIPRsnAndMacIDMappingReportRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void AddWIPRsnAndMacIDMappingReportRow(WIPRsnAndMacIDMappingReportRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public WIPRsnAndMacIDMappingReportRow AddWIPRsnAndMacIDMappingReportRow(string FG_ITEM_CODE, string MODEL_CODE, string BARCODE_DATA, string PCB_SN, string BARCODE_TYPE, string MAPPED_BY, string MAPPED_ON) {
+                WIPRsnAndMacIDMappingReportRow rowWIPRsnAndMacIDMappingReportRow = ((WIPRsnAndMacIDMappingReportRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        FG_ITEM_CODE,
+                        MODEL_CODE,
+                        BARCODE_DATA,
+                        PCB_SN,
+                        BARCODE_TYPE,
+                        MAPPED_BY,
+                        MAPPED_ON};
+                rowWIPRsnAndMacIDMappingReportRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowWIPRsnAndMacIDMappingReportRow);
+                return rowWIPRsnAndMacIDMappingReportRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                WIPRsnAndMacIDMappingReportDataTable cln = ((WIPRsnAndMacIDMappingReportDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new WIPRsnAndMacIDMappingReportDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal void InitVars() {
+                this.columnFG_ITEM_CODE = base.Columns["FG_ITEM_CODE"];
+                this.columnMODEL_CODE = base.Columns["MODEL_CODE"];
+                this.columnBARCODE_DATA = base.Columns["BARCODE_DATA"];
+                this.columnPCB_SN = base.Columns["PCB_SN"];
+                this.columnBARCODE_TYPE = base.Columns["BARCODE_TYPE"];
+                this.columnMAPPED_BY = base.Columns["MAPPED_BY"];
+                this.columnMAPPED_ON = base.Columns["MAPPED_ON"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            private void InitClass() {
+                this.columnFG_ITEM_CODE = new global::System.Data.DataColumn("FG_ITEM_CODE", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFG_ITEM_CODE);
+                this.columnMODEL_CODE = new global::System.Data.DataColumn("MODEL_CODE", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMODEL_CODE);
+                this.columnBARCODE_DATA = new global::System.Data.DataColumn("BARCODE_DATA", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBARCODE_DATA);
+                this.columnPCB_SN = new global::System.Data.DataColumn("PCB_SN", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPCB_SN);
+                this.columnBARCODE_TYPE = new global::System.Data.DataColumn("BARCODE_TYPE", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBARCODE_TYPE);
+                this.columnMAPPED_BY = new global::System.Data.DataColumn("MAPPED_BY", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMAPPED_BY);
+                this.columnMAPPED_ON = new global::System.Data.DataColumn("MAPPED_ON", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMAPPED_ON);
+                this.columnFG_ITEM_CODE.Caption = "PCBID";
+                this.columnMODEL_CODE.Caption = "SUBPCBID";
+                this.columnBARCODE_DATA.Caption = "MACHINEID";
+                this.columnPCB_SN.Caption = "MOVE_MACHINEID";
+                this.columnBARCODE_TYPE.Caption = "FGITEMCODE";
+                this.columnMAPPED_BY.Caption = "UNBIND_ON";
+                this.columnMAPPED_ON.Caption = "UNBIND_BY";
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public WIPRsnAndMacIDMappingReportRow NewWIPRsnAndMacIDMappingReportRow() {
+                return ((WIPRsnAndMacIDMappingReportRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new WIPRsnAndMacIDMappingReportRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(WIPRsnAndMacIDMappingReportRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.WIPRsnAndMacIDMappingReportRowChanged != null)) {
+                    this.WIPRsnAndMacIDMappingReportRowChanged(this, new WIPRsnAndMacIDMappingReportRowChangeEvent(((WIPRsnAndMacIDMappingReportRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.WIPRsnAndMacIDMappingReportRowChanging != null)) {
+                    this.WIPRsnAndMacIDMappingReportRowChanging(this, new WIPRsnAndMacIDMappingReportRowChangeEvent(((WIPRsnAndMacIDMappingReportRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.WIPRsnAndMacIDMappingReportRowDeleted != null)) {
+                    this.WIPRsnAndMacIDMappingReportRowDeleted(this, new WIPRsnAndMacIDMappingReportRowChangeEvent(((WIPRsnAndMacIDMappingReportRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.WIPRsnAndMacIDMappingReportRowDeleting != null)) {
+                    this.WIPRsnAndMacIDMappingReportRowDeleting(this, new WIPRsnAndMacIDMappingReportRowChangeEvent(((WIPRsnAndMacIDMappingReportRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void RemoveWIPRsnAndMacIDMappingReportRow(WIPRsnAndMacIDMappingReportRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                WIPInventoryReport ds = new WIPInventoryReport();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "WIPRsnAndMacIDMappingReportDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
         public partial class DataTable1Row : global::System.Data.DataRow {
@@ -2924,6 +3297,223 @@ namespace DIXON.ReportDataSet {
         }
         
         /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class WIPRsnAndMacIDMappingReportRow : global::System.Data.DataRow {
+            
+            private WIPRsnAndMacIDMappingReportDataTable tableWIPRsnAndMacIDMappingReport;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal WIPRsnAndMacIDMappingReportRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableWIPRsnAndMacIDMappingReport = ((WIPRsnAndMacIDMappingReportDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string FG_ITEM_CODE {
+                get {
+                    try {
+                        return ((string)(this[this.tableWIPRsnAndMacIDMappingReport.FG_ITEM_CODEColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'FG_ITEM_CODE\' in table \'WIPRsnAndMacIDMappingReport\' is DBN" +
+                                "ull.", e);
+                    }
+                }
+                set {
+                    this[this.tableWIPRsnAndMacIDMappingReport.FG_ITEM_CODEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string MODEL_CODE {
+                get {
+                    try {
+                        return ((string)(this[this.tableWIPRsnAndMacIDMappingReport.MODEL_CODEColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'MODEL_CODE\' in table \'WIPRsnAndMacIDMappingReport\' is DBNul" +
+                                "l.", e);
+                    }
+                }
+                set {
+                    this[this.tableWIPRsnAndMacIDMappingReport.MODEL_CODEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string BARCODE_DATA {
+                get {
+                    try {
+                        return ((string)(this[this.tableWIPRsnAndMacIDMappingReport.BARCODE_DATAColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'BARCODE_DATA\' in table \'WIPRsnAndMacIDMappingReport\' is DBN" +
+                                "ull.", e);
+                    }
+                }
+                set {
+                    this[this.tableWIPRsnAndMacIDMappingReport.BARCODE_DATAColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string PCB_SN {
+                get {
+                    try {
+                        return ((string)(this[this.tableWIPRsnAndMacIDMappingReport.PCB_SNColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'PCB_SN\' in table \'WIPRsnAndMacIDMappingReport\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableWIPRsnAndMacIDMappingReport.PCB_SNColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string BARCODE_TYPE {
+                get {
+                    try {
+                        return ((string)(this[this.tableWIPRsnAndMacIDMappingReport.BARCODE_TYPEColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'BARCODE_TYPE\' in table \'WIPRsnAndMacIDMappingReport\' is DBN" +
+                                "ull.", e);
+                    }
+                }
+                set {
+                    this[this.tableWIPRsnAndMacIDMappingReport.BARCODE_TYPEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string MAPPED_BY {
+                get {
+                    try {
+                        return ((string)(this[this.tableWIPRsnAndMacIDMappingReport.MAPPED_BYColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'MAPPED_BY\' in table \'WIPRsnAndMacIDMappingReport\' is DBNull" +
+                                ".", e);
+                    }
+                }
+                set {
+                    this[this.tableWIPRsnAndMacIDMappingReport.MAPPED_BYColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string MAPPED_ON {
+                get {
+                    try {
+                        return ((string)(this[this.tableWIPRsnAndMacIDMappingReport.MAPPED_ONColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'MAPPED_ON\' in table \'WIPRsnAndMacIDMappingReport\' is DBNull" +
+                                ".", e);
+                    }
+                }
+                set {
+                    this[this.tableWIPRsnAndMacIDMappingReport.MAPPED_ONColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsFG_ITEM_CODENull() {
+                return this.IsNull(this.tableWIPRsnAndMacIDMappingReport.FG_ITEM_CODEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetFG_ITEM_CODENull() {
+                this[this.tableWIPRsnAndMacIDMappingReport.FG_ITEM_CODEColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsMODEL_CODENull() {
+                return this.IsNull(this.tableWIPRsnAndMacIDMappingReport.MODEL_CODEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetMODEL_CODENull() {
+                this[this.tableWIPRsnAndMacIDMappingReport.MODEL_CODEColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsBARCODE_DATANull() {
+                return this.IsNull(this.tableWIPRsnAndMacIDMappingReport.BARCODE_DATAColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetBARCODE_DATANull() {
+                this[this.tableWIPRsnAndMacIDMappingReport.BARCODE_DATAColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsPCB_SNNull() {
+                return this.IsNull(this.tableWIPRsnAndMacIDMappingReport.PCB_SNColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetPCB_SNNull() {
+                this[this.tableWIPRsnAndMacIDMappingReport.PCB_SNColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsBARCODE_TYPENull() {
+                return this.IsNull(this.tableWIPRsnAndMacIDMappingReport.BARCODE_TYPEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetBARCODE_TYPENull() {
+                this[this.tableWIPRsnAndMacIDMappingReport.BARCODE_TYPEColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsMAPPED_BYNull() {
+                return this.IsNull(this.tableWIPRsnAndMacIDMappingReport.MAPPED_BYColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetMAPPED_BYNull() {
+                this[this.tableWIPRsnAndMacIDMappingReport.MAPPED_BYColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsMAPPED_ONNull() {
+                return this.IsNull(this.tableWIPRsnAndMacIDMappingReport.MAPPED_ONColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetMAPPED_ONNull() {
+                this[this.tableWIPRsnAndMacIDMappingReport.MAPPED_ONColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -3045,6 +3635,40 @@ namespace DIXON.ReportDataSet {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public IMEIandEIDUnbindRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public class WIPRsnAndMacIDMappingReportRowChangeEvent : global::System.EventArgs {
+            
+            private WIPRsnAndMacIDMappingReportRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public WIPRsnAndMacIDMappingReportRowChangeEvent(WIPRsnAndMacIDMappingReportRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public WIPRsnAndMacIDMappingReportRow Row {
                 get {
                     return this.eventRow;
                 }

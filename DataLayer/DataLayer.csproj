@@ -36,7 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="BcilLib">
-      <HintPath>..\SGST\DLL\BcilLib.dll</HintPath>
+      <HintPath>..\..\..\Dixon_MES_68\DIXON_Web_App\Common\bin\Debug\BcilLib.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -76,6 +76,7 @@
     <Compile Include="Reports\DL_ASNReport.cs" />
     <Compile Include="Reports\DeviceVsGBComparisonReportDL.cs" />
     <Compile Include="Reports\DL_QCVerificationReport.cs" />
+    <Compile Include="Reports\DL_WIPRsn_And_MacID_Mapping_Report.cs" />
     <Compile Include="Reports\DL_WallMountKitReport.cs" />
     <Compile Include="Reports\DL_MSNvsSecPackingComparisonReport.cs" />
     <Compile Include="Reports\DL_MSNvsGBComparisonReport.cs" />

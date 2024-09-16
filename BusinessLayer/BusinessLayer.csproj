@@ -36,7 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="BcilLib">
-      <HintPath>..\SGST\DLL\BcilLib.dll</HintPath>
+      <HintPath>..\..\..\Dixon_MES_68\DIXON_Web_App\Common\bin\Debug\BcilLib.dll</HintPath>
     </Reference>
     <Reference Include="ClosedXML, Version=0.95.4.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ClosedXML.0.95.4\lib\net46\ClosedXML.dll</HintPath>
@@ -117,6 +117,7 @@
     <Compile Include="Reports\BL_FG_InventoryReport.cs" />
     <Compile Include="Reports\BL_FG_PackingListReport.cs" />
     <Compile Include="Reports\BL_QCVerificationReport.cs" />
+    <Compile Include="Reports\BL_WIPRsn_And_MacID_Mapping_Report.cs" />
     <Compile Include="Reports\BL_WallMountKitReport.cs" />
     <Compile Include="Reports\BL_MSNvsSecPackingComparisonReport.cs" />
     <Compile Include="Reports\BL_MSNvsGBComparisonReport.cs" />
