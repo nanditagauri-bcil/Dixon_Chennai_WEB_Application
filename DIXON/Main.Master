@@ -407,11 +407,11 @@
                                 <li><a class="menu-link" href="../Reports/MasterReports.aspx"><i class="fa fa-circle-o"></i>Master Data Report</a></li>
                                 <%--<li><a class="menu-link" href="../Reports/RMReceivingReport.aspx"><i class="fa fa-circle-o"></i>RM Receiving Report</a></li>
                                 <li><a class="menu-link" href="../Reports/RMInventoryReport.aspx"><i class="fa fa-circle-o"></i>RM Inventory Report</a></li>
-                                <li><a class="menu-link" href="../Reports/BOMMasterDataReport.aspx"><i class="fa fa-circle-o"></i>RM BOM Data Report</a></li>
                                 <li><a class="menu-link" href="../Reports/RMIssueReportNew.aspx"><i class="fa fa-circle-o"></i>RM Issue Report</a></li>
                                 <li><a class="menu-link" href="../Reports/RMJobworkNewreport.aspx"><i class="fa fa-circle-o"></i>Job Work Report</a></li>
                                 <li><a class="menu-link" href="../Reports/RMmrnreturnnew.aspx"><i class="fa fa-circle-o"></i>MRN Return Report</a></li>
                                 <li><a class="menu-link" href="../Reports/ODUReport.aspx?Name=ODU"><i class="fa fa-circle-o"></i>ODU Data Report</a></li>--%>
+                                <li><a class="menu-link" href="../Reports/BOMMasterDataReport.aspx"><i class="fa fa-circle-o"></i>Work Order Data Report</a></li>
                                 <li><a class="menu-link" href="../Reports/WIPINVENTORYNEWREPORT.aspx"><i class="fa fa-circle-o"></i>WIP Inventory Report</a></li>
                                 <li><a class="menu-link" href="../Reports/WIPMaterialIssueToMachineReportNew.aspx"><i class="fa fa-circle-o"></i>WIP Material Issue Report</a></li>
                                 <li><a class="menu-link" href="../Reports/WIPPCBSerialGenrationReportNew.aspx"><i class="fa fa-circle-o"></i>PCB Serial Generation Report</a></li>
@@ -420,6 +420,7 @@
                                 <li><a class="menu-link" href="../Reports/WIPReworkReport.aspx"><i class="fa fa-circle-o"></i>WIP Rework Report</a></li>
                                 <li><a class="menu-link" href="../Reports/WIPPrimaryPackingReport.aspx"><i class="fa fa-circle-o"></i>Primary Packing</a></li>
                                 <li><a class="menu-link" href="../Reports/WIPRsnAndMacIDMappingReport.aspx"><i class="fa fa-circle-o"></i>WIP Rsn And MacID Mapping Report</a></li>
+                                <li><%--<a class="menu-link" href="../Reports/RMWorkOrderReport.aspx"><i class="fa fa-circle-o"></i>Work Order Traceability Report</a>--%></li>
                                 <%--<li><a class="menu-link" href="../Reports/WIPQualityReport.aspx"><i class="fa fa-circle-o"></i>FG Quality Report</a></li>--%>
                                 <%--<li><a class="menu-link" href="../Reports/StageWisePCBreportNew.aspx"><i class="fa fa-circle-o"></i>Machine Wise PCB Report</a></li>
                                 <li><a class="menu-link" href="../Reports/WIPFQAReport.aspx"><i class="fa fa-circle-o"></i>WIP FQA Report</a></li>
@@ -437,8 +438,7 @@
                                 <li><a class="menu-link" href="../Reports/WIPAgingReport.aspx"><i class="fa fa-circle-o"></i>Ageing Report</a></li>--%>
                                 <%--<li><a class="menu-link" href="../Reports/WIPSecondaryPackingReportNew.aspx"><i class="fa fa-circle-o"></i>Palletization Report</a></li>
                                 <li><a class="menu-link" href="../Reports/YieldSummaryReportNew.aspx"><i class="fa fa-circle-o"></i>WIP Yield Summary Report</a></li>--%>
-                                <%--<li><a class="menu-link" href="../Reports/RMWorkOrderReport.aspx"><i class="fa fa-circle-o"></i>Work Order Traceability Report</a></li>
-                                <li><a class="menu-link" href="../Reports/FGinventoryreportNew.aspx"><i class="fa fa-circle-o"></i>FG Inventory Report</a></li>
+                                <%--<li><a class="menu-link" href="../Reports/FGinventoryreportNew.aspx"><i class="fa fa-circle-o"></i>FG Inventory Report</a></li>
                                 <li><a class="menu-link" href="../Reports/FG_PackingListnew.aspx"><i class="fa fa-circle-o"></i>FG Packing List Report</a></li>
                                 <li><a class="menu-link" href="../Reports/FGLoadingDispatchreportNew.aspx"><i class="fa fa-circle-o"></i>FG Loading and Dispatch Report</a></li>
                                 <li><a class="menu-link" href="../Reports/PhysicalStockReport.aspx"><i class="fa fa-circle-o"></i>Stock Take Report</a></li>

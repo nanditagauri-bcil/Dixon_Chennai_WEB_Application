@@ -4,6 +4,7 @@ using System;
 using System.Configuration;
 using System.Data;
 using System.IO;
+using System.Linq;
 using System.Web.UI.WebControls;
 
 namespace DIXON.INE.WIP
@@ -55,16 +56,15 @@ namespace DIXON.INE.WIP
                     FileUpload1.SaveAs(Server.MapPath("~/Upload_File//Route//") + CSVFilePath);
                     string sFileName = Server.MapPath("~/Upload_File//Route//") + CSVFilePath;
                     dt = PCommon.ConvertCSVtoDataTable(sFileName);
-                    //ADDED BY SHIVAM (02/04/2024)
-                    foreach (DataColumn column in dt.Columns)
+                    //ADDED BY SHIVAM (16/09/2024) 
+                    foreach (DataColumn column in dt.Columns.Cast<DataColumn>().ToList())
                     {
-                        if (column.ColumnName == "Column1") 
+                        if (column.ColumnName.StartsWith("Column") && int.TryParse(column.ColumnName.Replace("Column", ""), out _))
                         {
-                            dt.Columns.Remove("Column1");
-                            dt.AcceptChanges();
-                            break;
+                            dt.Columns.Remove(column);
                         }
-                    } 
+                    }
+                    dt.AcceptChanges();
                     //FINISH
                     if (dt.Columns.Count != 20)
                     {
