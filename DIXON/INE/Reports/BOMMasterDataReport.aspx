@@ -40,7 +40,7 @@
         <!-- Content Header (Page header) -->
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
         <section class="content-header">
-            <h1>RM BOM MASTER DATA REPORT      
+            <h1>WORK ORDER MASTER DATA REPORT      
             </h1>
 
 
@@ -50,7 +50,7 @@
             <!-- SELECT2 EXAMPLE -->
             <div class="box box-default">
                 <div class="box-header with-border">
-                    <h3 class="box-title">RM BOM Data Report </h3>
+                    <h3 class="box-title">WORK ORDER Data Report </h3>
 
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>

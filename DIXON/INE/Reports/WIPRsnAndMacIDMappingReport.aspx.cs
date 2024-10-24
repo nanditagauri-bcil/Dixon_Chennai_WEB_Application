@@ -133,7 +133,7 @@ namespace DIXON.INE.Reports
                     string sItemCode = string.Empty;
                     if (drpFGItemCode.SelectedIndex > 0)
                     {
-                        sItemCode = dt.Rows[0]["FGITEMCODE"].ToString();
+                        sItemCode = dt.Rows[0]["FG_ITEM_CODE"].ToString();
                         //Desc = dtTrackingData.Rows[0]["FG_ITEM_DESC"].ToString();
                     }
                     //if (txtPCBBarcode.Text.Trim().Length > 0)

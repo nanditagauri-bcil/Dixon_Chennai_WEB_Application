@@ -306,6 +306,18 @@ namespace DIXON.INE.Masters
                     string sFileName = Server.MapPath("~/Upload_File//") + CSVFilePath;
 
                     dtFileUploading = PCommon.ConvertCSVtoDataTable(sFileName);
+
+                    //ADDED BY SHIVAM (16/09/2024) 
+                    foreach (DataColumn column in dtFileUploading.Columns.Cast<DataColumn>().ToList())
+                    {
+                        if (column.ColumnName.StartsWith("Column") && int.TryParse(column.ColumnName.Replace("Column", ""), out _))
+                        {
+                            dtFileUploading.Columns.Remove(column);
+                        }
+                    }
+                    dtFileUploading.AcceptChanges();
+                    //FINISH
+
                     if (!dtFileUploading.Columns.Contains("ARC/Gpon  SN"))
                     {
                         dtFileUploading.Columns.Add("ARC/Gpon  SN");
