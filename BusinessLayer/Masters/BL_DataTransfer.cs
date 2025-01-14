@@ -8,13 +8,13 @@ namespace BusinessLayer.Masters
     public class BL_DataTransfer
     {
         DL_DataTransfer dlboj = null;
-        public DataTable DataTranfer(string sType, string sValue)
+        public DataTable DataTranfer(string sType, string sValue, string sUserID)
         {
             DataTable dtBins = new DataTable();
             dlboj = new DL_DataTransfer();
             try
             {
-                dtBins = dlboj.DataTransfer(sType, sValue);
+                dtBins = dlboj.DataTransfer(sType, sValue, sUserID);
             }
             catch (Exception ex)
             {
