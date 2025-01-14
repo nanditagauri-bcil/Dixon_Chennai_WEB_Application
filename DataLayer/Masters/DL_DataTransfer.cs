@@ -13,15 +13,16 @@ namespace DataLayer.Masters
             oDbm = c.SqlDBProvider();
         }
 
-        public DataTable DataTransfer(string sType, string sValue)
+        public DataTable DataTransfer(string sType, string sValue, string sUserID)
         {
             DataTable dt = new DataTable();
             try
             {
-                oDbm.CreateParameters(3);
+                oDbm.CreateParameters(4);
                 oDbm.AddParameters(0, "@TYPE", sType);
                 oDbm.AddParameters(1, "@VALUE", sValue);
                 oDbm.AddParameters(2, "@SITECODE", PCommon.sSiteCode);
+                oDbm.AddParameters(3, "@USERID", sUserID);
                 oDbm.Open();
                 dt = oDbm.ExecuteDataSet(System.Data.CommandType.StoredProcedure, "data_transfer").Tables[0];
             }

@@ -53,12 +53,12 @@
                             <div class="form-group">
                                 <label>Type : </label>
                                 <asp:DropDownList ID="drpType" runat="server" class="form-control select2" Style="width: 100%;">
-                                    <asp:ListItem>Item Master</asp:ListItem>
+                                    <%--<asp:ListItem>Item Master</asp:ListItem>--%>
                                     <%--<asp:ListItem>Item Quality Parameter</asp:ListItem>--%>
-                                    <asp:ListItem>Customer Master</asp:ListItem>
+                                    <%--<asp:ListItem>Customer Master</asp:ListItem>
                                     <asp:ListItem>Item BOM</asp:ListItem>
-                                    <asp:ListItem>RM Receiving</asp:ListItem>
-                                    <asp:ListItem>Work Order</asp:ListItem>
+                                    <asp:ListItem>RM Receiving</asp:ListItem>--%>
+                                    <asp:ListItem>WIP Inventory</asp:ListItem>
                                 </asp:DropDownList>
                             </div>
                         </div>

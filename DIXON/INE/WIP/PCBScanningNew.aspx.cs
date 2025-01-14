@@ -961,6 +961,12 @@ namespace DIXON.INE.WIP
                         else
                         {
                             CommonHelper.ShowMessage(Message, msgsuccess, CommonHelper.MessageType.Success.ToString());
+                            //ADDED BY SHIVAM (17/12/2024)
+                            if(sResult.Contains("REFRESH"))
+                            {
+                                CommonHelper.ShowMessage(sResult.Split('~')[2], msgsuccess, CommonHelper.MessageType.Notification.ToString());
+                            }
+                            //FINISH
                         }
                         lblCount.Text = Convert.ToString(Convert.ToInt32(lblCount.Text) + 1);
                         if (txtScanMachineID.Text.ToUpper().Contains("WAVE"))
@@ -995,6 +1001,12 @@ namespace DIXON.INE.WIP
                     else
                     {
                         CommonHelper.ShowMessage(Message, msgsuccess, CommonHelper.MessageType.Success.ToString());
+                        //ADDED BY SHIVAM (17/12/2024)
+                        if (sResult.Contains("REFRESH"))
+                        {
+                            CommonHelper.ShowMessage(sResult.Split('~')[2], msgsuccess, CommonHelper.MessageType.Notification.ToString());
+                        }
+                        //FINISH
                         txtRefBarcode.Text = string.Empty;
                         txtPCBID.Text = string.Empty;
                         txtPCBID.Focus();
