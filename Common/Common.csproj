@@ -36,7 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="BcilLib">
-      <HintPath>..\..\..\Dixon_MES_68\DIXON_Web_App\Common\bin\Debug\BcilLib.dll</HintPath>
+      <HintPath>..\DIXON\DLL\BcilLib.dll</HintPath>
     </Reference>
     <Reference Include="EPPlus, Version=6.0.3.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
       <HintPath>..\packages\EPPlus.6.0.3\lib\net452\EPPlus.dll</HintPath>

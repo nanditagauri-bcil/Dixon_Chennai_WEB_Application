@@ -36,7 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="BcilLib">
-      <HintPath>..\..\..\Dixon_MES_68\DIXON_Web_App\Common\bin\Debug\BcilLib.dll</HintPath>
+      <HintPath>..\DIXON\DLL\BcilLib.dll</HintPath>
     </Reference>
     <Reference Include="ClosedXML, Version=0.95.4.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ClosedXML.0.95.4\lib\net46\ClosedXML.dll</HintPath>
