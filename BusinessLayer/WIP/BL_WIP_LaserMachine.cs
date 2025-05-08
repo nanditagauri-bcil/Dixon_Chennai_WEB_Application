@@ -169,7 +169,7 @@ namespace BusinessLayer.WIP
             dlboj = new DL_WIPLaserMachinePrinting();
             try
             {
-                DT = dlboj.CheckReelID(sScanBarcode, sFGItemCode,   sWorkOrderNo, sSiteCode);
+                DT = dlboj.CheckReelID(sScanBarcode, sFGItemCode, sWorkOrderNo, sSiteCode);
             }
             catch (Exception ex)
             {
@@ -201,7 +201,7 @@ namespace BusinessLayer.WIP
             string PartCode, string sBatchNo, int iQty,
           int iArraySize, string sReelBarcode, string CustomerPartCode, string sFGItemCode
             , string sSiteCode, string sUseriD, string sLineCode, string sDesignerFormat, string sPacketType
-            , int iNOSCount, string sPrefix, string LaserfolderPath
+            , int iNOSCount, string sPrefix, string LaserfolderPath, string serialType
             )
         {
             string sResult = string.Empty;
@@ -280,7 +280,7 @@ namespace BusinessLayer.WIP
                         }
                     }
                     PCommon.mBcilLogger.LogMessage(BcilLib.EventNotice.EventTypes.evtData,
-                    System.Reflection.MethodBase.GetCurrentMethod().Name, "Packet Barcode : " + sReelBarcode +
+                    MethodBase.GetCurrentMethod().Name, "Packet Barcode : " + sReelBarcode +
                     ",Array Size:" + iArraySize.ToString() + ",SN Generation : " + sMainSN.ToString()
                     + ", Work Order No :" + sWorkOrderNo + ", Part Code : " + PartCode +
                     ", Qty : " + iQty.ToString()
@@ -339,12 +339,14 @@ namespace BusinessLayer.WIP
                     iLength = sPrintingSNNNo.Length;
                 }
                 PCommon.mBcilLogger.LogMessage(BcilLib.EventNotice.EventTypes.evtData,
-                  System.Reflection.MethodBase.GetCurrentMethod().Name, "Packet Barcode : " + sReelBarcode +
+                  MethodBase.GetCurrentMethod().Name, "Packet Barcode : " + sReelBarcode +
                   ",Array Size:" + iArraySize.ToString() + ",SN Generation : " + sMainSN.ToString()
                   + ", Work Order No :" + sWorkOrderNo + ", Part Code : " + PartCode +
                   ", Qty : " + iQty.ToString()
                   + ",Line Code : " + sLineCode + ", Final SN:" + sMainSN
                   );
+
+                string runningSerial;
                 if (sPrintingSNNNo.Contains("*"))
                 {
                     dtStoreLaserFile.Rows.Clear();
@@ -352,20 +354,39 @@ namespace BusinessLayer.WIP
                     iStoreRecordCount = 0;
                     return sResult;
                 }
+
                 for (int i = 1; i <= iQty; i++)
                 {
                     if (sMainSN.Length > 0)
                     {
-                        sMainSN = sStartPrefix + sBeforeSuffix + sPrintingSNNNo.PadLeft(iLength, '0') + "" + sAfterSNSuffix;
+                        if (serialType.ToUpper().Trim() == "ALPHANUMERIC")
+                        {
+                            runningSerial = PCommon.ConvertToCustomAlphaNumeric(sPrintingSNNNo);
+                        }
+                        else
+                        {
+                            runningSerial = sPrintingSNNNo;
+                        }
+
+                        sMainSN = sStartPrefix + sBeforeSuffix + runningSerial.PadLeft(iLength, '0') + "" + sAfterSNSuffix;
                         sLaserSN = sMainSN;
                         dtStoreLaserFile.Rows.Add(sSiteCode, sWorkOrderNo, sFGItemCode, CustomerPartCode,
                               PartCode, sReelBarcode, sLaserSN, sLaserSN);
                         for (int iLaserSN = 1; iLaserSN < iArraySize; iLaserSN++)
                         {
                             sPrintingSNNNo = Convert.ToString(Convert.ToInt32(sPrintingSNNNo) + 1);
-                            sChildSN = sStartPrefix + sBeforeSuffix + sPrintingSNNNo.PadLeft(iLength, '0') + "" + sAfterSNSuffix;
-                            dtStoreLaserFile.Rows.Add(sSiteCode, sWorkOrderNo, sFGItemCode, CustomerPartCode,
-                                PartCode, sReelBarcode, sChildSN, sLaserSN);
+
+                            if (serialType.ToUpper().Trim() == "ALPHANUMERIC")
+                            {
+                                runningSerial = PCommon.ConvertToCustomAlphaNumeric(sPrintingSNNNo);
+                            }
+                            else
+                            {
+                                runningSerial = sPrintingSNNNo;
+                            }
+
+                            sChildSN = sStartPrefix + sBeforeSuffix + runningSerial.PadLeft(iLength, '0') + "" + sAfterSNSuffix;
+                            dtStoreLaserFile.Rows.Add(sSiteCode, sWorkOrderNo, sFGItemCode, CustomerPartCode, PartCode, sReelBarcode, sChildSN, sLaserSN);
                         }
                         sPrintingSNNNo = Convert.ToString(Convert.ToInt32(sPrintingSNNNo) + 1);
                     }
@@ -387,11 +408,11 @@ namespace BusinessLayer.WIP
                     );
                     if (ds.Tables.Count > 0)
                     {
-                        PCommon.mBcilLogger.LogMessage(BcilLib.EventNotice.EventTypes.evtData, System.Reflection.MethodBase.GetCurrentMethod().Name, "PCB Generate Result : " + ds.Tables[0].Rows[0][0].ToString());
+                        PCommon.mBcilLogger.LogMessage(BcilLib.EventNotice.EventTypes.evtData, MethodBase.GetCurrentMethod().Name, "PCB Generate Result : " + ds.Tables[0].Rows[0][0].ToString());
                         if (ds.Tables[0].Rows[0][0].ToString().StartsWith("ERROR~"))
                         {
                             sResult = ds.Tables[0].Rows[0][0].ToString();
-                            PCommon.mBcilLogger.LogMessage(BcilLib.EventNotice.EventTypes.evtError, System.Reflection.MethodBase.GetCurrentMethod().Name, sResult);
+                            PCommon.mBcilLogger.LogMessage(BcilLib.EventNotice.EventTypes.evtError, MethodBase.GetCurrentMethod().Name, sResult);
                             return sResult;
                         }
                         else
@@ -443,25 +464,24 @@ namespace BusinessLayer.WIP
                 }
                 else
                 {
-                    PCommon.mBcilLogger.LogMessage(BcilLib.EventNotice.EventTypes.evtMessage, System.Reflection.MethodBase.GetCurrentMethod().Name, "PCB Generate Final Result : N~File generation fail, Please try again ");
+                    PCommon.mBcilLogger.LogMessage(BcilLib.EventNotice.EventTypes.evtMessage, MethodBase.GetCurrentMethod().Name, "PCB Generate Final Result : N~File generation fail, Please try again ");
                     sResult = "N~File generation fail, Please try again";
                 }
             }
             catch (Exception ex)
             {
-                PCommon.mBcilLogger.LogMessage(BcilLib.EventNotice.EventTypes.evtError, System.Reflection.MethodBase.GetCurrentMethod().Name, ex.Message);
+                PCommon.mBcilLogger.LogMessage(BcilLib.EventNotice.EventTypes.evtError, MethodBase.GetCurrentMethod().Name, ex.Message);
                 throw ex;
             }
             return sResult;
         }
-
 
         public string sLaserFileGenerate
             (
                 int iQty,
                 int iArraySize, string sReelBarcode, string CustomerPartCode, string sFGItemCode
                 , string sSiteCode, string sUseriD, string sLineCode, string sDesignerFormat, string sPacketType
-                , int iNOSCount, DataTable dtPCBLogicPrinting, string sPrefix
+                , int iNOSCount, DataTable dtPCBLogicPrinting, string sPrefix, string serialType
             )
         {
             string sResult = string.Empty;
@@ -531,7 +551,7 @@ namespace BusinessLayer.WIP
                     sMainSN = dlboj.GenerateSN(sFGItemCode, CustomerPartCode, PCommon.sSiteCode);
 
                     PCommon.mBcilLogger.LogMessage(BcilLib.EventNotice.EventTypes.evtData,
-                     System.Reflection.MethodBase.GetCurrentMethod().Name, "Packet Barcode : " + sReelBarcode +
+                     MethodBase.GetCurrentMethod().Name, "Packet Barcode : " + sReelBarcode +
                      ",Array Size:" + iArraySize.ToString() + ",SN Generation : " + sMainSN.ToString()
                      + ", Work Order No :" + sWorkOrderNo + ", Part Code : " + PartCode +
                      ", Qty : " + iQty.ToString() + ", FG ITEM CODE : " + sFGItemCode.ToString()
@@ -638,6 +658,9 @@ namespace BusinessLayer.WIP
                         sBeforeSuffix = dtPCBLogicPrinting.Rows[iSNCount]["BEFOREVALUE"].ToString();
                         iLength = Convert.ToInt32(dtPCBLogicPrinting.Rows[iSNCount]["LENGTH"].ToString());
                         sAfterSNSuffix = dtPCBLogicPrinting.Rows[iSNCount]["AFTERSUFFIX"].ToString();
+
+                        string runningSerial;
+
                         if (sPrintingSNNNo.Contains("*"))
                         {
                             dtStoreLaserFile.Rows.Clear();
@@ -645,9 +668,19 @@ namespace BusinessLayer.WIP
                             iStoreRecordCount = 0;
                             return sResult;
                         }
+
+                        if (serialType.ToUpper().Trim() == "ALPHANUMERIC")
+                        {
+                            runningSerial = PCommon.ConvertToCustomAlphaNumeric(sPrintingSNNNo);
+                        }
+                        else
+                        {
+                            runningSerial = sPrintingSNNNo;
+                        }
+
                         if (sMainSN.Length > 0)
                         {
-                            sMainSN = sStartPrefix + sBeforeSuffix + sPrintingSNNNo.PadLeft(iLength, '0') + "" + sAfterSNSuffix;
+                            sMainSN = sStartPrefix + sBeforeSuffix + runningSerial.PadLeft(iLength, '0') + "" + sAfterSNSuffix;
                             if (sParentSN.Length == 0)
                             {
                                 sParentSN = sMainSN;
@@ -657,7 +690,17 @@ namespace BusinessLayer.WIP
                             for (int iLaserSN = 1; iLaserSN < iArraySize; iLaserSN++)
                             {
                                 sPrintingSNNNo = Convert.ToString(Convert.ToInt32(sPrintingSNNNo) + 1);
-                                sChildSN = sStartPrefix + sBeforeSuffix + sPrintingSNNNo.PadLeft(iLength, '0') + "" + sAfterSNSuffix;
+
+                                if (serialType.ToUpper().Trim() == "ALPHANUMERIC")
+                                {
+                                    runningSerial = PCommon.ConvertToCustomAlphaNumeric(sPrintingSNNNo);
+                                }
+                                else
+                                {
+                                    runningSerial = sPrintingSNNNo;
+                                }
+
+                                sChildSN = sStartPrefix + sBeforeSuffix + runningSerial.PadLeft(iLength, '0') + "" + sAfterSNSuffix;
                                 dtStoreLaserFile.Rows.Add(sSiteCode, sWorkOrderNo, sFGItemCode, CustomerPartCode,
                                     PartCode, sReelBarcode, sChildSN, sParentSN);
                             }
@@ -683,11 +726,11 @@ namespace BusinessLayer.WIP
                     );
                     if (ds.Tables.Count > 0)
                     {
-                        PCommon.mBcilLogger.LogMessage(BcilLib.EventNotice.EventTypes.evtData, System.Reflection.MethodBase.GetCurrentMethod().Name, "PCB Generate Result : " + dtResult.Rows[0][0].ToString());
+                        PCommon.mBcilLogger.LogMessage(BcilLib.EventNotice.EventTypes.evtData, MethodBase.GetCurrentMethod().Name, "PCB Generate Result : " + dtResult.Rows[0][0].ToString());
                         if (ds.Tables[0].Rows[0][0].ToString().StartsWith("ERROR~"))
                         {
                             sResult = ds.Tables[0].Rows[0][0].ToString();
-                            PCommon.mBcilLogger.LogMessage(BcilLib.EventNotice.EventTypes.evtError, System.Reflection.MethodBase.GetCurrentMethod().Name, sResult);
+                            PCommon.mBcilLogger.LogMessage(BcilLib.EventNotice.EventTypes.evtError, MethodBase.GetCurrentMethod().Name, sResult);
                             return sResult;
                         }
                         else
@@ -702,13 +745,13 @@ namespace BusinessLayer.WIP
                 }
                 else
                 {
-                    PCommon.mBcilLogger.LogMessage(BcilLib.EventNotice.EventTypes.evtMessage, System.Reflection.MethodBase.GetCurrentMethod().Name, "PCB Generate Final Result : N~File generation fail, Please try again ");
+                    PCommon.mBcilLogger.LogMessage(BcilLib.EventNotice.EventTypes.evtMessage, MethodBase.GetCurrentMethod().Name, "PCB Generate Final Result : N~File generation fail, Please try again ");
                     sResult = "N~File generation fail, Please try again";
                 }
             }
             catch (Exception ex)
             {
-                PCommon.mBcilLogger.LogMessage(BcilLib.EventNotice.EventTypes.evtError, System.Reflection.MethodBase.GetCurrentMethod().Name, ex.Message);
+                PCommon.mBcilLogger.LogMessage(BcilLib.EventNotice.EventTypes.evtError, MethodBase.GetCurrentMethod().Name, ex.Message);
                 throw ex;
             }
             return sResult;
@@ -742,7 +785,7 @@ namespace BusinessLayer.WIP
                 }
                 iQty = iQty / iArraySize;
                 PCommon.mBcilLogger.LogMessage(BcilLib.EventNotice.EventTypes.evtData,
-                     System.Reflection.MethodBase.GetCurrentMethod().Name, "Packet Barcode : " + sReelBarcode +
+                     MethodBase.GetCurrentMethod().Name, "Packet Barcode : " + sReelBarcode +
                      ",Array Size:" + iArraySize.ToString()
                      + ", Work Order No :" + sWorkOrderNo + ", Part Code : " + PartCode +
                      ", Qty : " + iQty.ToString()
@@ -754,11 +797,11 @@ namespace BusinessLayer.WIP
                 );
                 if (dtResult.Rows.Count > 0)
                 {
-                    PCommon.mBcilLogger.LogMessage(BcilLib.EventNotice.EventTypes.evtData, System.Reflection.MethodBase.GetCurrentMethod().Name, "PCB Generate Result : " + dtResult.Rows[0][0].ToString());
+                    PCommon.mBcilLogger.LogMessage(BcilLib.EventNotice.EventTypes.evtData, MethodBase.GetCurrentMethod().Name, "PCB Generate Result : " + dtResult.Rows[0][0].ToString());
                     if (dtResult.Rows[0][0].ToString().StartsWith("ERROR~"))
                     {
                         sResult = dtResult.Rows[0][0].ToString();
-                        PCommon.mBcilLogger.LogMessage(BcilLib.EventNotice.EventTypes.evtError, System.Reflection.MethodBase.GetCurrentMethod().Name, sResult);
+                        PCommon.mBcilLogger.LogMessage(BcilLib.EventNotice.EventTypes.evtError, MethodBase.GetCurrentMethod().Name, sResult);
                         return sResult;
                     }
                     else
@@ -772,13 +815,13 @@ namespace BusinessLayer.WIP
                 }
                 else
                 {
-                    PCommon.mBcilLogger.LogMessage(BcilLib.EventNotice.EventTypes.evtMessage, System.Reflection.MethodBase.GetCurrentMethod().Name, "PCB Generate Final Result : N~File generation fail, Please try again ");
+                    PCommon.mBcilLogger.LogMessage(BcilLib.EventNotice.EventTypes.evtMessage, MethodBase.GetCurrentMethod().Name, "PCB Generate Final Result : N~File generation fail, Please try again ");
                     sResult = "N~File generation fail, Please try again";
                 }
             }
             catch (Exception ex)
             {
-                PCommon.mBcilLogger.LogMessage(BcilLib.EventNotice.EventTypes.evtError, System.Reflection.MethodBase.GetCurrentMethod().Name, ex.Message);
+                PCommon.mBcilLogger.LogMessage(BcilLib.EventNotice.EventTypes.evtError, MethodBase.GetCurrentMethod().Name, ex.Message);
                 throw ex;
             }
             return sResult;
@@ -992,6 +1035,22 @@ namespace BusinessLayer.WIP
                 throw ex;
             }
             return dtINELPartNo;
+        }
+
+        public DataTable GetSerialType(string sSiteCode, string fgItemCode)
+        {
+            DataTable dtSerialType = new DataTable();
+            dlboj = new DL_WIPLaserMachinePrinting();
+            try
+            {
+                dtSerialType = dlboj.GetSerialType(sSiteCode, fgItemCode);
+            }
+            catch (Exception ex)
+            {
+                PCommon.mBcilLogger.LogMessage(BcilLib.EventNotice.EventTypes.evtError, System.Reflection.MethodBase.GetCurrentMethod().Name, ex.Message);
+                throw ex;
+            }
+            return dtSerialType;
         }
 
         #endregion

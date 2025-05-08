@@ -23,6 +23,8 @@ namespace Common
         public static string sFileNam { get; set; }
         public static string sFilePrintingPath { get; set; }
 
+        private static readonly char[] Base34Chars = "0123456789ABCDEFGHJKLMNPQRSTUVWXYZ".ToCharArray();
+
         /// <summary>
         /// USED IN SQL DB PROVIEDR
         /// </summary>
@@ -350,5 +352,37 @@ namespace Common
             }
             return clearText;
         }
+
+        #region Custom AplhaNumeric Serial Conversion
+        public static string ConvertToCustomAlphaNumeric(string input)
+        {
+            if (string.IsNullOrWhiteSpace(input))
+                return null;
+
+            // Try parsing the input string to an integer (ignoring leading zeros)
+            if (!long.TryParse(input, out long number) || number < 0)
+                return null;
+
+            int targetLength = input.Length;
+
+            // Base conversion
+            string result = "";
+            if (number == 0)
+            {
+                result = "0";
+            }
+            else
+            {
+                while (number > 0)
+                {
+                    int remainder = (int)(number % 34);
+                    result = Base34Chars[remainder] + result;
+                    number /= 34;
+                }
+            }
+
+            return result;
+        }
+        #endregion
     }
 }
