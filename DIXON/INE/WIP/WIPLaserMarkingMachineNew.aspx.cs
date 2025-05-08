@@ -49,7 +49,7 @@ namespace DIXON.INE.WIP
                     }
                     txtScanMachineBarcode.Focus();
                     lblScanRH.InnerText = "Scan Barcode";
-                    txtBarcode.Attributes.Add("placeholder", "Scan Barcode"); 
+                    txtBarcode.Attributes.Add("placeholder", "Scan Barcode");
                 }
             }
             catch (Exception ex)
@@ -502,12 +502,18 @@ namespace DIXON.INE.WIP
                 int iNoOfRMScan = 1;
                 int iNoOFFGScan = 1;
                 int iPCBQty = 1;
+                string serialType = "NUMERIC";
                 DataTable dtIssue = blobj.GetProcessDetails(Session["SiteCode"].ToString(), drpType.Text);
+                DataTable dtSerialType = blobj.GetSerialType(Session["SiteCode"].ToString(), drpFGItemCodeRH.Text.Trim());
                 if (dtIssue.Rows.Count > 0)
                 {
                     iNoOFFGScan = Convert.ToInt32(dtIssue.Rows[0][0].ToString());
                     iNoOfRMScan = Convert.ToInt32(dtIssue.Rows[0][1].ToString());
                     iPCBQty = Convert.ToInt32(dtIssue.Rows[0][2].ToString());
+                }
+                if (dtSerialType.Rows.Count > 0)
+                {
+                    serialType = dtSerialType.Rows[0][0].ToString();
                 }
                 CommonHelper.mBcilLogger.LogMessage(BcilLib.EventNotice.EventTypes.evtMessage,
                     System.Reflection.MethodBase.GetCurrentMethod().Name, " Barcode Scaning Type : " + drpType.Text);
@@ -530,7 +536,7 @@ namespace DIXON.INE.WIP
                    sReelBarcode, CustomerPartCode_RH, drpFGItemCodeRH.Text
                    , Session["SiteCode"].ToString(), Session["UserID"].ToString()
                    , Session["LINECODE"].ToString(), sDesignerFormat, sPCBType, iPCBQty
-                   , sPrefix,txtlaserpath.Text
+                   , sPrefix, txtlaserpath.Text, serialType
                     );
                 }
                 else
@@ -541,7 +547,7 @@ namespace DIXON.INE.WIP
                     sReelBarcode, drpCustomerCode.Text, drpFGItemCodeRH.Text
                     , Session["SiteCode"].ToString(), Session["UserID"].ToString()
                     , Session["LINECODE"].ToString(), sDesignerFormat, sPCBType, iPCBQty, dtPacket
-                    , sPrefix
+                    , sPrefix, serialType
                      );
                 }
 
@@ -844,17 +850,17 @@ namespace DIXON.INE.WIP
                             string dtMsg = dtCHECKTMO.Rows[0][0].ToString();
                             if (dtMsg.StartsWith("SUCCESSFUL"))
                             {
-                                txtlaserpath.Text = ConfigurationManager.AppSettings["PATH_FOR_SNGENERATE_FILE"].ToString(); 
-                                if (txtlaserpath.Text.Length==0)
+                                txtlaserpath.Text = ConfigurationManager.AppSettings["PATH_FOR_SNGENERATE_FILE"].ToString();
+                                if (txtlaserpath.Text.Length == 0)
                                 {
-                                    CommonHelper.ShowMessage("Please enter path in web config", msgerror, 
+                                    CommonHelper.ShowMessage("Please enter path in web config", msgerror,
                                         CommonHelper.MessageType.Error.ToString());
                                     drpFGItemCodeRH.Items.Clear();
                                     drpIssueSlipNo.Items.Clear();
                                     drpType.SelectedIndex = 0;
                                     drpType.Focus();
                                     return;
-                                } 
+                                }
                             }
                             else
                             {
