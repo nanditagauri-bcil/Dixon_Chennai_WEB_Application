@@ -701,6 +701,32 @@ namespace DataLayer
             }
             return dt;
         }
+
+        public DataTable GenerateSNLength(string sFGItemCode, string customerPartCode, string sSiteCode)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                oDbm.CreateParameters(4);
+                oDbm.AddParameters(0, "@TYPE", "GETSNLENGTH");
+                oDbm.AddParameters(1, "@SITECODE", sSiteCode);
+                oDbm.AddParameters(2, "@FGITEMCODE", sFGItemCode);
+                oDbm.AddParameters(3, "@CUSTOMERPARTCODE", customerPartCode);
+                oDbm.Open();
+                dt = oDbm.ExecuteDataSet(System.Data.CommandType.StoredProcedure, "USP_STORE_LASER_FILE").Tables[0];
+            }
+            catch (Exception ex)
+            {
+                PCommon.mBcilLogger.LogMessage(BcilLib.EventNotice.EventTypes.evtError, System.Reflection.MethodBase.GetCurrentMethod().Name, ex.Message);
+                throw ex;
+            }
+            finally
+            {
+                oDbm.Close();
+                oDbm.Dispose();
+            }
+            return dt;
+        }
         #endregion
     }
 }

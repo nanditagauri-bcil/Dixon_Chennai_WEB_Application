@@ -247,12 +247,23 @@ namespace BusinessLayer.WIP
                 sMainSN = "";
                 sMainSN = dlboj.GenerateSN(sFGItemCode, CustomerPartCode, PCommon.sSiteCode);
                 PCommon.mBcilLogger.LogMessage(BcilLib.EventNotice.EventTypes.evtData,
-                     System.Reflection.MethodBase.GetCurrentMethod().Name, "Packet Barcode : " + sReelBarcode +
+                     MethodBase.GetCurrentMethod().Name, "Packet Barcode : " + sReelBarcode +
                      ",Array Size:" + iArraySize.ToString() + ",SN Generation : " + sMainSN.ToString()
                      + ", Work Order No :" + sWorkOrderNo + ", Part Code : " + PartCode +
                      ", Qty : " + iQty.ToString()
                      + ",Line Code : " + sLineCode + ",Prefix :" + sPrefix + ", Design Format : " + sDesignerFormat
                      );
+
+                DataTable dtLength = dlboj.GenerateSNLength(sFGItemCode, CustomerPartCode, PCommon.sSiteCode);
+
+                if (dtLength.Rows.Count == 0)
+                {
+                    sResult = $"N~Serial Logic Length not found for FG: {sFGItemCode} and Customer: {CustomerPartCode}, Please update Serial Generation logic";
+                    return sResult;
+                }
+
+                iLength = Convert.ToInt32(dtLength.Rows[0][0].ToString().Trim());
+
                 if (sMainSN.Contains("$"))
                 {
                     int iCount = sMainSN.Split('$').Length;
@@ -336,15 +347,14 @@ namespace BusinessLayer.WIP
                             }
                         }
                     }
-                    iLength = sPrintingSNNNo.Length;
+                    //iLength = sPrintingSNNNo.Length;
                 }
                 PCommon.mBcilLogger.LogMessage(BcilLib.EventNotice.EventTypes.evtData,
                   MethodBase.GetCurrentMethod().Name, "Packet Barcode : " + sReelBarcode +
                   ",Array Size:" + iArraySize.ToString() + ",SN Generation : " + sMainSN.ToString()
                   + ", Work Order No :" + sWorkOrderNo + ", Part Code : " + PartCode +
                   ", Qty : " + iQty.ToString()
-                  + ",Line Code : " + sLineCode + ", Final SN:" + sMainSN
-                  );
+                  + ",Line Code : " + sLineCode + ", Final SN:" + sMainSN);
 
                 string runningSerial;
                 if (sPrintingSNNNo.Contains("*"))
@@ -756,8 +766,6 @@ namespace BusinessLayer.WIP
             }
             return sResult;
         }
-
-
 
         public string TMOGeneration(
              string sGRPONO, string sWorkOrderNo,
