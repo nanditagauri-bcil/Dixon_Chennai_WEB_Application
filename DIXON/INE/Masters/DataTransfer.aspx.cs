@@ -1,7 +1,9 @@
 ﻿using BusinessLayer.Masters;
+using BusinessLayer.WIP;
 using Common;
 using System;
 using System.Data;
+using System.Web.UI;
 
 namespace DIXON.INE.Masters
 {
@@ -18,8 +20,9 @@ namespace DIXON.INE.Masters
         private void _ResetField()
         {
             CommonHelper.HideMessage(msginfo, msgsuccess, msgwarning, msgerror);
-            txtTransferValue.Focus();
-            txtTransferValue.Text = "";
+            txtIssueSlipNo.Focus();
+            txtIssueSlipNo.Text = "";
+            drpWorkOrderNo.SelectedIndex = 0;
         }
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -35,6 +38,18 @@ namespace DIXON.INE.Masters
                         Response.Redirect("~/NoAccess/UnAuthorized.aspx");
                     }
                 }
+                if (!IsPostBack)
+                {
+                    try
+                    {
+                        BindWorkOrderNo();
+                    }
+                    catch (Exception ex)
+                    {
+                        CommonHelper.ShowCustomErrorMessage(ex.Message, msgerror);
+                        CommonHelper.mBcilLogger.LogMessage(BcilLib.EventNotice.EventTypes.evtError, System.Reflection.Assembly.GetExecutingAssembly().GetName() + "::" + System.Reflection.MethodBase.GetCurrentMethod().Name, ex.Message);
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -43,19 +58,50 @@ namespace DIXON.INE.Masters
             }
         }
 
+        private void BindWorkOrderNo()
+        {
+            try
+            {
+                CommonHelper.HideMessage(msginfo, msgsuccess, msgwarning, msgerror);
+                blobj = new BL_DataTransfer();
+                DataTable dt = blobj.BindWorkOrderNo(Session["SiteCode"].ToString());
+                if (dt.Rows.Count > 0)
+                {
+                    clsCommon.FillComboBox(drpWorkOrderNo, dt, true);
+                    drpWorkOrderNo.SelectedIndex = 0;
+                    drpWorkOrderNo.Focus();
+                }
+                else
+                {
+                    drpWorkOrderNo.Items.Clear();
+                }
+            }
+            catch (Exception ex)
+            {
+                CommonHelper.ShowCustomErrorMessage(ex.Message, msgerror);
+                CommonHelper.mBcilLogger.LogMessage(BcilLib.EventNotice.EventTypes.evtError, System.Reflection.Assembly.GetExecutingAssembly().GetName() + "::" + System.Reflection.MethodBase.GetCurrentMethod().Name, ex.Message);
+            }
+        }
+
         protected void btnTransfer_Click(object sender, EventArgs e)
         {
             try
             {
                 CommonHelper.HideMessage(msginfo, msgsuccess, msgwarning, msgerror);
-                if (txtTransferValue.Text.Trim() == "")
+                if (string.IsNullOrWhiteSpace(txtIssueSlipNo.Text))
                 {
                     CommonHelper.ShowMessage("Please enter transfer value", msgerror, CommonHelper.MessageType.Error.ToString());
-                    txtTransferValue.Focus();
+                    txtIssueSlipNo.Focus();
+                    return;
+                }
+                if (drpWorkOrderNo.SelectedIndex == 0)
+                {
+                    CommonHelper.ShowMessage("Please select Work Order No", msgerror, CommonHelper.MessageType.Error.ToString());
+                    ScriptManager.RegisterStartupScript(Page, this.GetType(), "ScrollPage", "window.scroll(0,0);", true);
                     return;
                 }
                 blobj = new BL_DataTransfer();
-                DataTable dt = blobj.DataTranfer(drpType.Text, txtTransferValue.Text, Session["UserID"].ToString());
+                DataTable dt = blobj.DataTranfer(drpType.Text, txtIssueSlipNo.Text.Trim(), drpWorkOrderNo.SelectedValue.Trim(), Session["UserID"].ToString());
                 if (dt.Rows.Count > 0)
                 {
                     string sResult = dt.Rows[0][0].ToString();
