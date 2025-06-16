@@ -201,13 +201,21 @@ namespace DIXON.INE.Masters
                     txtEmptyCartonWT.Focus();
                     return;
                 }
-                if (txtMacAddress.Text == "0")
+                int macCount;
+                if (!int.TryParse(txtMacAddress.Text, out macCount) || macCount < 0)
                 {
-                    CommonHelper.ShowMessage("Enter valid No Of Mac Address", msgerror, CommonHelper.MessageType.Error.ToString());
+                    CommonHelper.ShowMessage("Enter a valid non-negative number of MAC Addresses", msgerror, CommonHelper.MessageType.Error.ToString());
                     ScriptManager.RegisterStartupScript(Page, this.GetType(), "ScrollPage", "window.scroll(0,0);", true);
                     txtMacAddress.Focus();
                     return;
                 }
+                //if (txtMacAddress.Text == "0")
+                //{
+                //    CommonHelper.ShowMessage("Enter valid No Of Mac Address", msgerror, CommonHelper.MessageType.Error.ToString());
+                //    ScriptManager.RegisterStartupScript(Page, this.GetType(), "ScrollPage", "window.scroll(0,0);", true);
+                //    txtMacAddress.Focus();
+                //    return;
+                //}
                 plobj = new PL_ModelMaster();
                 blobj = new BL_ModelMaster();
                 plobj.sSiteCode = Session["SiteCode"].ToString();

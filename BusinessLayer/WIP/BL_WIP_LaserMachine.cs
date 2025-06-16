@@ -470,7 +470,6 @@ namespace BusinessLayer.WIP
                             }
                         }
                     }
-
                 }
                 else
                 {

@@ -64,10 +64,17 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Value : </label>
-                                <asp:TextBox ID="txtTransferValue" runat="server" class="form-control"
-                                    placeholder="Enter Transfer Value"
-                                    autocomplete="off"></asp:TextBox>
+                                <label>Issue Slip Number : </label>
+                                <asp:TextBox ID="txtIssueSlipNo" runat="server" class="form-control"
+                                    placeholder="Enter Issue Slip No"
+                                    autocomplete="off" AutoPostBack="false"></asp:TextBox>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Work Order Number: </label>
+                                <asp:DropDownList ID="drpWorkOrderNo" runat="server" class="form-control select2" Style="width: 100%;"
+                                    AutoPostBack="true">
+                                </asp:DropDownList>
                             </div>
                         </div>
                         <div class="col-md-6">
