@@ -129,7 +129,7 @@ namespace DIXON.INE.Reports
                 if (ddlDetailsType.SelectedIndex > 0)
                 {
                     sDetailsType = ddlDetailsType.SelectedItem.Text.Trim();
-                } 
+                }
                 CommonHelper.HideMessage(msginfo, msgsuccess, msgwarning, msgerror);
                 BL_FPYReport blobj = new BL_FPYReport();
                 DataTable dtTrackingData = blobj.GetReport(txtFromDate.Text.Trim(), txtToDate.Text.Trim(), sFGItemCode, sHeaderValue, sDetailsType);
@@ -147,7 +147,7 @@ namespace DIXON.INE.Reports
                     ReportDataSource datasource = new ReportDataSource();
                     if (sHeaderValue == "FPY")
                     {
-                        if(ddlDetailsType.SelectedIndex > 0)
+                        if (ddlDetailsType.SelectedIndex > 0)
                         {
                             ReportViewer1.LocalReport.ReportPath = Server.MapPath("~/ReportViewer/WIPFPYReportDetails.rdlc");
                         }
@@ -191,7 +191,7 @@ namespace DIXON.INE.Reports
                     ReportParameter paramete6 = new ReportParameter();
                     if (ddlDetailsType.SelectedIndex > 0)
                     {
-                       paramete6 = new ReportParameter("rptDetailType", sDetailsType);
+                        paramete6 = new ReportParameter("rptDetailType", sDetailsType);
                     }
                     ReportViewer1.LocalReport.SetParameters(parameter);
                     ReportViewer1.LocalReport.SetParameters(paramete);

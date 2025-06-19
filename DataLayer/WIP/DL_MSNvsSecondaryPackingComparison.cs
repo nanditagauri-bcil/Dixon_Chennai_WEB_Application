@@ -115,7 +115,7 @@ namespace DataLayer.WIP
             return dt;
         }
         public DataSet BindMsnBOXID(string sSecBoxID, string sInvoiceNo, string sPONumber, string sFGITEMCODE, string sSiteCode
-            ,string sLineCode, string sUserID)
+            , string sLineCode, string sUserID)
         {
             DataSet ds = new DataSet();
             try
@@ -144,7 +144,7 @@ namespace DataLayer.WIP
             }
             return ds;
         }
-         
+
         public DataTable ValidateScanMSNBarcode(string sModelCode, string sSecBoxID, string sInvoiceNo, string sPONumber,
             string sFGItemCode, string sSiteCode, string sMSNBarcode, string sLineCode, string sUserID)
         {

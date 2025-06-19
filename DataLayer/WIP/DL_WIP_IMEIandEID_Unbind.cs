@@ -14,7 +14,7 @@ namespace DataLayer.WIP
         {
             odb = SqlDBProvider();
         }
-        public DataTable UNBINDIDs(string sPcbid, string sMacid, string sImeiid, string sEidid,string sSiteCode, 
+        public DataTable UNBINDIDs(string sPcbid, string sMacid, string sImeiid, string sEidid, string sSiteCode,
                             string sUserID, string sChipid, string sRadiolistType)
         {
             dtobj = new DataTable();

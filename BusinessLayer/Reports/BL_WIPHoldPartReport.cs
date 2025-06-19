@@ -24,13 +24,13 @@ namespace BusinessLayer.Reports
             return dtGRN;
         }
 
-        public DataTable GetWIPHoldPartReport(string sPartCode , string sFromDate, string sToDate )
+        public DataTable GetWIPHoldPartReport(string sPartCode, string sFromDate, string sToDate)
         {
             DataTable dtGRN = new DataTable();
             dlobj = new DL_WIPHoldPartReport();
             try
             {
-                dtGRN = dlobj.GetWIPHoldPartReport(sPartCode  ,  sFromDate, sToDate );
+                dtGRN = dlobj.GetWIPHoldPartReport(sPartCode, sFromDate, sToDate);
             }
             catch (Exception ex)
             {
@@ -40,6 +40,6 @@ namespace BusinessLayer.Reports
             return dtGRN;
         }
 
-         
+
     }
 }

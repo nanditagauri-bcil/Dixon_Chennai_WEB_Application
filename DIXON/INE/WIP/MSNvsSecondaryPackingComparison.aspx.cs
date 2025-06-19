@@ -2,7 +2,6 @@
 using Common;
 using System;
 using System.Data;
-using System.Linq;
 using System.Web.UI.WebControls;
 
 namespace DIXON.INE.WIP
@@ -256,7 +255,7 @@ namespace DIXON.INE.WIP
                             Session["SiteCode"].ToString(), txtMsnBarcode.Text.Trim(), Session["LineCode"].ToString(),
                             ddlModel_Name.SelectedItem.Text.Trim(), ddlSecondaryBoxID.SelectedItem.Text.Trim().ToString());
                 if (dt.Rows.Count > 0)
-                { 
+                {
                     for (int i = 0; i <= dt.Rows.Count - 1; i++)
                     {
                         string MSNpcbid = dt.Rows[i]["MSN_BARCODE"].ToString();
@@ -275,7 +274,7 @@ namespace DIXON.INE.WIP
                             if (MSNindex == 1)
                             {
                                 cellBOXID.BackColor = System.Drawing.Color.Green;
-                                cellBOXID.ForeColor = System.Drawing.Color.White; 
+                                cellBOXID.ForeColor = System.Drawing.Color.White;
                             }
                             if (RSNpcbid == lblRSN.Text.Trim().ToString())
                             {
@@ -284,7 +283,7 @@ namespace DIXON.INE.WIP
                             if (RSNindex == 1)
                             {
                                 cellRSN.BackColor = System.Drawing.Color.Violet;
-                                cellRSN.ForeColor = System.Drawing.Color.White; 
+                                cellRSN.ForeColor = System.Drawing.Color.White;
                             }
 
                         }
@@ -476,7 +475,7 @@ namespace DIXON.INE.WIP
                     txtMsnBarcode.Text = string.Empty;
                     ddlSecondaryBoxID.Focus();
                     return;
-                } 
+                }
                 // Create DataTable with necessary columns
                 DataTable dtREJECTData = new DataTable();
                 dtREJECTData.Columns.Add("SECBOXID");

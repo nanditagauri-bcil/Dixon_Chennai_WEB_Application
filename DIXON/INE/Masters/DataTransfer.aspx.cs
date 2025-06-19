@@ -1,5 +1,4 @@
 ﻿using BusinessLayer.Masters;
-using BusinessLayer.WIP;
 using Common;
 using System;
 using System.Data;
@@ -7,7 +6,7 @@ using System.Web.UI;
 
 namespace DIXON.INE.Masters
 {
-    public partial class DataTransfer : System.Web.UI.Page
+    public partial class DataTransfer : Page
     {
         BL_DataTransfer blobj = new BL_DataTransfer();
         protected void Page_Init(object sender, EventArgs e)
@@ -17,13 +16,16 @@ namespace DIXON.INE.Masters
                 Response.Redirect("~/Signin/v1/Login.aspx?Session=Null");
             }
         }
+
         private void _ResetField()
         {
             CommonHelper.HideMessage(msginfo, msgsuccess, msgwarning, msgerror);
-            txtIssueSlipNo.Focus();
-            txtIssueSlipNo.Text = "";
+            //txtIssueSlipNo.Focus();
+            //txtIssueSlipNo.Text = "";
+            drpIssueSlipNo.SelectedIndex = 0;
             drpWorkOrderNo.SelectedIndex = 0;
         }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -42,6 +44,7 @@ namespace DIXON.INE.Masters
                 {
                     try
                     {
+                        BindIssueSlipNo();
                         BindWorkOrderNo();
                     }
                     catch (Exception ex)
@@ -55,6 +58,31 @@ namespace DIXON.INE.Masters
             {
                 CommonHelper.mBcilLogger.LogMessage(BcilLib.EventNotice.EventTypes.evtError, System.Reflection.MethodBase.GetCurrentMethod().Name, ex.Message);
                 CommonHelper.ShowCustomErrorMessage(ex.Message, msgerror);
+            }
+        }
+
+        private void BindIssueSlipNo()
+        {
+            try
+            {
+                CommonHelper.HideMessage(msginfo, msgsuccess, msgwarning, msgerror);
+                blobj = new BL_DataTransfer();
+                DataTable dt = blobj.BindIssueSlipNo(Session["SiteCode"].ToString());
+                if (dt.Rows.Count > 0)
+                {
+                    clsCommon.FillComboBox(drpIssueSlipNo, dt, true);
+                    drpIssueSlipNo.SelectedIndex = 0;
+                    drpIssueSlipNo.Focus();
+                }
+                else
+                {
+                    drpIssueSlipNo.Items.Clear();
+                }
+            }
+            catch (Exception ex)
+            {
+                CommonHelper.ShowCustomErrorMessage(ex.Message, msgerror);
+                CommonHelper.mBcilLogger.LogMessage(BcilLib.EventNotice.EventTypes.evtError, System.Reflection.Assembly.GetExecutingAssembly().GetName() + "::" + System.Reflection.MethodBase.GetCurrentMethod().Name, ex.Message);
             }
         }
 
@@ -88,20 +116,28 @@ namespace DIXON.INE.Masters
             try
             {
                 CommonHelper.HideMessage(msginfo, msgsuccess, msgwarning, msgerror);
-                if (string.IsNullOrWhiteSpace(txtIssueSlipNo.Text))
+                //if (string.IsNullOrWhiteSpace(txtIssueSlipNo.Text))
+                //{
+                //    CommonHelper.ShowMessage("Please enter transfer value", msgerror, CommonHelper.MessageType.Error.ToString());
+                //    txtIssueSlipNo.Focus();
+                //    return;
+                //}
+                if (drpIssueSlipNo.SelectedIndex == 0)
                 {
-                    CommonHelper.ShowMessage("Please enter transfer value", msgerror, CommonHelper.MessageType.Error.ToString());
-                    txtIssueSlipNo.Focus();
+                    CommonHelper.ShowMessage("Please select Issue Slip No", msgerror, CommonHelper.MessageType.Error.ToString());
+                    ScriptManager.RegisterStartupScript(Page, this.GetType(), "ScrollPage", "window.scroll(0,0);", true);
+                    drpIssueSlipNo.Focus();
                     return;
                 }
                 if (drpWorkOrderNo.SelectedIndex == 0)
                 {
                     CommonHelper.ShowMessage("Please select Work Order No", msgerror, CommonHelper.MessageType.Error.ToString());
                     ScriptManager.RegisterStartupScript(Page, this.GetType(), "ScrollPage", "window.scroll(0,0);", true);
+                    drpWorkOrderNo.Focus();
                     return;
                 }
                 blobj = new BL_DataTransfer();
-                DataTable dt = blobj.DataTranfer(drpType.Text, txtIssueSlipNo.Text.Trim(), drpWorkOrderNo.SelectedValue.Trim(), Session["UserID"].ToString());
+                DataTable dt = blobj.DataTranfer(drpType.Text, drpIssueSlipNo.SelectedValue.Trim(), drpWorkOrderNo.SelectedValue.Trim(), Session["UserID"].ToString());
                 if (dt.Rows.Count > 0)
                 {
                     string sResult = dt.Rows[0][0].ToString();

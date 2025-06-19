@@ -38,13 +38,13 @@ namespace BusinessLayer.Reports
             }
         }
 
-        public DataTable GetWIPAgeingReport(string sPartCode , string sFromDate, string sToDate ,string sMachineID)
+        public DataTable GetWIPAgeingReport(string sPartCode, string sFromDate, string sToDate, string sMachineID)
         {
             DataTable dtGRN = new DataTable();
             dlobj = new DL_WIPAgeingReport();
             try
             {
-                dtGRN = dlobj.GetWIPAgeingReport(sPartCode  ,  sFromDate, sToDate, sMachineID);
+                dtGRN = dlobj.GetWIPAgeingReport(sPartCode, sFromDate, sToDate, sMachineID);
             }
             catch (Exception ex)
             {
@@ -54,6 +54,6 @@ namespace BusinessLayer.Reports
             return dtGRN;
         }
 
-         
+
     }
 }

@@ -15,28 +15,28 @@ namespace BusinessLayer.WIP
         public DataTable BindFGItemCode(string sMachineID, string sSiteCode, string sLineCode)
         {
             dlobj = new DL_WIPAutoSampleClear();
-            return dlobj.BindFGItemCode(sMachineID,sSiteCode, sLineCode);
+            return dlobj.BindFGItemCode(sMachineID, sSiteCode, sLineCode);
         }
-         
 
-        public DataSet ValidatePCB(string sPartBarcode , string sMachineID, string FGItemCode
+
+        public DataSet ValidatePCB(string sPartBarcode, string sMachineID, string FGItemCode
              , string sSiteCode, string sLineCode)
         {
 
             dlobj = new DL_WIPAutoSampleClear();
-            return dlobj.VaildateBarcode(sPartBarcode,   sMachineID, FGItemCode
+            return dlobj.VaildateBarcode(sPartBarcode, sMachineID, FGItemCode
                     , sSiteCode, sLineCode);
 
 
         }
-         
-        public DataSet SaveResult(string sPartBarcode,string sMachineID, string sFGItemCode, string sSiteCode, 
-              string sLineCode,  string sUserID, string sResultType)
+
+        public DataSet SaveResult(string sPartBarcode, string sMachineID, string sFGItemCode, string sSiteCode,
+              string sLineCode, string sUserID, string sResultType)
         {
             dlobj = new DL_WIPAutoSampleClear();
-            return dlobj.SaveResult(  sPartBarcode,   sMachineID,   sFGItemCode,   sSiteCode,
-                sLineCode,     sUserID,   sResultType);
+            return dlobj.SaveResult(sPartBarcode, sMachineID, sFGItemCode, sSiteCode,
+                sLineCode, sUserID, sResultType);
         }
-         
+
     }
 }

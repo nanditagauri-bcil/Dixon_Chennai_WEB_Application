@@ -36,7 +36,7 @@ namespace BusinessLayer
             dlobj = new DL_DDRPartMaster();
             try
             {
-                ds = dlobj.GetDDRByID( sFGITEMCODE, _SN);
+                ds = dlobj.GetDDRByID(sFGITEMCODE, _SN);
             }
             catch (Exception ex)
             {
@@ -52,7 +52,7 @@ namespace BusinessLayer
             dlobj = new DL_DDRPartMaster();
             try
             {
-                DataTable dt = dlobj.SaveDDR(sFGITEMCODE,sBOMPARTCODE,sDDRPARTCODE,sDESC,sUSERID,sSITECODE,sLINECODE,
+                DataTable dt = dlobj.SaveDDR(sFGITEMCODE, sBOMPARTCODE, sDDRPARTCODE, sDESC, sUSERID, sSITECODE, sLINECODE,
                                                "SAVEDDRDETAILS", sID);
                 if (dt.Rows.Count > 0)
                 {
@@ -102,7 +102,7 @@ namespace BusinessLayer
             try
             {
                 DataTable dt = dlobj.SaveDDR(sFGITEMCODE, sBOMPARTCODE, sDDRPARTCODE, sDESC, sUSERID, sSITECODE, sLINECODE,
-                                               "UPDATEDDRDETAILS",sID);
+                                               "UPDATEDDRDETAILS", sID);
                 if (dt.Rows.Count > 0)
                 {
                     sResult = dt.Rows[0][0].ToString();

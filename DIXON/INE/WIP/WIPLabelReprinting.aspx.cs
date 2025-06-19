@@ -194,7 +194,7 @@ namespace DIXON.INE.WIP
                         {
                             string lblPartBarcode = gv_LabelReprint.Rows[item.RowIndex].Cells[1].Text;
                             //ADDED BY SHIVAM (19/05/2024)
-                            if(lblPartBarcode.Contains("("))
+                            if (lblPartBarcode.Contains("("))
                             {
                                 lblPartBarcode = lblPartBarcode.Split('(')[1];
                             }

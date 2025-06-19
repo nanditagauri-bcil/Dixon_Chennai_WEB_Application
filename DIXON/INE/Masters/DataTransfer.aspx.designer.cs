@@ -69,13 +69,13 @@ namespace DIXON.INE.Masters
         protected global::System.Web.UI.WebControls.DropDownList drpType;
 
         /// <summary>
-        /// txtIssueSlipNo control.
+        /// drpIssueSlipNo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtIssueSlipNo;
+        protected global::System.Web.UI.WebControls.DropDownList drpIssueSlipNo;
 
         /// <summary>
         /// drpWorkOrderNo control.

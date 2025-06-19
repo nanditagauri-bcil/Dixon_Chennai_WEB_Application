@@ -334,12 +334,12 @@ namespace DIXON.INE.WIP
                                , sPartCode, sCustomer, sSiteCode, sFGItemCode, sUserID, sLineCode
                                , sTMOPrintLabel);
                         //ADDED BY SHIVAM (26/06/2024)
-                        if(sResult.ToUpper().StartsWith("SUCCESS"))
+                        if (sResult.ToUpper().StartsWith("SUCCESS"))
                         {
                             string RESULTSAVE = blobj.SavePCBLABELReprintData(FGITEMCODE, WORKORDER, PARTBARCODE, sMasterPartBarcode,
-                                                    sPartBarcode, sUserID,sReasonofReprint,sRemarks, "WIP PCB LABEL");
+                                                    sPartBarcode, sUserID, sReasonofReprint, sRemarks, "WIP PCB LABEL");
                         }
-                           
+
                         //FINISH
                         iCounter = iCounter + iNewRow;
                         iPrintqty++;

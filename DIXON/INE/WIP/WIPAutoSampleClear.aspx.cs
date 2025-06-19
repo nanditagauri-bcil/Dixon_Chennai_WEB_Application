@@ -2,8 +2,6 @@
 using Common;
 using System;
 using System.Data;
-using System.Linq;
-using System.Web.UI.WebControls;
 
 namespace DIXON.INE.WIP
 {
@@ -40,7 +38,7 @@ namespace DIXON.INE.WIP
                 }
                 if (!IsPostBack)
                 {
-                    
+
                 }
             }
             catch (Exception ex)
@@ -69,7 +67,7 @@ namespace DIXON.INE.WIP
                     CommonHelper.ShowMessage("Valid machine", msgsuccess, CommonHelper.MessageType.Success.ToString());
                     lblMachineName.Text = dt.Rows[0][0].ToString();
                     lblModelNo.Text = dt.Rows[0][2].ToString();
-                    lblmachinetype.Text = dt.Rows[0][3].ToString(); 
+                    lblmachinetype.Text = dt.Rows[0][3].ToString();
                     BindFGItemCode();
                     ddlModel_Name.Focus();
                     ddlModel_Name.SelectedIndex = 0;
@@ -101,7 +99,7 @@ namespace DIXON.INE.WIP
                 ddlModel_Name.Items.Clear();
                 blobj = new BL_WIPAutoSampleClear();
                 string sResult = string.Empty;
-                DataTable dtFGItemCode = blobj.BindFGItemCode(txtScanMachineID.Text.Trim(),Session["SiteCode"].ToString(), Session["LINECODE"].ToString());
+                DataTable dtFGItemCode = blobj.BindFGItemCode(txtScanMachineID.Text.Trim(), Session["SiteCode"].ToString(), Session["LINECODE"].ToString());
                 if (dtFGItemCode.Rows.Count > 0)
                 {
                     clsCommon.FillMultiColumnsCombo(ddlModel_Name, dtFGItemCode, true);
@@ -126,8 +124,8 @@ namespace DIXON.INE.WIP
                     lblModelName.Text = ddlModel_Name.SelectedValue.ToString();
                     txtpcbBarcode.Text = string.Empty;
                     txtremark.Text = string.Empty;
-                    txtpcbBarcode.Focus(); 
-                } 
+                    txtpcbBarcode.Focus();
+                }
 
             }
             catch (Exception ex)
@@ -137,7 +135,7 @@ namespace DIXON.INE.WIP
             }
         }
 
-        
+
         protected void btnReset_Click(object sender, EventArgs e)
         {
             try
@@ -192,7 +190,7 @@ namespace DIXON.INE.WIP
                     string sResult = ds.Tables[0].Rows[0][0].ToString();
                     Message = sResult.Split('~')[1];
                     if (sResult.StartsWith("SUCCESS"))
-                    { 
+                    {
                         CommonHelper.ShowMessage(Message, msgsuccess, CommonHelper.MessageType.Success.ToString());
                         return;
                     }
@@ -202,7 +200,7 @@ namespace DIXON.INE.WIP
                         txtpcbBarcode.Text = string.Empty;
                         txtpcbBarcode.Focus();
                         return;
-                    } 
+                    }
                 }
                 else
                 {

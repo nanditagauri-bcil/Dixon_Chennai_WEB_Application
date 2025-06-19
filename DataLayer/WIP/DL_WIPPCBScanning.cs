@@ -389,8 +389,8 @@ namespace DataLayer.WIP
             }
             return dtResult;
         }
-        public DataTable QCLevelVerificationPCBbarcode(string sPartBarcode, string sLineID, string FGItemCode, string sDefect, 
-            string sReworkStationID,string sScannedBy, string sSiteCode)
+        public DataTable QCLevelVerificationPCBbarcode(string sPartBarcode, string sLineID, string FGItemCode, string sDefect,
+            string sReworkStationID, string sScannedBy, string sSiteCode)
         {
             DataTable dtResult = new DataTable();
             try

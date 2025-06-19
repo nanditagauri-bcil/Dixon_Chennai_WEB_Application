@@ -103,9 +103,9 @@ namespace DIXON.INE.Reports
                     string Barcode = string.Empty;
                     string OrderNo = string.Empty;
                     string Desc = string.Empty;
-                    string sItemCode = string.Empty; 
+                    string sItemCode = string.Empty;
                     sItemCode = dt.Rows[0]["FG_ITEM_CODE"].ToString();
-                    Desc = dt.Rows[0]["FG_ITEM_DESC"].ToString(); 
+                    Desc = dt.Rows[0]["FG_ITEM_DESC"].ToString();
                     string imagePath = new Uri(Server.MapPath("~/images/ReportLogo.png")).AbsoluteUri;
                     ReportParameter parameter = new ReportParameter("rptLogo", imagePath);
                     ReportParameter paramete = new ReportParameter("rptFGItemCode", sItemCode);

@@ -73,7 +73,7 @@ namespace DIXON.INE.Reports
                 if (dt.Rows.Count > 0)
                 {
                     CommonHelper.HideSuccessMessage(msginfo, msgwarning, msgerror);
-                    clsCommon.FillComboBox(drpMachineID, dt, true); 
+                    clsCommon.FillComboBox(drpMachineID, dt, true);
                 }
                 else
                 {
@@ -101,7 +101,7 @@ namespace DIXON.INE.Reports
                     drpFGitemCode.Focus();
                     return;
                 }
-                if(drpMachineID.SelectedIndex > 0)
+                if (drpMachineID.SelectedIndex > 0)
                 {
                     MACHINEID = drpMachineID.SelectedItem.Text.Trim();
                 }
@@ -132,9 +132,9 @@ namespace DIXON.INE.Reports
                     string Barcode = string.Empty;
                     string OrderNo = string.Empty;
                     string Desc = string.Empty;
-                    string sItemCode = string.Empty; 
+                    string sItemCode = string.Empty;
                     sItemCode = dt.Rows[0]["FG_ITEM_CODE"].ToString();
-                    Desc = dt.Rows[0]["FG_ITEM_DESC"].ToString(); 
+                    Desc = dt.Rows[0]["FG_ITEM_DESC"].ToString();
                     string imagePath = new Uri(Server.MapPath("~/images/ReportLogo.png")).AbsoluteUri;
                     ReportParameter parameter = new ReportParameter("rptLogo", imagePath);
                     ReportParameter paramete = new ReportParameter("rptFGItemCode", sItemCode);

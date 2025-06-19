@@ -31,7 +31,7 @@ namespace BusinessLayer.WIP
         {
             dlobj = new DL_AccessoriesVerification();
             return dlobj.dlPcbScanDeviceVerify(sFGitemCode, sSiteCode, sBarcode, sLineCode, sModelName
-                , sScannedBy, sMAcId, sType, sPcbBarcode,   sIMEI,   sEID,   sBTMAC
+                , sScannedBy, sMAcId, sType, sPcbBarcode, sIMEI, sEID, sBTMAC
                 );
         }
         public DataTable blPcbScanDeviceStandVerify(string sFGitemCode, string sSiteCode, string sBarcode

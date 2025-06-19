@@ -91,7 +91,7 @@ namespace DataLayer.WIP
         }
 
         public DataTable SavePCBLABELReprintData(string FGITEMCODE, string WORKORDER, string PARTBARCODE, string sMasterPartBarcode,
-                    string sBarcode, string _sCreBy,string sReasonofReprint, string Remarks,string _sPrintingType)
+                    string sBarcode, string _sCreBy, string sReasonofReprint, string Remarks, string _sPrintingType)
         {
             DataTable dt = new DataTable();
             try

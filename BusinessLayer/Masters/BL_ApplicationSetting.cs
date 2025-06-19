@@ -10,11 +10,11 @@ namespace BusinessLayer
         DL_ApplicationSetting dlobj = null;
         public DataTable GetDATA()
         {
-            DataTable dt  = new DataTable();
+            DataTable dt = new DataTable();
             dlobj = new DL_ApplicationSetting();
             try
             {
-                dt  = dlobj.GetDATA();
+                dt = dlobj.GetDATA();
             }
             catch (Exception ex)
             {
@@ -39,8 +39,8 @@ namespace BusinessLayer
             }
             return dt;
         }
-        public string SaveAppSetting(string sMachineTestCount, string sReworkInOutMaxLimit, 
-            string sReworkOutMaxTime, string sReworkInMinTime, string _CreatedBy,string sFGItemCode)
+        public string SaveAppSetting(string sMachineTestCount, string sReworkInOutMaxLimit,
+            string sReworkOutMaxTime, string sReworkInMinTime, string _CreatedBy, string sFGItemCode)
         {
             string sResult = string.Empty;
             dlobj = new DL_ApplicationSetting();
@@ -105,14 +105,14 @@ namespace BusinessLayer
             return sResult;
         }
         public string UpdateAppSetting(string sMachineTestCount, string sReworkInOutMaxLimit,
-                     string sReworkOutMaxTime, string sReworkInMinTime, string _CreatedBy,string ID)
+                     string sReworkOutMaxTime, string sReworkInMinTime, string _CreatedBy, string ID)
         {
             string sResult = string.Empty;
             dlobj = new DL_ApplicationSetting();
             try
             {
                 DataTable dt = dlobj.UpdateAppSetting(sMachineTestCount, sReworkInOutMaxLimit, sReworkOutMaxTime,
-                                sReworkInMinTime, _CreatedBy,ID);
+                                sReworkInMinTime, _CreatedBy, ID);
                 if (dt.Rows.Count > 0)
                 {
                     sResult = dt.Rows[0][0].ToString();

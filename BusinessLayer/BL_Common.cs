@@ -830,7 +830,7 @@ namespace BusinessLayer
                 }
                 if (chkPrinterStatus == "SUCCESS")
                 {
-                    
+
                     sType = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(sType.ToLower());
                     sResult = "SUCCESS~ " + sType + " label printed successfully.";
                 }
@@ -990,7 +990,7 @@ namespace BusinessLayer
                 if (chkPrinterStatus == "SUCCESS")
                 {
                     BL_ReprintReasonMaster blobj = new BL_ReprintReasonMaster();
-                    var data = blobj.SaveReprintData(_sPrintingType, sPrinterIP, sBarcode, sUserID, 
+                    var data = blobj.SaveReprintData(_sPrintingType, sPrinterIP, sBarcode, sUserID,
                                                     ddlReasonofReprint, txtRemarks, _sPrintingType);
                     sType = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(sType.ToLower());
                     sResult = "SUCCESS~ " + sType + " label printed successfully.";

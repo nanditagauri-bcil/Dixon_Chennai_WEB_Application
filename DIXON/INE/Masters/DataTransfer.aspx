@@ -44,7 +44,7 @@
         <section class="content">
             <div class="box box-default">
                 <div class="box-header with-border">
-                    <h3 class="box-title">DATA TRANSFER </h3>
+                    <h3 class="box-title">DATA TRANSFER</h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
@@ -63,11 +63,18 @@
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="form-group">
+                            <%-- <div class="form-group">
                                 <label>Issue Slip Number : </label>
                                 <asp:TextBox ID="txtIssueSlipNo" runat="server" class="form-control"
                                     placeholder="Enter Issue Slip No"
                                     autocomplete="off" AutoPostBack="false"></asp:TextBox>
+                            </div>--%>
+
+                            <div class="form-group">
+                                <label>Issue Slip Number: </label>
+                                <asp:DropDownList ID="drpIssueSlipNo" runat="server" class="form-control select2" Style="width: 100%;"
+                                    AutoPostBack="true">
+                                </asp:DropDownList>
                             </div>
 
                             <div class="form-group">

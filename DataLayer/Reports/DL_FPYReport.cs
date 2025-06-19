@@ -58,7 +58,7 @@ namespace DataLayer.Reports
                 oDbm.AddParameters(3, "@FGITEMCODE", sFGItemCode);
                 oDbm.AddParameters(4, "@DETAILSTYPE", sDetailsType);
                 if (sHeaderValue == "FPY")
-                { 
+                {
                     if (sDetailsType.EndsWith("DETAIL"))
                     {
                         dtResult = oDbm.ExecuteDataSet(CommandType.StoredProcedure, "USP_FPY_DETAILS_REPORT").Tables[0];

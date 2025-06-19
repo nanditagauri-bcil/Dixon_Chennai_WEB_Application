@@ -380,16 +380,16 @@ namespace DIXON.INE.WIP
                 if (string.IsNullOrWhiteSpace(txtmaxpcbintime.Text.Trim()))
                 {
                     CommonHelper.ShowMessage("Please enter MAX PCB INTIME (MINUTES) ", msgerror, CommonHelper.MessageType.Error.ToString());
-                    txtmaxpcbintime.Focus(); 
+                    txtmaxpcbintime.Focus();
                     return;
                 }
                 if (!IsValidOnlyNumericNumber(txtmaxpcbintime.Text.Trim()))
                 {
                     CommonHelper.ShowMessage("Please enter only numeric MAX PCB INTIME (MINUTES) ", msgerror, CommonHelper.MessageType.Error.ToString());
-                    txtmaxpcbintime.Focus(); 
+                    txtmaxpcbintime.Focus();
                     return;
                 }
-                if(!string.IsNullOrWhiteSpace(txtmaxpcbintimefromloader.Text.Trim()))
+                if (!string.IsNullOrWhiteSpace(txtmaxpcbintimefromloader.Text.Trim()))
                 {
                     if (!IsValidOnlyNumericNumber(txtmaxpcbintimefromloader.Text.Trim()))
                     {
@@ -553,7 +553,7 @@ namespace DIXON.INE.WIP
                           lbReworkSequence.SelectedItem.Text.Trim(), Session["userid"].ToString()
                           , sISSfg, txtSFGItemCode.Text.Trim(), sEnable, sOutScanReq, sIsLotCreate
                           , txtRouteName.Text, txtTMOPartCode.Text, sIsAutoxraySampledPIC, SFGQty.Text,
-                          reworkSequenceValue,txtmaxpcbintime.Text.Trim(),txtmaxpcbintimefromloader.Text.Trim(),sIsSampledPickOnMachineHourly,
+                          reworkSequenceValue, txtmaxpcbintime.Text.Trim(), txtmaxpcbintimefromloader.Text.Trim(), sIsSampledPickOnMachineHourly,
                           txtqtyautosample.Text.Trim());
                 }
                 else
@@ -615,7 +615,7 @@ namespace DIXON.INE.WIP
                           lbReworkSequence.SelectedItem.Text.Trim(), Session["userid"].ToString()
                          , sEnable, sOutScanReq, sISSfg, txtSFGItemCode.Text.Trim(), sIsLotCreate
                          , txtRouteName.Text, txtTMOPartCode.Text, sIsAutoxraySampledPIC, reworkSequenceValue
-                       , txtmaxpcbintime.Text.Trim(),txtmaxpcbintimefromloader.Text.Trim(), sIsSampledPickOnMachineHourly,
+                       , txtmaxpcbintime.Text.Trim(), txtmaxpcbintimefromloader.Text.Trim(), sIsSampledPickOnMachineHourly,
                          txtqtyautosample.Text.Trim());
                 }
                 if (sResult.ToUpper().StartsWith("SUCCESS~"))
@@ -641,9 +641,9 @@ namespace DIXON.INE.WIP
                     lbReworkSequence.Enabled = true;
                     ckhOutScanReq.Checked = false;
                     txtTMOPartCode.Text = string.Empty;
-                    txtmaxpcbintime.Text  = string.Empty;
-                    txtmaxpcbintimefromloader.Text  = string.Empty;
-                    txtqtyautosample.Text  = string.Empty;
+                    txtmaxpcbintime.Text = string.Empty;
+                    txtmaxpcbintimefromloader.Text = string.Empty;
+                    txtqtyautosample.Text = string.Empty;
                     chkIsAutoSampledPic.Checked = false;
                     btnSave.Text = "Save";
                 }

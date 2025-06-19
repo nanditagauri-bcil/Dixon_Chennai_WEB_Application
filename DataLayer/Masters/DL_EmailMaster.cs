@@ -61,7 +61,7 @@ namespace DataLayer
         }
 
         public DataTable SaveEmailDetails(string sEmailSub, string sEmailBody, string sSiteCode, string sFromEmail, string sToEmail,
-                                       string sCCEmail, string sLineCode, string sBCCEmail, string sRemarks, string sUserID,string sType, string ID)
+                                       string sCCEmail, string sLineCode, string sBCCEmail, string sRemarks, string sUserID, string sType, string ID)
         {
             DataTable dt = new DataTable();
             try

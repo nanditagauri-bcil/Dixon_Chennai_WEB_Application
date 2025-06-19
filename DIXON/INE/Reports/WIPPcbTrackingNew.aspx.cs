@@ -180,7 +180,7 @@ namespace DIXON.INE.Reports
                     string IMEI = string.Empty;
                     string BTMAC = string.Empty;
                     string BOOTLOADER_PASSWORD = string.Empty;
-                    if(dtmasterdata.Rows.Count>0)
+                    if (dtmasterdata.Rows.Count > 0)
                     {
                         GPONSN = dtmasterdata.Rows[0]["GRPONSN"].ToString();
                         KEYPARTNO = dtmasterdata.Rows[0]["KEY_PART_NO"].ToString();
@@ -193,7 +193,7 @@ namespace DIXON.INE.Reports
                         IMEI = dtmasterdata.Rows[0]["IMEI"].ToString();
                         BTMAC = dtmasterdata.Rows[0]["BT_MAC"].ToString();
                         BOOTLOADER_PASSWORD = dtmasterdata.Rows[0]["BOOTLOADER_PASSWORD"].ToString();
-                    } 
+                    }
                     if (drpType.Text == "PCB Barcode")
                     {
                         sFGItemCodeData = dtTrackingData.Rows[0]["FG_ITEM_CODE"].ToString();

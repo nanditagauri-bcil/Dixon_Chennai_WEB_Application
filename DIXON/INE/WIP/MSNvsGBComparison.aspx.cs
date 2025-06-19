@@ -2,7 +2,6 @@
 using Common;
 using System;
 using System.Data;
-using System.Linq;
 using System.Web.UI.WebControls;
 
 namespace DIXON.INE.WIP
@@ -305,9 +304,9 @@ namespace DIXON.INE.WIP
                             {
                                 if (row.ControlStyle.BackColor != System.Drawing.Color.Green)
                                 {
-                                    BindGBBARCODECOLOR(); 
+                                    BindGBBARCODECOLOR();
                                     CommonHelper.HideMessage(msginfo, msgsuccess, msgwarning, msgerror);
-                                    CommonHelper.ShowMessage(Message,msgsuccess, CommonHelper.MessageType.Success.ToString());
+                                    CommonHelper.ShowMessage(Message, msgsuccess, CommonHelper.MessageType.Success.ToString());
                                     index = 2;
                                     txtGBBarcode.Text = string.Empty;
                                     txtGBBarcode.Focus();
@@ -456,7 +455,7 @@ namespace DIXON.INE.WIP
                 blobj = new BL_MSNvsGBComparison();
                 DataTable dt = blobj.REJECTSAVED(ddlModel_Name.SelectedValue.ToString(),
                     Session["SiteCode"].ToString(), txtMsnBarcode.Text.Trim(), Session["LineCode"].ToString(),
-                    ddlModel_Name.SelectedItem.Text.Trim(), Session["UserID"].ToString(), dtREJECTData,txtRemarks.Text.Trim());
+                    ddlModel_Name.SelectedItem.Text.Trim(), Session["UserID"].ToString(), dtREJECTData, txtRemarks.Text.Trim());
 
                 if (dt.Rows.Count > 0)
                 {

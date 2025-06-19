@@ -39,15 +39,15 @@ namespace BusinessLayer
             }
             return dt;
         }
-        public string SaveEmailDetails(string sEmailSub,string sEmailBody,string sSiteCode,string sFromEmail,string sToEmail,
-                                       string sCCEmail,string sLineCode,string sBCCEmail, string sRemarks,string sUserID,string sType, string ID)
+        public string SaveEmailDetails(string sEmailSub, string sEmailBody, string sSiteCode, string sFromEmail, string sToEmail,
+                                       string sCCEmail, string sLineCode, string sBCCEmail, string sRemarks, string sUserID, string sType, string ID)
         {
             string sResult = string.Empty;
             dlobj = new DL_EmailMaster();
             try
             {
-                DataTable dt = dlobj.SaveEmailDetails(sEmailSub,sEmailBody,sSiteCode,sFromEmail,sToEmail,sCCEmail,sLineCode,
-                                                      sBCCEmail,sRemarks,sUserID, sType,ID);
+                DataTable dt = dlobj.SaveEmailDetails(sEmailSub, sEmailBody, sSiteCode, sFromEmail, sToEmail, sCCEmail, sLineCode,
+                                                      sBCCEmail, sRemarks, sUserID, sType, ID);
                 if (dt.Rows.Count > 0)
                 {
                     sResult = dt.Rows[0][0].ToString();
@@ -87,6 +87,6 @@ namespace BusinessLayer
                 throw ex;
             }
             return sResult;
-        } 
+        }
     }
 }

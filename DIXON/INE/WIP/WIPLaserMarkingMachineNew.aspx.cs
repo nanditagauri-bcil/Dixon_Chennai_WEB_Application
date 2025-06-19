@@ -3,7 +3,6 @@ using Common;
 using System;
 using System.Configuration;
 using System.Data;
-using System.IO;
 using System.Web.UI.WebControls;
 
 namespace DIXON.INE.WIP
