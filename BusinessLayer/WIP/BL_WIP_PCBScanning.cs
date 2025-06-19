@@ -461,7 +461,7 @@ namespace BusinessLayer.WIP
             {
                 dlobj = new DL_WIPPCBScanning();
 
-                dtRejectPCB = dlobj.QCLevelVerificationPCBbarcode(sScannedPCBBarcode, sLineID, sFGItemCode, sDefect, 
+                dtRejectPCB = dlobj.QCLevelVerificationPCBbarcode(sScannedPCBBarcode, sLineID, sFGItemCode, sDefect,
                     sReworkStationID, sScannedBy,
                     sSiteCode
                     );

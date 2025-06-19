@@ -34,13 +34,13 @@ namespace DataLayer.Reports
             }
             return dtResult;
         }
-        public DataTable GetWIPHoldPartReport(string sFGItemCode , string sFromDate, string sToDate )
+        public DataTable GetWIPHoldPartReport(string sFGItemCode, string sFromDate, string sToDate)
         {
             DataTable dtResult = new DataTable();
             try
             {
                 oDbm.Open();
-                oDbm.CreateParameters(4); 
+                oDbm.CreateParameters(4);
                 oDbm.AddParameters(0, "@TYPE", "GETREPORT");
                 oDbm.AddParameters(1, "@FGITEMCODE", sFGItemCode);
                 oDbm.AddParameters(2, "@FROMDATE", sFromDate);
@@ -60,6 +60,6 @@ namespace DataLayer.Reports
             return dtResult;
         }
 
-         
+
     }
 }

@@ -57,13 +57,13 @@ namespace DataLayer.Reports
             }
             return dtResult;
         }
-        public DataTable GetWIPAgeingReport(string sFGItemCode , string sFromDate, string sToDate, string sMachineID)
+        public DataTable GetWIPAgeingReport(string sFGItemCode, string sFromDate, string sToDate, string sMachineID)
         {
             DataTable dtResult = new DataTable();
             try
             {
                 oDbm.Open();
-                oDbm.CreateParameters(5); 
+                oDbm.CreateParameters(5);
                 oDbm.AddParameters(0, "@TYPE", "GETREPORT");
                 oDbm.AddParameters(1, "@FGITEMCODE", sFGItemCode);
                 oDbm.AddParameters(2, "@FROMDATE", sFromDate);
@@ -84,6 +84,6 @@ namespace DataLayer.Reports
             return dtResult;
         }
 
-         
+
     }
 }

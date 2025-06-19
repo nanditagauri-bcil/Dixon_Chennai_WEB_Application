@@ -9,6 +9,22 @@ namespace BusinessLayer.Masters
     {
         DL_DataTransfer dlboj = null;
 
+        public DataTable BindIssueSlipNo(string siteCode)
+        {
+            DataTable dtBins = new DataTable();
+            dlboj = new DL_DataTransfer();
+            try
+            {
+                dtBins = dlboj.BindIssueSlipNo(siteCode);
+            }
+            catch (Exception ex)
+            {
+                PCommon.mBcilLogger.LogMessage(BcilLib.EventNotice.EventTypes.evtError, System.Reflection.MethodBase.GetCurrentMethod().Name, ex.Message);
+                throw ex;
+            }
+            return dtBins;
+        }
+
         public DataTable BindWorkOrderNo(string siteCode)
         {
             DataTable dtBins = new DataTable();

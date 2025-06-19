@@ -29,10 +29,10 @@ namespace DIXON.INE.WIP
                 {
                     DataTable DT = new DataTable();
                     DT = (DataTable)Session["USER_RIGHTS"];
-                    foreach(DataRow row in DT.Rows)
+                    foreach (DataRow row in DT.Rows)
                     {
                         MODULENAME = row[0].ToString();
-                        if(MODULENAME.Contains("WIP REWORKS"))
+                        if (MODULENAME.Contains("WIP REWORKS"))
                         {
                             break;
                         }
@@ -290,20 +290,20 @@ namespace DIXON.INE.WIP
             CommonHelper.HideMessage(msginfo, msgsuccess, msgwarning, msgerror);
             try
             {
-                if(MODULENAME != "WIP REWORKS")
+                if (MODULENAME != "WIP REWORKS")
                 {
                     if (drpType.SelectedIndex > 0)
                     {
                         blobj = new BL_Rework();
                         string sResult = blobj.CHECKACCESS(drpType.SelectedItem.Text.Trim(), Session["UserID"].ToString()
-                                                           ,Session["SiteCode"].ToString(), Session["LINECODE"].ToString());
+                                                           , Session["SiteCode"].ToString(), Session["LINECODE"].ToString());
                         if (sResult.ToUpper().StartsWith("SUCCESS~"))
                         {
                             Message = sResult.Split('~')[1].ToString();
                             CommonHelper.ShowMessage(Message, msgsuccess, CommonHelper.MessageType.Error.ToString());
                             drpstation.Focus();
                         }
-                        else  
+                        else
                         {
                             Message = sResult.Split('~')[1].ToString();
                             CommonHelper.ShowMessage(Message, msgerror, CommonHelper.MessageType.Error.ToString());

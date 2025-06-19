@@ -2,8 +2,8 @@
 using Common;
 using System;
 using System.Data;
-using System.Web.UI.WebControls;
 using System.Text.RegularExpressions;
+using System.Web.UI.WebControls;
 
 namespace DIXON.INE.Masters
 {
@@ -80,7 +80,7 @@ namespace DIXON.INE.Masters
                 }
                 else
                 {
-                    gvLineMaster.DataSource = null; 
+                    gvLineMaster.DataSource = null;
                     gvLineMaster.DataBind();
                     lblNumberofRecords.Text = "0";
                 }
@@ -163,9 +163,9 @@ namespace DIXON.INE.Masters
                         }
                     }
                     BL_EmailMaster dlobj = new BL_EmailMaster();
-                    string sResult = dlobj.SaveEmailDetails(txtEmailSub.Text.Trim(),txtEmailBody.Text.Trim(),Session["SiteCode"].ToString(),
-                                     txtFromEmail.Text.Trim(),txtToEmail.Text.Trim(),txtCCEmail.Text.Trim(),Session["LINECODE"].ToString(),
-                                     txtBCCEmail.Text.Trim(),txtRemarks.Text.Trim(),Session["UserID"].ToString(), "SAVEEMAILDETAILS", hidUID.Value);
+                    string sResult = dlobj.SaveEmailDetails(txtEmailSub.Text.Trim(), txtEmailBody.Text.Trim(), Session["SiteCode"].ToString(),
+                                     txtFromEmail.Text.Trim(), txtToEmail.Text.Trim(), txtCCEmail.Text.Trim(), Session["LINECODE"].ToString(),
+                                     txtBCCEmail.Text.Trim(), txtRemarks.Text.Trim(), Session["UserID"].ToString(), "SAVEEMAILDETAILS", hidUID.Value);
                     if (sResult.Length > 0)
                     {
                         if (sResult.StartsWith("ERROR~"))
@@ -174,7 +174,7 @@ namespace DIXON.INE.Masters
                             _ResetField();
                             TEXTBOXENABLEDISABLE();
                             CommonHelper.ShowMessage(sResult.Split('~')[1], msgerror, CommonHelper.MessageType.Error.ToString());
-                        } 
+                        }
                         else
                         {
                             ShowGridData();
@@ -261,7 +261,7 @@ namespace DIXON.INE.Masters
                             _ResetField();
                             TEXTBOXENABLEDISABLE();
                             CommonHelper.ShowMessage(sResult.Split('~')[1], msgerror, CommonHelper.MessageType.Error.ToString());
-                        } 
+                        }
                         else
                         {
                             ShowGridData();
@@ -281,8 +281,8 @@ namespace DIXON.INE.Masters
             }
             catch (Exception ex)
             {
-                CommonHelper.mBcilLogger.LogMessage(BcilLib.EventNotice.EventTypes.evtError, 
-                    System.Reflection.Assembly.GetExecutingAssembly().GetName() + "::" + 
+                CommonHelper.mBcilLogger.LogMessage(BcilLib.EventNotice.EventTypes.evtError,
+                    System.Reflection.Assembly.GetExecutingAssembly().GetName() + "::" +
                     System.Reflection.MethodBase.GetCurrentMethod().Name, ex.Message);
                 CommonHelper.ShowCustomErrorMessage(ex.Message, msgerror);
             }
@@ -454,7 +454,7 @@ namespace DIXON.INE.Masters
                     txtCCEmail.Enabled = true;
                     txtBCCEmail.Enabled = true;
                     txtRemarks.Enabled = true;
-                } 
+                }
             }
             catch (Exception ex)
             {

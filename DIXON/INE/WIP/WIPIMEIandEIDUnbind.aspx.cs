@@ -64,7 +64,7 @@ namespace DIXON.INE.WIP
                 CommonHelper.ShowCustomErrorMessage(ex.Message, msgerror);
                 CommonHelper.mBcilLogger.LogMessage(BcilLib.EventNotice.EventTypes.evtError, System.Reflection.MethodBase.GetCurrentMethod().Name, ex.Message);
             }
-        } 
+        }
         protected void btnUnbind_Click(object sender, EventArgs e)
         {
             try
@@ -116,11 +116,11 @@ namespace DIXON.INE.WIP
                         txteid.Focus();
                         return;
                     }
-                } 
+                }
                 blobj = new BL_WIP_IMEIandEID_Unbind();
                 DataTable dt = new DataTable();
-                dt = blobj.UNBINDIDs(txtpcbid.Text.Trim(),txtmacid.Text.Trim(),txtimei.Text.Trim(),txteid.Text.Trim(),
-                    Session["SiteCode"].ToString(), Session["UserID"].ToString(),txtchipid.Text.Trim(),
+                dt = blobj.UNBINDIDs(txtpcbid.Text.Trim(), txtmacid.Text.Trim(), txtimei.Text.Trim(), txteid.Text.Trim(),
+                    Session["SiteCode"].ToString(), Session["UserID"].ToString(), txtchipid.Text.Trim(),
                     rdIsImeiEid.SelectedValue.ToString().Trim());
                 if (dt.Rows[0][0].ToString().StartsWith("SUCCESS"))
                 {

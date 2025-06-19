@@ -96,7 +96,7 @@ namespace DataLayer
                 oDbm.AddParameters(23, "@PIN_NO", objPl.PIN_NO);
                 oDbm.AddParameters(24, "@REPORT_LOT_NO", objPl.REPORT_LOT_NO);
                 oDbm.AddParameters(25, "@HWVERSION", objPl.HWVERSION);
-                oDbm.AddParameters(26, "@ASN_MODEL_NO", objPl.ASN_MODEL_NO); 
+                oDbm.AddParameters(26, "@ASN_MODEL_NO", objPl.ASN_MODEL_NO);
                 oDbm.AddParameters(27, "@Country_Code", objPl.Country_Code);
                 oDbm.AddParameters(28, "@Country_of_Origin", objPl.Country_of_Origin);
                 oDbm.AddParameters(29, "@Date_Lot_No", objPl.Date_Lot_No);

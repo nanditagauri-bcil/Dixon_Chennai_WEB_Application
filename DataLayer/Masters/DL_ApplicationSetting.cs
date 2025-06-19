@@ -43,7 +43,7 @@ namespace DataLayer
             {
                 oDbm.CreateParameters(2);
                 oDbm.AddParameters(0, "@TYPE", "GETDATABYID");
-                oDbm.AddParameters(1, "@ID", sID); 
+                oDbm.AddParameters(1, "@ID", sID);
                 oDbm.Open();
                 dt = oDbm.ExecuteDataSet(System.Data.CommandType.StoredProcedure, "USP_APPLICATIOPNSETTING").Tables[0];
             }
@@ -72,8 +72,8 @@ namespace DataLayer
                 oDbm.AddParameters(2, "@REWORKINOUTMAXLIMIT", sReworkInOutMaxLimit);
                 oDbm.AddParameters(3, "@REWORKOUTMAXTIME", sReworkOutMaxTime);
                 oDbm.AddParameters(4, "@REWORKINMINTIME", sReworkInMinTime);
-                oDbm.AddParameters(5, "@CREATEDBY", sCreatedBy); 
-                oDbm.AddParameters(6, "@FGITEMCODE", sFGItemCode); 
+                oDbm.AddParameters(5, "@CREATEDBY", sCreatedBy);
+                oDbm.AddParameters(6, "@FGITEMCODE", sFGItemCode);
                 oDbm.Open();
                 dt = oDbm.ExecuteDataSet(System.Data.CommandType.StoredProcedure, "USP_APPLICATIOPNSETTING").Tables[0];
             }

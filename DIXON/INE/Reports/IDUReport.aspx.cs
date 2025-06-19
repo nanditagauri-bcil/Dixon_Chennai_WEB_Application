@@ -144,7 +144,7 @@ namespace DIXON.INE.Reports
                 }
                 else
                 {
-                    if(sStartingName != "UBOOT")
+                    if (sStartingName != "UBOOT")
                     {
                         foreach (DataRow row in dtTrackingData.Rows)
                         {
@@ -157,7 +157,7 @@ namespace DIXON.INE.Reports
                             string hexString = "0x" + BitConverter.ToString(byteArray).Replace("-", "");
                             row["Pre-Password"] = hexString;
                         }
-                    } 
+                    }
                     if (sStartingName == "GRANITE")
                     {
                         sStartingName = "GRN";

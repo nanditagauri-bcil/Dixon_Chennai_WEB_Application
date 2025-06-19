@@ -193,7 +193,7 @@ namespace DataLayer
                 oDbm.AddParameters(0, "@TYPE", "dtGetdataforWallMountKit");
                 oDbm.AddParameters(1, "@MODELCODE", plobj.sModelName);
                 oDbm.AddParameters(2, "@SITECODE", PCommon.sSiteCode);
-                oDbm.AddParameters(3, "@sSNBarcode", plobj.sSNBarcode); 
+                oDbm.AddParameters(3, "@sSNBarcode", plobj.sSNBarcode);
                 oDbm.Open();
                 dt = oDbm.ExecuteDataSet(System.Data.CommandType.StoredProcedure, "USP_BIND_PRINTINGDATA");
             }

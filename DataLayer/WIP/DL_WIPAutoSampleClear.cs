@@ -1,8 +1,6 @@
-﻿using BcilLib;
-using Common;
+﻿using Common;
 using System;
 using System.Data;
-using System.Reflection;
 
 namespace DataLayer.WIP
 {
@@ -65,9 +63,9 @@ namespace DataLayer.WIP
             }
             return dt;
         }
-        
 
-        public DataSet VaildateBarcode(string sPartBarcode , string sMachineID, string FGItemCode
+
+        public DataSet VaildateBarcode(string sPartBarcode, string sMachineID, string FGItemCode
             , string sSiteCode, string sLineCode)
         {
             DataSet dtResult = new DataSet();
@@ -108,7 +106,7 @@ namespace DataLayer.WIP
                 odb.AddParameters(1, "@PART_BARCODE", sPartBarcode);
                 odb.AddParameters(2, "@LINECODE", sLineCode);
                 odb.AddParameters(3, "@FGITEMCODE", sFGItemCode);
-                odb.AddParameters(4, "@USERID", sUserID); 
+                odb.AddParameters(4, "@USERID", sUserID);
                 odb.AddParameters(5, "@SITECODE", sSiteCode);
                 odb.AddParameters(6, "@TYPE", sResultType);
                 dtResult = odb.ExecuteDataSet(CommandType.StoredProcedure, "USP_WIP_WIP_AUTO_SAMPLE_CLEAR");
@@ -126,6 +124,6 @@ namespace DataLayer.WIP
             }
             return dtResult;
         }
-         
+
     }
 }

@@ -122,11 +122,11 @@ namespace DIXON.INE.WIP
                 string sUserID = Session["UserID"].ToString();
                 string _sPrinterPort = ConfigurationManager.AppSettings["sPrinterPort"].ToString();
                 blobj = new BL_WIP_LaserMachine();
-                
+
                 //ADDED BY SHIVAM (04/12/2024)
                 DataTable DT = blobj.CheckReelID(txtBarcode.Text.Trim(), drpFGItemCode.SelectedItem.Text,
-                                            drpWorkOrderNo.SelectedItem.Text,Session["SiteCode"].ToString());
-                if(DT.Rows[0][0].ToString().StartsWith("N~"))
+                                            drpWorkOrderNo.SelectedItem.Text, Session["SiteCode"].ToString());
+                if (DT.Rows[0][0].ToString().StartsWith("N~"))
                 {
                     CommonHelper.ShowMessage(DT.Rows[0][0].ToString().Split('~')[1], msgerror, CommonHelper.MessageType.Error.ToString());
                     return;

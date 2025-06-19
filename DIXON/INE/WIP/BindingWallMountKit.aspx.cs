@@ -1,10 +1,7 @@
-﻿using BusinessLayer;
-using BusinessLayer.MES.PRINTING;
+﻿using BusinessLayer.MES.PRINTING;
 using Common;
-using PL;
 using System;
 using System.Data;
-using System.Reflection;
 using System.Threading;
 
 namespace DIXON.INE.MOB
@@ -97,7 +94,7 @@ namespace DIXON.INE.MOB
                     txtScanHere.Text = string.Empty;
                     DataTable dt = new DataTable();
                     blobj = new BL_Binding_Wall_Mount_Kit();
-                    dt = blobj.DisplayedData(ddlModel_Name.SelectedItem.Text.Trim(),Session["SiteCode"].ToString());
+                    dt = blobj.DisplayedData(ddlModel_Name.SelectedItem.Text.Trim(), Session["SiteCode"].ToString());
                     if (dt.Rows.Count > 0)
                     {
                         lblWT.Text = dt.Rows[0]["GrossWt"].ToString();
@@ -131,8 +128,8 @@ namespace DIXON.INE.MOB
                     return;
                 }
                 blobj = new BL_Binding_Wall_Mount_Kit();
-                DataTable dtResult = blobj.Scan_Barcode(txtScanHere.Text.Trim(),ddlModel_Name.SelectedItem.Text.Trim(), 
-                                     Session["SiteCode"].ToString(),Session["UserID"].ToString(), 
+                DataTable dtResult = blobj.Scan_Barcode(txtScanHere.Text.Trim(), ddlModel_Name.SelectedItem.Text.Trim(),
+                                     Session["SiteCode"].ToString(), Session["UserID"].ToString(),
                                      Session["LineCode"].ToString());
                 Message = dtResult.Rows[0][0].ToString();
                 if (Message.StartsWith("SUCCESS~"))
@@ -145,7 +142,7 @@ namespace DIXON.INE.MOB
                 {
                     CommonHelper.ShowMessage(Message.Split('~')[1], msgerror, CommonHelper.MessageType.Error.ToString());
                     lbllastscanned.Text = txtScanHere.Text.Trim();
-                    txtScanHere.Text = ""; 
+                    txtScanHere.Text = "";
                     txtScanHere.Focus();
                     dvMessage.Visible = false;
                     GetData();
@@ -153,7 +150,7 @@ namespace DIXON.INE.MOB
             }
             catch (Exception ex)
             {
-                txtScanHere.Text = ""; 
+                txtScanHere.Text = "";
                 txtScanHere.Focus();
                 CommonHelper.ShowCustomErrorMessage(ex.Message, msgerror);
                 CommonHelper.mBcilLogger.LogMessage(BcilLib.EventNotice.EventTypes.evtError, System.Reflection.Assembly.GetExecutingAssembly().GetName() + "::" + System.Reflection.MethodBase.GetCurrentMethod().Name, ex.Message);
@@ -268,7 +265,7 @@ namespace DIXON.INE.MOB
                             {
                                 CommonHelper.ShowMessage("Scanned barcode successfully passed this stage", msgsuccess, CommonHelper.MessageType.Success.ToString());
                                 lbllastscanned.Text = txtScanHere.Text.Trim();
-                                txtScanHere.Text = ""; 
+                                txtScanHere.Text = "";
                                 txtScanHere.Focus();
                             }
                             else
@@ -279,13 +276,13 @@ namespace DIXON.INE.MOB
                             }
                             txtScanHere.Enabled = false;
                             Thread.Sleep(2000);
-                            txtScanHere.Enabled = true; 
+                            txtScanHere.Enabled = true;
                         }
                         else
                         {
                             CommonHelper.ShowMessage(Message.Split('~')[1], msgerror, CommonHelper.MessageType.Error.ToString());
                             lbllastscanned.Text = txtScanHere.Text.Trim();
-                            txtScanHere.Text = ""; 
+                            txtScanHere.Text = "";
                             txtScanHere.Focus();
                         }
                     }

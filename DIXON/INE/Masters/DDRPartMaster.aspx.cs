@@ -175,9 +175,9 @@ namespace DIXON.INE.Masters
                         return;
                     }
                     BL_DDRPartMaster dlobj = new BL_DDRPartMaster();
-                    string sResult = dlobj.SaveDDR(ddlModel_Name.SelectedItem.Text.Trim(),txtBomPart.Text.Trim(), 
-                                                   txtDDRPart.Text.Trim(),txtDDRDesc.Text.Trim(),Session["UserID"].ToString(),
-                                                   Session["SiteCode"].ToString(),Session["LINECODE"].ToString(), hidUID.Value.Trim());
+                    string sResult = dlobj.SaveDDR(ddlModel_Name.SelectedItem.Text.Trim(), txtBomPart.Text.Trim(),
+                                                   txtDDRPart.Text.Trim(), txtDDRDesc.Text.Trim(), Session["UserID"].ToString(),
+                                                   Session["SiteCode"].ToString(), Session["LINECODE"].ToString(), hidUID.Value.Trim());
                     if (sResult.Length > 0)
                     {
                         if (sResult.StartsWith("ERROR~"))
@@ -185,7 +185,7 @@ namespace DIXON.INE.Masters
                             ShowGridData();
                             _ResetField();
                             CommonHelper.ShowMessage(sResult.Split('~')[1], msgerror, CommonHelper.MessageType.Error.ToString());
-                        } 
+                        }
                         else
                         {
                             ShowGridData();
@@ -242,7 +242,7 @@ namespace DIXON.INE.Masters
                             ShowGridData();
                             _ResetField();
                             CommonHelper.ShowMessage(sResult.Split('~')[1], msgerror, CommonHelper.MessageType.Error.ToString());
-                        } 
+                        }
                         else
                         {
                             ShowGridData();
@@ -314,7 +314,7 @@ namespace DIXON.INE.Masters
                     GridViewRow gvr = (GridViewRow)((Control)e.CommandSource).NamingContainer;
                     int rowIndex = gvr.RowIndex;
                     string sFGItemCode = gvr.Cells[1].Text;
-                    EditRecords(sFGItemCode,_SN);
+                    EditRecords(sFGItemCode, _SN);
                 }
             }
             catch (Exception ex)
@@ -327,13 +327,13 @@ namespace DIXON.INE.Masters
             try
             {
                 BL_DDRPartMaster dlobj = new BL_DDRPartMaster();
-                DataSet ds = dlobj.GetSeletedData(sFGITEMCODE,_SN);
+                DataSet ds = dlobj.GetSeletedData(sFGITEMCODE, _SN);
                 if (ds.Tables.Count > 0)
                 {
-                    if(ds.Tables[0].Rows.Count > 0)
+                    if (ds.Tables[0].Rows.Count > 0)
                     {
                         ddlModel_Name.SelectedItem.Text = ds.Tables[0].Rows[0]["FG_ITEM_CODE"].ToString();
-                        lblModelName.Text= ds.Tables[0].Rows[0]["MODEL_CODE"].ToString();
+                        lblModelName.Text = ds.Tables[0].Rows[0]["MODEL_CODE"].ToString();
                         ddlModel_Name.Enabled = false;
                     }
                     else

@@ -121,12 +121,12 @@ namespace DIXON.INE.Masters
                 string fgitemcode = string.Empty;
                 if (btnSave.Text == "Save")
                 {
-                    if(ddlFgItemCode.SelectedIndex > 0)
+                    if (ddlFgItemCode.SelectedIndex > 0)
                     {
                         fgitemcode = ddlFgItemCode.SelectedValue.ToString().Trim();
                     }
                     CHECKVALIDATION();
-                    if(valid==false)
+                    if (valid == false)
                     {
                         return;
                     }
@@ -207,7 +207,7 @@ namespace DIXON.INE.Masters
         private void CHECKVALIDATION()
         {
             try
-            { 
+            {
                 if (string.IsNullOrWhiteSpace(txtmachinetestcount.Text.Trim()))
                 {
                     CommonHelper.ShowMessage("Please enter machine test Count", msgerror, CommonHelper.MessageType.Error.ToString());
@@ -369,13 +369,13 @@ namespace DIXON.INE.Masters
                     txtreworkinoutmaxcount.Text = dt.Rows[0]["REWORKINOUT_MAX_LIMIT"].ToString();
                     txtreworkoutmaxtime.Text = dt.Rows[0]["REWORKOUT_MAXTIME"].ToString();
                     txtreworkinmintime.Text = dt.Rows[0]["REWORKIN_MINTIME"].ToString();
-                    if(dt.Rows[0]["FG_ITEM_CODE"].ToString().Length>0)
+                    if (dt.Rows[0]["FG_ITEM_CODE"].ToString().Length > 0)
                     {
                         ddlFgItemCode.SelectedValue = dt.Rows[0]["FG_ITEM_CODE"].ToString();
                     }
                     ddlFgItemCode.Enabled = false;
                     hidUpdate.Value = "Update";
-                    hidUID.Value = _SN; 
+                    hidUID.Value = _SN;
                 }
                 else
                 {

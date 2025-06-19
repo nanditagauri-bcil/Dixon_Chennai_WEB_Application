@@ -27,12 +27,12 @@ namespace BusinessLayer.WIP
             dlobj = new DL_MSNvsSecondaryPackingComparison();
             return dlobj.BindSecBOXID(sInvoiceNo, sPONumber, sFGITEMCODE, sSiteCode);
         }
-        public DataSet BindMsnBOXID(string sSecBoxID, string sInvoiceNo, string sPONumber, string sFGITEMCODE, 
+        public DataSet BindMsnBOXID(string sSecBoxID, string sInvoiceNo, string sPONumber, string sFGITEMCODE,
                                                                 string sSiteCode, string sLineCode, string sUserID)
         {
             dlobj = new DL_MSNvsSecondaryPackingComparison();
             return dlobj.BindMsnBOXID(sSecBoxID, sInvoiceNo, sPONumber, sFGITEMCODE, sSiteCode, sLineCode, sUserID);
-        } 
+        }
         public DataTable ValidateScanMSNBarcode(string sModelCode, string sSecBoxID, string sInvoiceNo, string sPONumber,
              string sFGItemCode, string sSiteCode, string sMSNBarcode, string sLineCode, string sUserID)
         {
@@ -53,7 +53,7 @@ namespace BusinessLayer.WIP
         {
             dlobj = new DL_MSNvsSecondaryPackingComparison();
             return dlobj.VERIFIEDSAVED(sModelCode, sSecBoxID, sInvoiceNo, sPONumber, sFGItemCode,
-                sSiteCode, sMSNBarcode, sLineCode, sUserID, _dt,   sRemarks);
+                sSiteCode, sMSNBarcode, sLineCode, sUserID, _dt, sRemarks);
         }
 
         public DataTable REJECTSAVED(string sModelCode, string sSecBoxID, string sInvoiceNo, string sPONumber,

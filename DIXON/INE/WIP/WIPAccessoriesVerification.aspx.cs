@@ -308,7 +308,7 @@ namespace DIXON.INE.WIP
 
                 blobj = new BL_WIPAccessoriesVerification();
                 DataTable dt = new DataTable();
-                dt = blobj.blScanAccessories(ddlModel_Name.SelectedItem.Text.Trim(), Session["SiteCode"].ToString(), 
+                dt = blobj.blScanAccessories(ddlModel_Name.SelectedItem.Text.Trim(), Session["SiteCode"].ToString(),
                     txtScanHere.Text.Trim(), Session["LineCode"].ToString(), ddlModel_Name.SelectedValue.ToString(),
                     sAccBarcode, Session["UserID"].ToString());
 
@@ -355,7 +355,7 @@ namespace DIXON.INE.WIP
                     else
                     {
                         CommonHelper.ShowMessage(Message.Split('~')[1], msgerror, CommonHelper.MessageType.Error.ToString());
-                        txtAccessoriesBarcode.Text = ""; 
+                        txtAccessoriesBarcode.Text = "";
                         txtAccessoriesBarcode.Focus();
                         if (Message.StartsWith("0~"))
                         {

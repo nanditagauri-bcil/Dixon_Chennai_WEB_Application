@@ -86,7 +86,7 @@ namespace DIXON.INE.WIP
                 if (string.IsNullOrEmpty(txtScanHere.Text.Trim()))
                 {
                     CommonHelper.ShowMessage("Please scan PCB barcode", msgerror, CommonHelper.MessageType.Error.ToString());
-                    txtDeviceQR.Text = ""; 
+                    txtDeviceQR.Text = "";
                     txtScanHere.Focus();
                     return;
                 }
@@ -109,7 +109,7 @@ namespace DIXON.INE.WIP
                 {
                     sSrNo = Regex.Split(sAccBarcode.ToUpper(), "<SRNO>").Last().Split('<')[0];
                     sMacID = Regex.Split(sAccBarcode.ToUpper(), "<MACID>").Last().Split('<')[0];
-                    
+
                     //ADDED BY SHIVAM (20/03/2024)
                     sIMEI = Regex.Split(sAccBarcode.ToUpper(), "<IMEI>").Last().Split('<')[0];
                     sEID = Regex.Split(sAccBarcode.ToUpper(), "<EID>").Last().Split('<')[0];
@@ -125,7 +125,7 @@ namespace DIXON.INE.WIP
                 }
                 //ADDED BY SHIVAM (05/04/2024)
                 sMODELCODE = ddlModel_Name.SelectedValue.ToString();
-                if(sMODELCODE.StartsWith("JODU"))
+                if (sMODELCODE.StartsWith("JODU"))
                 {
                     if (string.IsNullOrEmpty(sSrNo) || string.IsNullOrEmpty(sIMEI) || string.IsNullOrEmpty(sEID) || string.IsNullOrEmpty(sBTMAC))
                     {
@@ -147,7 +147,7 @@ namespace DIXON.INE.WIP
                 DataTable dt = new DataTable();
                 dt = blobj.blPcbScanDeviceVerify(ddlModel_Name.SelectedItem.Text.Trim(), Session["SiteCode"].ToString(), sSrNo
                     , Session["LineCode"].ToString(), ddlModel_Name.SelectedValue.ToString(), Session["UserID"].ToString(), sMacID, "VALIDATEDEVICE",
-                    txtScanHere.Text.Trim(),sIMEI,sEID,sBTMAC
+                    txtScanHere.Text.Trim(), sIMEI, sEID, sBTMAC
                     );
                 if (dt.Rows.Count > 0)
                 {
@@ -248,10 +248,10 @@ namespace DIXON.INE.WIP
                     string sDeviceEID = string.Empty;
                     string sDeviceBarcode = txtDeviceQR.Text;
                     string sAccBarcode = txtGBQRCode.Text;
-                     
+
                     sDeviceSrNo = Regex.Split(sDeviceBarcode.ToUpper(), "<SRNO>").Last().Split('<')[0].Trim();
                     sDeviceMacID = Regex.Split(sDeviceBarcode.ToUpper(), "<MACID>").Last().Split('<')[0].Trim();
-                     
+
                     //ADDED BY SHIVAM (20/03/2024)
                     sDeviceIMEI = Regex.Split(sDeviceBarcode.ToUpper(), "<IMEI>").Last().Split('<')[0].Trim();
                     sDeviceEID = Regex.Split(sDeviceBarcode.ToUpper(), "<EID>").Last().Split('<')[0].Trim();
@@ -272,7 +272,7 @@ namespace DIXON.INE.WIP
                         txtDeviceQR.Text = string.Empty;
                         txtDeviceQR.Focus();
                         return;
-                    } 
+                    }
                     if (sSrNo != sDeviceSrNo)
                     {
                         CommonHelper.ShowMessage("Scanned GB RSN not matched with Device RSN, Please scan the correct Gift Box", msgerror, CommonHelper.MessageType.Error.ToString());
@@ -286,7 +286,7 @@ namespace DIXON.INE.WIP
                         txtGBQRCode.Text = string.Empty;
                         txtGBQRCode.Focus();
                         return;
-                    } 
+                    }
                     //ADDED BY SHIVAM(20/03/2024)
                     if (sIMEI != sDeviceIMEI)
                     {
@@ -307,7 +307,7 @@ namespace DIXON.INE.WIP
                     if (lblDevice2QR.Visible == true)
                     {
                         sDevice2Barcode = txtDevice2QR.Text.Trim();
-                    } 
+                    }
                     blobj = new BL_WIPAccessoriesVerification();
                     DataTable dt = new DataTable();
                     dt = blobj.blPcbScanGBVerify(ddlModel_Name.SelectedItem.Text.Trim(), Session["SiteCode"].ToString(), sSrNo
@@ -366,7 +366,7 @@ namespace DIXON.INE.WIP
                 DataTable dt = new DataTable();
                 dt = blobj.blPcbScanDeviceVerify(ddlModel_Name.SelectedItem.Text.Trim(), Session["SiteCode"].ToString(), txtScanHere.Text.Trim()
                     , Session["LineCode"].ToString(), ddlModel_Name.SelectedValue.ToString(), Session["UserID"].ToString(), "", "PCBSCANDEVICEVERIFY", ""
-                    ,"","","");
+                    , "", "", "");
                 if (dt.Rows.Count > 0)
                 {
                     if (dt.Rows[0][0].ToString().StartsWith("0~"))
@@ -490,7 +490,7 @@ namespace DIXON.INE.WIP
                 DataTable dt = new DataTable();
                 dt = blobj.blPcbScanDeviceVerify(ddlModel_Name.SelectedItem.Text.Trim(), Session["SiteCode"].ToString(), sSrNo
                     , Session["LineCode"].ToString(), ddlModel_Name.SelectedValue.ToString(), Session["UserID"].ToString(), sMacID, "VALIDATEDEVICE2",
-                    txtScanHere.Text.Trim(),sIMEI,sEID,sBTMAC);
+                    txtScanHere.Text.Trim(), sIMEI, sEID, sBTMAC);
                 if (dt.Rows.Count > 0)
                 {
                     if (dt.Rows[0][0].ToString().StartsWith("0~"))

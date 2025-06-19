@@ -1,5 +1,4 @@
-﻿using ClosedXML.Excel;
-using Common;
+﻿using Common;
 using DataLayer;
 using DataLayer.WIP;
 using System;

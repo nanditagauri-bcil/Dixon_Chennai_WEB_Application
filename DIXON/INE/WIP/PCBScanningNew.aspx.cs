@@ -805,7 +805,7 @@ namespace DIXON.INE.WIP
                     sIsSamplePCBChecked = "1";
                 }
                 //ADDED BY SHIVAM (23/08/2024)
-                
+
                 if (chkIsAutoSampledPCB.Checked == true)
                 {
                     chkAutoSamplePCBChecked = "1";
@@ -948,7 +948,7 @@ namespace DIXON.INE.WIP
                     , Session["UserID"].ToString(), sReworkStationID, sIsRepairRequired, sMachineFailureValidate,
                     drpType.Text.ToUpper(), sAOIPCBScanned, Session["SiteCode"].ToString(), sOutRequired
                     , sDefect, txtRefBarcode.Text, txtRemarks.Text.Trim(), txtToolBarcode.Text.Trim(), sWaveToolValidate, sAgingProcessValidate, sIsSamplePCBChecked, FULLAGINGValidate
-                    , sRouteName, drpTOPBottom.Text.Trim(),chkAutoSamplePCBChecked);
+                    , sRouteName, drpTOPBottom.Text.Trim(), chkAutoSamplePCBChecked);
                 Message = sResult.Split('~')[1];
                 if (sResult.StartsWith("SUCCESS"))
                 {
@@ -962,7 +962,7 @@ namespace DIXON.INE.WIP
                         {
                             CommonHelper.ShowMessage(Message, msgsuccess, CommonHelper.MessageType.Success.ToString());
                             //ADDED BY SHIVAM (17/12/2024)
-                            if(sResult.Contains("REFRESH"))
+                            if (sResult.Contains("REFRESH"))
                             {
                                 CommonHelper.ShowMessage(sResult.Split('~')[2], msgsuccess, CommonHelper.MessageType.Notification.ToString());
                             }
@@ -1456,7 +1456,7 @@ namespace DIXON.INE.WIP
         protected void chkIsAutoSampledPCB_CheckedChanged(object sender, EventArgs e)
         {
             try
-            { 
+            {
                 if (chkIsAutoSampledPCB.Checked == true)
                 {
                     btnReject.Enabled = false;
@@ -1466,7 +1466,7 @@ namespace DIXON.INE.WIP
                 {
                     btnReject.Enabled = true;
                     btnHold.Enabled = true;
-                } 
+                }
             }
             catch (Exception ex)
             {

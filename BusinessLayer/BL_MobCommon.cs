@@ -360,7 +360,7 @@ namespace BusinessLayer
                 if (dsWallMountKit.Tables.Count > 0)
                 {
                     DataTable dtWallMountKit = dsWallMountKit.Tables[0];
-                    if(dtWallMountKit.Rows.Count > 0)
+                    if (dtWallMountKit.Rows.Count > 0)
                     {
                         sPRN = sPRN.Replace("{WALLMOUNTSN}", dtWallMountKit.Rows[0]["WALLMOUNT_BARCODE"].ToString());
                     }

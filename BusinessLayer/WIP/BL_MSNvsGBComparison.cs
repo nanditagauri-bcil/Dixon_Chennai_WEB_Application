@@ -12,20 +12,20 @@ namespace BusinessLayer.WIP
             dlobj = new DL_MSNvsGBComparison();
             return dlobj.BindFGItemCode(sSiteCode);
         }
-         
 
-        public DataSet ValidateMSN(string sMSNBarcode,string FGItemCode, string sSiteCode, string sLineCode, string sUserID)
-        { 
+
+        public DataSet ValidateMSN(string sMSNBarcode, string FGItemCode, string sSiteCode, string sLineCode, string sUserID)
+        {
             dlobj = new DL_MSNvsGBComparison();
-            return dlobj.VaildateBarcode(sMSNBarcode,FGItemCode, sSiteCode, sLineCode, sUserID); 
+            return dlobj.VaildateBarcode(sMSNBarcode, FGItemCode, sSiteCode, sLineCode, sUserID);
         }
-         
+
         public DataTable ValidateScanGBBarcode(string sModelCode, string sSiteCode, string sMSNBarcode
              , string sLineCode, string sFGItemCode, string sGBBarcode, string sUserID)
-        { 
+        {
             dlobj = new DL_MSNvsGBComparison();
             return dlobj.ValidateScanGBBarcode(sModelCode, sSiteCode, sMSNBarcode, sLineCode, sFGItemCode
-                    , sGBBarcode,sUserID); 
+                    , sGBBarcode, sUserID);
         }
 
         public DataTable VERIFIEDSAVED(string sModelCode, string sSiteCode, string sMSNBarcode

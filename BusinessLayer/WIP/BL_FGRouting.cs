@@ -165,7 +165,7 @@ namespace BusinessLayer.WIP
             UPDATE_OUT_TIME, PROFILE_ID, SEQ, REWORK_SEQ, Createdby
             , sISSFG, sSFGItemCode, ENABLE, sOutTimeRequired, sIsLotCreate
             , sRouteName, sTMOPartCode, sIsXrayAutoSampledPIcked, reworkSequenceValue
-            , sMAXPCBINTIME, sMAXPCBINTIMEFROMLOADER, sIsSampledPickOnMachineHourly,  sAutoSampleQty);
+            , sMAXPCBINTIME, sMAXPCBINTIMEFROMLOADER, sIsSampledPickOnMachineHourly, sAutoSampleQty);
                 if (dt.Rows.Count > 0)
                 {
                     sResult = dt.Rows[0][0].ToString();

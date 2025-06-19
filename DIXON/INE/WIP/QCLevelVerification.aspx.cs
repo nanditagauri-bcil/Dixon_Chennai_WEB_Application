@@ -138,8 +138,8 @@ namespace DIXON.INE.WIP
 
                 blobj = new BL_WIP_PCBScanning();
                 string sResult = blobj.QCLevelVerificationPCBbarcode(Session["LINECODE"].ToString(),
-                    ddlModel_Name.SelectedItem.Text.Trim(),drpDefect.Text.Trim(),drpstation.Text.Trim(),txtPCBID.Text.Trim(),
-                    Session["UserID"].ToString(),Session["SiteCode"].ToString());
+                    ddlModel_Name.SelectedItem.Text.Trim(), drpDefect.Text.Trim(), drpstation.Text.Trim(), txtPCBID.Text.Trim(),
+                    Session["UserID"].ToString(), Session["SiteCode"].ToString());
                 Message = sResult.Split('~')[1];
                 if (sResult.StartsWith("SUCCESS"))
                 {

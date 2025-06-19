@@ -46,13 +46,13 @@ namespace BusinessLayer.MES.PRINTING
                             return sResult;
                         }
                         //ADDED ND CMMNT BY SHIVAM (19/05/2024)
-                        if(obj.sStageCode=="9")
+                        if (obj.sStageCode == "9")
                         {
-                            _oResult = "OKAY~^"+ obj.sSNBarcode;
+                            _oResult = "OKAY~^" + obj.sSNBarcode;
                         }
                         else
                         {
-                             _oResult = dlobj.dlInsertGetBarcode(obj);
+                            _oResult = dlobj.dlInsertGetBarcode(obj);
                         }
                         //FINISH
                         //object _oResult = dlobj.dlInsertGetBarcode(obj);

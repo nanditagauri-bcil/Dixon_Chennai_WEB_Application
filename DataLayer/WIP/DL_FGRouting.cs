@@ -241,7 +241,7 @@ namespace DataLayer.WIP
            string UPDATEOUTTIME, string PROFILEID, string SEQUEANCE, string RESEQUENACE, string CREATEBY
            , string sISSFG, string sSFGItemCode, string sEnable, string sOutRequired, string sIsLotCreate
             , string sRouteName, string sTMOPartCode, string sIsXrayAutoSampledPIcked, string reworkSequenceValue
-            ,string  sMAXPCBINTIME, string sMAXPCBINTIMEFROMLOADER, string sIsSampledPickOnMachineHourly, string sAutoSampleQty)
+            , string sMAXPCBINTIME, string sMAXPCBINTIMEFROMLOADER, string sIsSampledPickOnMachineHourly, string sAutoSampleQty)
         {
             DataTable dt = new DataTable();
             try

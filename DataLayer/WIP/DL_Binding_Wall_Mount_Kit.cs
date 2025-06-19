@@ -1,9 +1,6 @@
-﻿using BcilLib;
-using Common;
-using PL;
+﻿using Common;
 using System;
 using System.Data;
-using System.Reflection;
 
 namespace DataLayer.MES.PRINTING
 {
@@ -148,6 +145,6 @@ namespace DataLayer.MES.PRINTING
             }
             return dt;
         }
-         
+
     }
 }

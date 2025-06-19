@@ -90,7 +90,7 @@ namespace DataLayer.WIP
             }
             return dsResult;
         }
-         
+
         public DataTable ValidateScanGBBarcode(string sModelCode, string sSiteCode, string sMSNBarcode
              , string sLineCode, string sFGItemCode, string sGBBarcode, string sUserID)
         {
@@ -154,7 +154,7 @@ namespace DataLayer.WIP
         }
 
         public DataTable REJECTSAVED(string sModelCode, string sSiteCode, string sMSNBarcode
-             , string sLineCode, string sFGItemCode, string sUserID, DataTable _dt,string sRemarks)
+             , string sLineCode, string sFGItemCode, string sUserID, DataTable _dt, string sRemarks)
         {
             DataTable dtResult = new DataTable();
             try

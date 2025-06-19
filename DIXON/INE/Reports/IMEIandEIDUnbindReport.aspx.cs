@@ -64,7 +64,7 @@ namespace DIXON.INE.Reports
                 CommonHelper.HideMessage(msginfo, msgsuccess, msgwarning, msgerror);
                 BL_IMEIandEID_Unbind_Report blobj = new BL_IMEIandEID_Unbind_Report();
                 DataTable dt = blobj.GetReport(txtFromDate.Text, txtToDate.Text, txtpcbid.Text.Trim(), txtmacid.Text.Trim()
-                    , txtimei.Text.Trim(), txteid.Text.Trim(),txtchipid.Text.Trim());
+                    , txtimei.Text.Trim(), txteid.Text.Trim(), txtchipid.Text.Trim());
                 if (dt.Rows.Count > 0)
                 {
                     if (dt.Columns.Count == 1)

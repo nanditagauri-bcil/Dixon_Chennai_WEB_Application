@@ -124,7 +124,7 @@ namespace DataLayer
                 oDbm.AddParameters(6, "@HEXAMACDETAILS", plobj.dtHexaMac);
                 oDbm.Open();
                 dtobj = oDbm.ExecuteDataSet(System.Data.CommandType.StoredProcedure, "USP_MODELIMEI_UPLOAD").Tables[0];
-                
+
                 if (dtobj.Rows[0].ItemArray[0].ToString().Split('~')[0].ToUpper().Trim() == "OKAY")
                 {
                     PCommon.mBcilLogger.LogMessage(EventNotice.EventTypes.evtInfo, MethodBase.GetCurrentMethod().Name, " IMEI Uploaded of Model Name = " + plobj.sModelName + " and Model Type = " + plobj.sModelType + " ");
