@@ -29,6 +29,6 @@ namespace PL
         public bool iActive { get; set; }
         public string sF1Value { get; set; }
         public DataTable dtRecord { get; set; }
-
+        public bool isGenerateCommonSN { get; set; }
     }
 }

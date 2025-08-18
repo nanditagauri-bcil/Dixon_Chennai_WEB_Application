@@ -231,6 +231,7 @@ namespace DataLayer.WIP
                 oDbm.AddParameters(16, "@DETAILS", plobj.dtRecord);
                 oDbm.AddParameters(17, "@SUFFIX", plobj.sOtherValue);
                 oDbm.AddParameters(18, "@PAGELABELCOUNT", plobj.iPageLabelCount);
+                oDbm.AddParameters(19, "@IS_COMMON_SN", plobj.isGenerateCommonSN);
                 sb.Append("USP_STORE_LOGIC_DATA_WITH_TABLE");
                 oDbm.Open();
                 dtobj = oDbm.ExecuteDataSet(System.Data.CommandType.StoredProcedure, sb.ToString()).Tables[0];
@@ -274,6 +275,7 @@ namespace DataLayer.WIP
                 oDbm.AddParameters(17, "@P_ID", plobj.iPID);
                 oDbm.AddParameters(18, "@SUFFIX", plobj.sOtherValue);
                 oDbm.AddParameters(19, "@PAGELABELCOUNT", plobj.iPageLabelCount);
+                oDbm.AddParameters(19, "@IS_COMMON_SN", plobj.isGenerateCommonSN);
                 sb.Append("USP_STORE_LOGIC_DATA_WITH_TABLE");
                 oDbm.Open();
                 dtobj = oDbm.ExecuteDataSet(System.Data.CommandType.StoredProcedure, sb.ToString()).Tables[0];
