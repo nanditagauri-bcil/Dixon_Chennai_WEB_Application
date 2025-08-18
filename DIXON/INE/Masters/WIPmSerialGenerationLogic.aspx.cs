@@ -288,6 +288,7 @@ namespace DIXON.INE.WIP
                     txtDesignerFormat.Text = dt.Rows[0][14].ToString();
                     txtOtherValue.Text = dt.Rows[0][16].ToString();
                     txtpageLabelCount.Text = dt.Rows[0][17].ToString();
+                    chkCommonSN.Checked = dt.Rows[0][18] != null  &&  Convert.ToBoolean(dt.Rows[0][18]);
                     if (dt.Rows[0][15].ToString() == "True")
                     {
                         chkActive.Checked = true;
@@ -714,6 +715,7 @@ namespace DIXON.INE.WIP
                 plobj.sOtherValue = txtOtherValue.Text;
                 plobj.sDesignerFormat = txtDesignerFormat.Text.Trim();
                 plobj.iPageLabelCount = Convert.ToInt32(txtpageLabelCount.Text);
+                plobj.isGenerateCommonSN = chkCommonSN.Checked;
                 if (gvFormatData.Rows.Count == 0)
                 {
                     CommonHelper.ShowMessage("Please select at least one format.", msgerror, CommonHelper.MessageType.Error.ToString());
@@ -847,6 +849,7 @@ namespace DIXON.INE.WIP
                 txtpageLabelCount.Text = "1";
                 ShowGridData();
                 btnGetRunningSN.Enabled = false;
+                chkCommonSN.Checked = false;
             }
             catch (Exception ex)
             {

@@ -8,10 +8,10 @@
 //------------------------------------------------------------------------------
 
 namespace DIXON.INE.WIP {
-    
-    
+
+
     public partial class WIPmSerialGenerationLogic {
-        
+
         /// <summary>
         /// msgdiv control.
         /// </summary>
@@ -20,7 +20,7 @@ namespace DIXON.INE.WIP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl msgdiv;
-        
+
         /// <summary>
         /// msgerror control.
         /// </summary>
@@ -29,7 +29,7 @@ namespace DIXON.INE.WIP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl msgerror;
-        
+
         /// <summary>
         /// msgwarning control.
         /// </summary>
@@ -38,7 +38,7 @@ namespace DIXON.INE.WIP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl msgwarning;
-        
+
         /// <summary>
         /// msginfo control.
         /// </summary>
@@ -47,7 +47,7 @@ namespace DIXON.INE.WIP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl msginfo;
-        
+
         /// <summary>
         /// msgsuccess control.
         /// </summary>
@@ -56,7 +56,7 @@ namespace DIXON.INE.WIP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl msgsuccess;
-        
+
         /// <summary>
         /// ddllBarcodeGenerater control.
         /// </summary>
@@ -65,7 +65,7 @@ namespace DIXON.INE.WIP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddllBarcodeGenerater;
-        
+
         /// <summary>
         /// ddlPlant control.
         /// </summary>
@@ -74,7 +74,7 @@ namespace DIXON.INE.WIP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlPlant;
-        
+
         /// <summary>
         /// drpfgitemCode control.
         /// </summary>
@@ -83,7 +83,7 @@ namespace DIXON.INE.WIP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList drpfgitemCode;
-        
+
         /// <summary>
         /// ddlCustomer control.
         /// </summary>
@@ -92,7 +92,7 @@ namespace DIXON.INE.WIP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlCustomer;
-        
+
         /// <summary>
         /// txtPartno control.
         /// </summary>
@@ -101,7 +101,7 @@ namespace DIXON.INE.WIP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPartno;
-        
+
         /// <summary>
         /// txtPartDescription control.
         /// </summary>
@@ -110,7 +110,7 @@ namespace DIXON.INE.WIP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPartDescription;
-        
+
         /// <summary>
         /// lblQtyHeader control.
         /// </summary>
@@ -119,7 +119,7 @@ namespace DIXON.INE.WIP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblQtyHeader;
-        
+
         /// <summary>
         /// txtFGqtyperBox control.
         /// </summary>
@@ -128,7 +128,7 @@ namespace DIXON.INE.WIP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtFGqtyperBox;
-        
+
         /// <summary>
         /// txtRevision control.
         /// </summary>
@@ -137,7 +137,7 @@ namespace DIXON.INE.WIP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtRevision;
-        
+
         /// <summary>
         /// txtStartno control.
         /// </summary>
@@ -146,7 +146,7 @@ namespace DIXON.INE.WIP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtStartno;
-        
+
         /// <summary>
         /// txtLength control.
         /// </summary>
@@ -155,7 +155,7 @@ namespace DIXON.INE.WIP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtLength;
-        
+
         /// <summary>
         /// ddlRestPeriod control.
         /// </summary>
@@ -164,7 +164,7 @@ namespace DIXON.INE.WIP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlRestPeriod;
-        
+
         /// <summary>
         /// txtPrefix control.
         /// </summary>
@@ -173,7 +173,7 @@ namespace DIXON.INE.WIP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPrefix;
-        
+
         /// <summary>
         /// txtOtherValue control.
         /// </summary>
@@ -182,7 +182,7 @@ namespace DIXON.INE.WIP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtOtherValue;
-        
+
         /// <summary>
         /// txtpageLabelCount control.
         /// </summary>
@@ -191,7 +191,16 @@ namespace DIXON.INE.WIP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtpageLabelCount;
-        
+
+        /// <summary>
+        /// chkCommonSN control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkCommonSN;
+
         /// <summary>
         /// ddlSuffix control.
         /// </summary>
@@ -200,7 +209,7 @@ namespace DIXON.INE.WIP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlSuffix;
-        
+
         /// <summary>
         /// ddlFormat control.
         /// </summary>
@@ -209,7 +218,7 @@ namespace DIXON.INE.WIP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlFormat;
-        
+
         /// <summary>
         /// btnAdd control.
         /// </summary>
@@ -218,7 +227,7 @@ namespace DIXON.INE.WIP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnAdd;
-        
+
         /// <summary>
         /// gvFormatData control.
         /// </summary>
@@ -227,7 +236,7 @@ namespace DIXON.INE.WIP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvFormatData;
-        
+
         /// <summary>
         /// txtDesignerFormat control.
         /// </summary>
@@ -236,7 +245,7 @@ namespace DIXON.INE.WIP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDesignerFormat;
-        
+
         /// <summary>
         /// FileUpload1 control.
         /// </summary>
@@ -245,7 +254,7 @@ namespace DIXON.INE.WIP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload FileUpload1;
-        
+
         /// <summary>
         /// btnReadPRN control.
         /// </summary>
@@ -254,7 +263,7 @@ namespace DIXON.INE.WIP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnReadPRN;
-        
+
         /// <summary>
         /// txtPRN control.
         /// </summary>
@@ -263,7 +272,7 @@ namespace DIXON.INE.WIP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPRN;
-        
+
         /// <summary>
         /// chkActive control.
         /// </summary>
@@ -272,7 +281,7 @@ namespace DIXON.INE.WIP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox chkActive;
-        
+
         /// <summary>
         /// btnSave control.
         /// </summary>
@@ -281,7 +290,7 @@ namespace DIXON.INE.WIP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSave;
-        
+
         /// <summary>
         /// btnReset control.
         /// </summary>
@@ -290,7 +299,7 @@ namespace DIXON.INE.WIP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnReset;
-        
+
         /// <summary>
         /// btnGetRunningSN control.
         /// </summary>
@@ -299,7 +308,7 @@ namespace DIXON.INE.WIP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnGetRunningSN;
-        
+
         /// <summary>
         /// lblNumberofRecords control.
         /// </summary>
@@ -308,7 +317,7 @@ namespace DIXON.INE.WIP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblNumberofRecords;
-        
+
         /// <summary>
         /// drpFilterFGItemCode control.
         /// </summary>
@@ -317,7 +326,7 @@ namespace DIXON.INE.WIP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList drpFilterFGItemCode;
-        
+
         /// <summary>
         /// gvDetails control.
         /// </summary>
@@ -326,7 +335,7 @@ namespace DIXON.INE.WIP {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvDetails;
-        
+
         /// <summary>
         /// hidPID control.
         /// </summary>

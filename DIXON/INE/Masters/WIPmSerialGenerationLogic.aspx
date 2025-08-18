@@ -199,6 +199,11 @@
                                         </asp:TextBox>
                                     </div>
                                 </div>
+                                <div class="col-md-6">
+                                <div class="form-group">
+                                    <asp:CheckBox ID="chkCommonSN" runat="server" class="form-control" Text="Generate Common Serial Number" />
+                                </div>
+                            </div>
                             </div>
                         </div>
                     </div>
