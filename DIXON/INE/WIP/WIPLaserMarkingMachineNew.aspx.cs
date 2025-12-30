@@ -214,16 +214,14 @@ namespace DIXON.INE.WIP
                   + ", User ID :" + Session["UserID"].ToString()
                   );
                 blobj = new BL_WIP_LaserMachine();
-                DataTable dt = blobj.ScanReelBarcode(txtBarcode.Text.Trim(), drpFGItemCodeRH.Text, txtScanMachineBarcode.Text
-                    , drpCustomerCode.Text, drpIssueSlipNo.SelectedItem.Text
-                    , Session["SiteCode"].ToString()
-                    );
+                DataTable dt = blobj.ScanReelBarcode(txtBarcode.Text.Trim(), drpFGItemCodeRH.Text, txtScanMachineBarcode.Text,
+                    drpCustomerCode.Text, drpIssueSlipNo.SelectedItem.Text, Session["SiteCode"].ToString());
+
                 if (dt.Rows.Count > 0)
                 {
                     CommonHelper.mBcilLogger.LogMessage(BcilLib.EventNotice.EventTypes.evtData, System.Reflection.MethodBase.GetCurrentMethod().Name,
-                   "PCB Sn Generation Reel Barcode Scan :" + txtBarcode.Text.Trim()
-                   + ", Output fOund :" + dt.Rows[0][0].ToString()
-                   );
+                   "PCB Sn Generation Reel Barcode Scan :" + txtBarcode.Text.Trim() + ", Output fOund :" + dt.Rows[0][0].ToString());
+
                     if (dt.Rows[0][0].ToString().StartsWith("N~") || dt.Rows[0][0].ToString().StartsWith("ERROR~"))
                     {
                         CommonHelper.ShowMessage(dt.Rows[0][0].ToString().Split('~')[1], msgerror, CommonHelper.MessageType.Error.ToString());
@@ -250,20 +248,21 @@ namespace DIXON.INE.WIP
                         }
                         return;
                     }
-                    if (dt.Rows[0]["ISSUE_SLIP_NO"].ToString().ToUpper() != drpIssueSlipNo.Text.ToUpper())
-                    {
-                        CommonHelper.ShowMessage("Scanned barcode not matched with selected work order no, Please scan valid barcode ", msgerror, CommonHelper.MessageType.Error.ToString());
-                        txtBarcode.ReadOnly = false;
-                        txtBarcode.Text = string.Empty;
-                        txtBarcode.Focus();
-                        if (drpType.Text == "TOP_SIDED" || drpType.Text == "TMO_PROCESS")
-                        {
-                            dvLaserFileData.DataSource = null;
-                            dvLaserFileData.DataBind();
-                        }
-                        return;
-                    }
-                    else if (dt.Rows[0]["STATUS"].ToString().ToUpper() == "2")
+                    //COMMENTED BY VIVEK ON 30-DEC-2025 (TO ALLOW BARCODE ACROSS ANY WORKORDER)
+                    //if (dt.Rows[0]["ISSUE_SLIP_NO"].ToString().ToUpper() != drpIssueSlipNo.Text.ToUpper())
+                    //{
+                    //    CommonHelper.ShowMessage("Scanned barcode not matched with selected work order no, Please scan valid barcode ", msgerror, CommonHelper.MessageType.Error.ToString());
+                    //    txtBarcode.ReadOnly = false;
+                    //    txtBarcode.Text = string.Empty;
+                    //    txtBarcode.Focus();
+                    //    if (drpType.Text == "TOP_SIDED" || drpType.Text == "TMO_PROCESS")
+                    //    {
+                    //        dvLaserFileData.DataSource = null;
+                    //        dvLaserFileData.DataBind();
+                    //    }
+                    //    return;
+                    //}
+                    if (dt.Rows[0]["STATUS"].ToString().ToUpper() == "2")
                     {
                         CommonHelper.ShowMessage("Barcode is already scanned", msgerror, CommonHelper.MessageType.Error.ToString());
                         txtBarcode.ReadOnly = false;

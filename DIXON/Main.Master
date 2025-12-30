@@ -162,13 +162,13 @@
                                 <li><a class="menu-link" href="../Masters/WIPMachineMaster.aspx"><i class="fa fa-circle-o"></i>Machine Master</a></li>
                                 <li><a class="menu-link" href="../Masters/ModelMaster.aspx"><i class="fa fa-circle-o"></i>FG Model Master</a></li>
                                 <li><a class="menu-link" href="../Masters/FGCustomerMapping.aspx"><i class="fa fa-circle-o"></i>FG Customer Mapping</a></li>
-                                 <li><a class="menu-link" href="../Masters/WIPSamplingMaster.aspx"><i class="fa fa-circle-o"></i>Sampling Master</a></li>
+                                <li><a class="menu-link" href="../Masters/WIPSamplingMaster.aspx"><i class="fa fa-circle-o"></i>Sampling Master</a></li>
                                 <li><a class="menu-link" href="../Masters/IMEI_UPLOAD.aspx"><i class="fa fa-circle-o"></i>Model SN Upload</a></li>
                                 <li><a class="menu-link" href="../Masters/mobQualityStageDefectMaster.aspx"><i class="fa fa-circle-o"></i>Defect Master</a></li>
                                 <li><a class="menu-link" href="../Masters/ApplicationSetting.aspx"><i class="fa fa-circle-o"></i>Application Setting Master</a></li>
                                 <li><a class="menu-link" href="../Masters/DataTransfer.aspx"><i class="fa fa-circle-o"></i>Data Transfer</a></li>
 
-                               <%-- <li><a class="menu-link" href="../Masters/WavePallet.aspx"><i class="fa fa-circle-o"></i>Wave Pallet Master</a></li>
+                                <%-- <li><a class="menu-link" href="../Masters/WavePallet.aspx"><i class="fa fa-circle-o"></i>Wave Pallet Master</a></li>
                                 <li><a class="menu-link" href="../Masters/LocationMaster.aspx?Name=RM"><i class="fa fa-circle-o"></i>RM Location Master</a></li>
                                 <li><a class="menu-link" href="../Masters/LocationMaster.aspx?Name=FG"><i class="fa fa-circle-o"></i>FG Location Master</a></li>
                                 <li><a class="menu-link" href="../Masters/Binmaster.aspx"><i class="fa fa-circle-o"></i>Bin Master</a></li>
@@ -297,7 +297,9 @@
                                 <li><a class="menu-link" href="../WIP/WIPPartHoldModule.aspx"><i class="fa fa-circle-o"></i>Part Hold</a></li>
                                 <li><a class="menu-link" href="../WIP/QCLevelVerification.aspx"><i class="fa fa-circle-o"></i>QC Verification</a></li>
                                 <li><a class="menu-link" href="../WIP/MSNvsGBComparison.aspx"><i class="fa fa-circle-o"></i>MSN vs GB Comparison</a></li>--%>
-                                
+
+                                <li><a class="menu-link" href="../WIP/PDIQuality.aspx"><i class="fa fa-circle-o"></i>PDI Quality</a></li>
+
                                 <li class="treeview"><a href="javascript:void(0)"><i class="fa fa-circle-o"></i>Re Printing               
                                         <span class="pull-right-container">
                                             <i class="fa fa-angle-left pull-right"></i>
@@ -344,10 +346,9 @@
                                 <li><a class="menu-link" href="../WIP/WIPFGRollback.aspx"><i class="fa fa-circle-o"></i>Box RePack</a></li>
                                 <li><a class="menu-link" href="../WIP/WIPExpiredPCB.aspx"><i class="fa fa-circle-o"></i>Allowed Expired PCB</a></li>
                                 <li><a class="menu-link" href="../WIP/MSNvsSecondaryPackingComparison.aspx"><i class="fa fa-circle-o"></i>MSN vs Secondary Packing Comparison</a></li>--%>
-                                
                             </ul>
                         </li>
-                        <%--<li class="treeview" id="lstQuality" runat="server">
+                        <li class="treeview" id="lstQuality" runat="server">
                             <a href="javascript:void(0)">
                                 <i class="fa fa-edit"></i><span>FG Quality After Packing</span>
                                 <span class="pull-right-container">
@@ -358,7 +359,7 @@
                                 <li><a class="menu-link" href="../WIP/WIPNewQuality.aspx"><i class="fa fa-circle-o"></i>FG Quality</a></li>
                                 <li><a class="menu-link" href="../WIP/QualityRework.aspx"><i class="fa fa-circle-o"></i>FG Quality Rework</a></li>
                             </ul>
-                        </li>--%>
+                        </li>
                         <%--<li class="treeview" id="listFG" runat="server">
                             <a href="javascript:void(0)">
                                 <i class="fa fa-table"></i><span>FG Operations</span>
