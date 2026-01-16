@@ -3537,6 +3537,7 @@
     <Content Include="INE\WIP\WIPWorkOrderClose.aspx" />
     <Content Include="INE\WIP\WIPXraySampling.aspx" />
     <Content Include="INE\WIP\WIP_LineQuality.aspx" />
+    <Content Include="INE\WIP\WIP_ReelSplit.aspx" />
     <Content Include="INE\WIP\WIP_SetProfile.aspx" />
     <Content Include="NoAccess\Pagenotfound.aspx" />
     <Content Include="NoAccess\styles\404.css" />
@@ -5074,6 +5075,13 @@
     </Compile>
     <Compile Include="INE\WIP\WIP_LineQuality.aspx.designer.cs">
       <DependentUpon>WIP_LineQuality.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="INE\WIP\WIP_ReelSplit.aspx.cs">
+      <DependentUpon>WIP_ReelSplit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="INE\WIP\WIP_ReelSplit.aspx.designer.cs">
+      <DependentUpon>WIP_ReelSplit.aspx</DependentUpon>
     </Compile>
     <Compile Include="ReportDataSet\AccesoriesScanningReportDS.Designer.cs">
       <AutoGen>True</AutoGen>
