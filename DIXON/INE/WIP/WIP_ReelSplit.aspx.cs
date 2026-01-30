@@ -8,8 +8,7 @@ namespace DIXON.INE.WIP
 {
     public partial class WIP_ReelSplit : Page
     {
-        BL_ChildLabelPrinting blobj = new BL_ChildLabelPrinting();
-        string sType = "CL";
+        BL_ReelSplitPrinting blobj = new BL_ReelSplitPrinting();
         string Message = "";
         protected void Page_Init(object sender, EventArgs e)
         {
@@ -23,7 +22,7 @@ namespace DIXON.INE.WIP
         {
             if (Session["usertype"].ToString() != "ADMIN")
             {
-                string _strRights = CommonHelper.GetRights("KITTING", (DataTable)Session["USER_RIGHTS"]);
+                string _strRights = CommonHelper.GetRights("SPLITREEL", (DataTable)Session["USER_RIGHTS"]);
                 CommonHelper._strRights = _strRights.Split('^');
                 if (CommonHelper._strRights[0] == "0")  //Check view rights
                 {
@@ -90,8 +89,8 @@ namespace DIXON.INE.WIP
                 txtQuantity.Text = string.Empty;
                 txtQty.Text = string.Empty;
                 drpItemCode.Items.Clear();
-                blobj = new BL_ChildLabelPrinting();
-                DataTable dtPcode = blobj.BindINELPartNo(sType, Session["SiteCode"].ToString());
+                blobj = new BL_ReelSplitPrinting();
+                DataTable dtPcode = blobj.BindINELPartNo(Session["SiteCode"].ToString());
                 if (dtPcode.Rows.Count > 0)
                 {
                     CommonHelper.HideSuccessMessage(msginfo, msgwarning, msgerror);
@@ -165,7 +164,7 @@ namespace DIXON.INE.WIP
                 }
                 string sLineCode = Session["LINECODE"].ToString();
                 string sUserID = Session["UserID"].ToString();
-                blobj = new BL_ChildLabelPrinting();
+                blobj = new BL_ReelSplitPrinting();
                 DataTable dt = new DataTable();
                 string _Result = blobj.ChildLabelPrint(
                          drpItemCode.Text,
@@ -229,8 +228,8 @@ namespace DIXON.INE.WIP
                 txtQuantity.Text = string.Empty;
                 txtQty.Text = string.Empty;
                 CommonHelper.HideMessage(msginfo, msgsuccess, msgwarning, msgerror);
-                blobj = new BL_ChildLabelPrinting();
-                DataTable dtPcode = blobj.BindReelBarcode(drpItemCode.Text, sType, Session["SiteCode"].ToString());
+                blobj = new BL_ReelSplitPrinting();
+                DataTable dtPcode = blobj.BindReelBarcode(drpItemCode.Text, Session["SiteCode"].ToString());
                 if (dtPcode.Rows.Count > 0)
                 {
                     CommonHelper.HideSuccessMessage(msginfo, msgwarning, msgerror);
@@ -264,9 +263,9 @@ namespace DIXON.INE.WIP
                     drpReelID.Focus();
                     return;
                 }
-                blobj = new BL_ChildLabelPrinting();
+                blobj = new BL_ReelSplitPrinting();
                 DataTable dt = new DataTable();
-                dt = blobj.SCANBARCODE(drpItemCode.Text, sType, drpReelID.Text, Session["SiteCode"].ToString());
+                dt = blobj.SCANBARCODE(drpItemCode.Text, drpReelID.Text, Session["SiteCode"].ToString());
                 if (dt.Rows.Count > 0)
                 {
                     if (dt.Rows[0][0].ToString().StartsWith("N~") || dt.Rows[0][0].ToString().StartsWith("ERROR~"))
