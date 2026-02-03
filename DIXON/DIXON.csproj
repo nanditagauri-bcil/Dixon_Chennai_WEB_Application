@@ -3490,6 +3490,7 @@
     <Content Include="INE\WIP\WIPCastingLabelMapping.aspx" />
     <Content Include="INE\WIP\MSNvsGBComparison.aspx" />
     <Content Include="INE\WIP\WIPAutoSampleClear.aspx" />
+    <Content Include="INE\WIP\WIPSplitReelQuality.aspx" />
     <Content Include="INE\WIP\WIPWavePalletMapping.aspx" />
     <Content Include="INE\WIP\WIPRSNUpdate.aspx" />
     <Content Include="INE\WIP\WIPAccessoriesVerification.aspx" />
@@ -4942,6 +4943,13 @@
     </Compile>
     <Compile Include="INE\WIP\WIPAutoSampleClear.aspx.designer.cs">
       <DependentUpon>WIPAutoSampleClear.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="INE\WIP\WIPSplitReelQuality.aspx.cs">
+      <DependentUpon>WIPSplitReelQuality.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="INE\WIP\WIPSplitReelQuality.aspx.designer.cs">
+      <DependentUpon>WIPSplitReelQuality.aspx</DependentUpon>
     </Compile>
     <Compile Include="INE\WIP\WIPWavePalletMapping.aspx.cs">
       <DependentUpon>WIPWavePalletMapping.aspx</DependentUpon>

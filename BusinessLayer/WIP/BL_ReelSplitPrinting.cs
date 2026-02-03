@@ -24,6 +24,7 @@ namespace BusinessLayer
             }
             return dtINELPartNo;
         }
+
         public DataTable BindReelBarcode(string sItemCode, string sSiteCode)
         {
             DataTable dtReelBarcode = new DataTable();
@@ -39,7 +40,8 @@ namespace BusinessLayer
             }
             return dtReelBarcode;
         }
-        public DataTable SCANBARCODE(string sINELPartNo,  string sReelID, string sSiteCode)
+
+        public DataTable SCANBARCODE(string sINELPartNo, string sReelID, string sSiteCode)
         {
             DataTable dtReelBarcode = new DataTable();
             dlobj = new DL_ReelSplitPrinting();
@@ -54,8 +56,71 @@ namespace BusinessLayer
             }
             return dtReelBarcode;
         }
-        public string ChildLabelPrint(string _PartCode, string _ReelID, string sPrintedBy, decimal dUpdatedQty, string sPrinterIP,
-            string sPrinterPort, string sUserID, string sLineCode, string sSiteCode)
+
+        //public string ChildLabelPrint(string _PartCode, string _ReelID, string sPrintedBy, decimal dUpdatedQty, string sPrinterIP,
+        //    string sPrinterPort, string sUserID, string sLineCode, string sSiteCode)
+        //{
+        //    dlobj = new DL_ReelSplitPrinting();
+        //    string sResult = string.Empty;
+
+        //    BL_Common objBL_Common = new BL_Common();
+        //    try
+        //    {
+        //        DataTable dtSplitResult = dlobj.ChildLabelPrinting(_PartCode, _ReelID, dUpdatedQty, sPrintedBy, sSiteCode, sLineCode);
+
+        //        if (dtSplitResult != null && dtSplitResult.Rows.Count > 0)
+        //        {
+        //            var dbMessage = dtSplitResult.Rows[0][0].ToString();
+
+        //            if (string.IsNullOrWhiteSpace(dbMessage))
+        //            {
+        //                return "N~Failed to generated split label";
+        //            }
+
+        //            if (dbMessage.ToUpper().StartsWith("N~") || dbMessage.ToUpper().StartsWith("ERROR~"))
+        //            {
+        //                return dbMessage;
+        //            }
+
+        //            var finalPRN = dtSplitResult.Rows[0]["FINAL_PRN"].ToString();
+        //            var newPartbarcode = dtSplitResult.Rows[0]["PART_BARCODE"].ToString();
+        //            sResult = dtSplitResult.Rows[0]["MESSAGE"].ToString();
+
+        //            if (string.IsNullOrWhiteSpace(finalPRN))
+        //            {
+        //                return "N~Split label printing failed";
+        //            }
+
+        //            if (sResult.StartsWith("SUCCESS~"))
+        //            {
+        //                try
+        //                {
+        //                    PCommon.mBcilLogger.LogMessage(BcilLib.EventNotice.EventTypes.evtMessage, MethodBase.GetCurrentMethod().Name, "Kitting Label Printing Prn Page Called : Barcode  " + sResult.Split('~')[2]);
+
+        //                    sResult = objBL_Common.sPrintDataLabel(sPrinterIP, finalPRN, _ReelID, "Split", sUserID, sLineCode);
+        //                }
+        //                catch (Exception ex)
+        //                {
+        //                    PCommon.mBcilLogger.LogMessage(BcilLib.EventNotice.EventTypes.evtData, Assembly.GetExecutingAssembly().GetName() + "::" + System.Reflection.MethodBase.GetCurrentMethod().Name, ex.Message);
+        //                    sResult = "N~Qty updated but printing data not found";
+        //                }
+        //            }
+        //        }
+        //        else
+        //        {
+        //            sResult = "N~No result found, Please try again";
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        PCommon.mBcilLogger.LogMessage(BcilLib.EventNotice.EventTypes.evtData, Assembly.GetExecutingAssembly().GetName() + "::" + MethodBase.GetCurrentMethod().Name, ex.Message);
+        //        sResult = "ERROR~" + ex.Message;
+        //    }
+        //    return sResult;
+        //}
+
+        public string ChildLabelPrint(string _PartCode, string _ReelID, string sPrintedBy, decimal dUpdatedQty, string sPrinterIP, string sPrinterPort,
+            string sUserID, string sLineCode, string sSiteCode)
         {
             dlobj = new DL_ReelSplitPrinting();
             string sResult = string.Empty;
@@ -63,50 +128,52 @@ namespace BusinessLayer
             BL_Common objBL_Common = new BL_Common();
             try
             {
-                DataTable dtGetdetails = dlobj.ChildLabelPrinting(_PartCode, _ReelID, dUpdatedQty, sPrintedBy, sSiteCode, sLineCode);
+                DataTable dtSplitResult = dlobj.ChildLabelPrinting(_PartCode, _ReelID, dUpdatedQty, sPrintedBy, sSiteCode, sLineCode);
 
-                if (dtGetdetails.Rows.Count > 0)
+                if (dtSplitResult != null && dtSplitResult.Rows.Count > 0)
                 {
-                    sResult = dtGetdetails.Rows[0][0].ToString();
-                    string sPartBarcode = sResult.Split('~')[2];
-
-                    if (sResult.StartsWith("SUCCESS~"))
+                    foreach (DataRow dr in dtSplitResult.Rows)
                     {
-                        try
+                        var dbMessage = dr[0].ToString();
+
+                        if (string.IsNullOrWhiteSpace(dbMessage))
                         {
-                            PCommon.mBcilLogger.LogMessage(BcilLib.EventNotice.EventTypes.evtMessage, MethodBase.GetCurrentMethod().Name, "Kitting Label Printing Prn Page Called : Barcode  " + sResult.Split('~')[2]);
-
-                            string sPRNPrintingResult = string.Empty;
-
-                            DataTable dtPRNDetail = dlobj.GetWIPSplitLabelDetail(sPartBarcode, sPrintedBy, sSiteCode, sLineCode);
-
-                            if (dtPRNDetail.Rows.Count == 0)
-                            {
-                                sResult = "N~Qty updated but printing detail not found";
-                                return sResult;
-                            }
-                            else
-                            {
-                                sPRNPrintingResult = dtPRNDetail.Rows[0][0].ToString();
-                            }
-
-                            if (sPRNPrintingResult.Length == 0)
-                            {
-                                sResult = "PRINTERPRNNOTPRINT~Qty updated but printing failed";
-                            }
-                            else if (sPRNPrintingResult.StartsWith("ERROR~"))
-                            {
-                                sResult = sPRNPrintingResult;
-                            }
-                            else
-                            {
-                                sResult = objBL_Common.sPrintDataLabel(sPrinterIP, sPRNPrintingResult, _ReelID, "Split", sUserID, sLineCode);
-                            }
+                            return "N~Failed to generated split label";
                         }
-                        catch (Exception ex)
+
+                        if (dbMessage.ToUpper().StartsWith("N~") || dbMessage.ToUpper().StartsWith("ERROR~"))
                         {
-                            PCommon.mBcilLogger.LogMessage(BcilLib.EventNotice.EventTypes.evtData, Assembly.GetExecutingAssembly().GetName() + "::" + System.Reflection.MethodBase.GetCurrentMethod().Name, ex.Message);
-                            sResult = "N~Qty updated but printing data not found";
+                            return dbMessage;
+                        }
+
+                        var finalPRN = dr["FINAL_PRN"].ToString();
+                        var newPartbarcode = dr["PART_BARCODE"].ToString(); // Note: variable declared but not used in original logic
+                        sResult = dr["MESSAGE"].ToString();
+
+                        if (string.IsNullOrWhiteSpace(finalPRN))
+                        {
+                            return "N~Split label printing failed";
+                        }
+
+                        if (sResult.StartsWith("SUCCESS~"))
+                        {
+                            try
+                            {
+                                PCommon.mBcilLogger.LogMessage(BcilLib.EventNotice.EventTypes.evtMessage, MethodBase.GetCurrentMethod().Name,
+                                    "Kitting Label Printing Prn Page Called : Barcode  " + sResult.Split('~')[2]);
+
+                                sResult = objBL_Common.sPrintDataLabel(sPrinterIP, finalPRN, newPartbarcode, "Split", sUserID, sLineCode);
+
+                                if (sResult.StartsWith("N~") || sResult.StartsWith("ERROR~"))
+                                {
+                                    return sResult;
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                PCommon.mBcilLogger.LogMessage(BcilLib.EventNotice.EventTypes.evtData, Assembly.GetExecutingAssembly().GetName() + "::" + System.Reflection.MethodBase.GetCurrentMethod().Name, ex.Message);
+                                return "N~Qty updated but printing data not found";
+                            }
                         }
                     }
                 }

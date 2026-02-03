@@ -46,7 +46,7 @@ namespace DataLayer
             }
             catch (Exception ex)
             {
-                PCommon.mBcilLogger.LogMessage(BcilLib.EventNotice.EventTypes.evtData, 
+                PCommon.mBcilLogger.LogMessage(BcilLib.EventNotice.EventTypes.evtData,
                     Assembly.GetExecutingAssembly().GetName() + "::" + MethodBase.GetCurrentMethod().Name, ex.Message);
                 throw ex;
             }

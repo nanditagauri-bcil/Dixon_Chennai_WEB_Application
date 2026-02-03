@@ -116,6 +116,7 @@
     <Compile Include="Reports\DL_WorkOrderTraceablityReport.cs" />
     <Compile Include="Reports\DL_Yield_Summary_Report.cs" />
     <Compile Include="Reports\WIPQualityReport.cs" />
+    <Compile Include="WIP\DL_SplitReelQuality.cs" />
     <Compile Include="WIP\DL_ReelSplitPrinting.cs" />
     <Compile Include="RM\DL_CustomerReturn.cs" />
     <Compile Include="RM\DL_MaterialToMaterialTransfer.cs" />

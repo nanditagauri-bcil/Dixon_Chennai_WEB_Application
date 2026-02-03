@@ -300,6 +300,7 @@
 
                                 <li><a class="menu-link" href="../WIP/PDIQuality.aspx"><i class="fa fa-circle-o"></i>PDI Quality</a></li>
                                 <li><a class="menu-link" href="../WIP/WIP_ReelSplit.aspx"><i class="fa fa-circle-o"></i>Reel Split</a></li>
+                                <li><a class="menu-link" href="../WIP/WIPSplitReelQuality.aspx"><i class="fa fa-circle-o"></i>Reel Split Quality</a></li>
 
                                 <li class="treeview"><a href="javascript:void(0)"><i class="fa fa-circle-o"></i>Re Printing               
                                         <span class="pull-right-container">

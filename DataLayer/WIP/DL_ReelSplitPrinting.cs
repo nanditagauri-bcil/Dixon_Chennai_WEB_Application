@@ -119,32 +119,32 @@ namespace DataLayer
             return dt;
         }
 
-        public DataTable GetWIPSplitLabelDetail(string sPartBarcode, string sPrintedBy, string sSiteCode, string sLineCode)
-        {
-            DataTable dt = new DataTable();
-            try
-            {
-                oDbm.CreateParameters(5);
-                oDbm.AddParameters(0, "@TYPE", "GETSPLITLABELDETAIL");
-                oDbm.AddParameters(1, "@PARTBARCODE", sPartBarcode);
-                oDbm.AddParameters(2, "@PRINTEDBY", sPrintedBy);
-                oDbm.AddParameters(3, "@SITECODE", sSiteCode);
-                oDbm.AddParameters(4, "@LINECODE", sLineCode);
+        //public DataTable GetWIPSplitLabelDetail(string sPartBarcode, string sPrintedBy, string sSiteCode, string sLineCode)
+        //{
+        //    DataTable dt = new DataTable();
+        //    try
+        //    {
+        //        oDbm.CreateParameters(5);
+        //        oDbm.AddParameters(0, "@TYPE", "GETSPLITLABELDETAIL");
+        //        oDbm.AddParameters(1, "@PARTBARCODE", sPartBarcode);
+        //        oDbm.AddParameters(2, "@PRINTEDBY", sPrintedBy);
+        //        oDbm.AddParameters(3, "@SITECODE", sSiteCode);
+        //        oDbm.AddParameters(4, "@LINECODE", sLineCode);
 
-                oDbm.Open();
-                dt = oDbm.ExecuteDataSet(CommandType.StoredProcedure, "USP_WIP_REELSPLIT").Tables[0];
-            }
-            catch (Exception ex)
-            {
-                PCommon.mBcilLogger.LogMessage(BcilLib.EventNotice.EventTypes.evtError, System.Reflection.MethodBase.GetCurrentMethod().Name, ex.Message);
-                throw ex;
-            }
-            finally
-            {
-                oDbm.Close();
-                oDbm.Dispose();
-            }
-            return dt;
-        }
+        //        oDbm.Open();
+        //        dt = oDbm.ExecuteDataSet(CommandType.StoredProcedure, "USP_WIP_REELSPLIT").Tables[0];
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        PCommon.mBcilLogger.LogMessage(BcilLib.EventNotice.EventTypes.evtError, System.Reflection.MethodBase.GetCurrentMethod().Name, ex.Message);
+        //        throw ex;
+        //    }
+        //    finally
+        //    {
+        //        oDbm.Close();
+        //        oDbm.Dispose();
+        //    }
+        //    return dt;
+        //}
     }
 }

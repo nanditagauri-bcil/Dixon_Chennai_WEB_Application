@@ -194,6 +194,7 @@
     <Compile Include="WIP\BL_SetProfile.cs" />
     <Compile Include="Masters\BL_SolderPastConfig.cs" />
     <Compile Include="WIP\BL_SolderPastMcDetails.cs" />
+    <Compile Include="WIP\BL_SplitReelQuality.cs" />
     <Compile Include="WIP\BL_WIPCastingLabelMapping.cs" />
     <Compile Include="WIP\BL_MSNvsGBComparison.cs" />
     <Compile Include="WIP\BL_WIPAutoSampleClear.cs" />
