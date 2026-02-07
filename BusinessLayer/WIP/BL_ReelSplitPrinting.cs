@@ -98,19 +98,49 @@ namespace BusinessLayer
             return row[columnName] != DBNull.Value ? row[columnName].ToString() : string.Empty;
         }
 
+        //private void DownloadZippedPRNs(string childBarcode, string childPrn, string parentBarcode, string parentPrn,
+        //    string sUserID, string sLineCode, string sSiteCode)
+        //{
+        //    string cleanChildBarcode = CleanFileName(childBarcode.Split(' ')[0]); // Take first part if space exists
+
+        //    string zipFileName = $"BCI_{CleanFileName(sUserID)}_{CleanFileName(sLineCode)}_{CleanFileName(sSiteCode)}_{cleanChildBarcode}.zip";
+
+        //    HttpResponse response = HttpContext.Current.Response;
+        //    response.Clear();
+        //    response.Buffer = true;
+        //    response.ContentType = "application/zip";
+        //    response.AddHeader("content-disposition", $"attachment;filename={zipFileName}");
+        //    response.Cache.SetCacheability(HttpCacheability.NoCache);
+
+        //    using (MemoryStream memoryStream = new MemoryStream())
+        //    {
+        //        using (ZipArchive archive = new ZipArchive(memoryStream, ZipArchiveMode.Create, true))
+        //        {
+        //            AddFileToZip(archive, $"{CleanFileName(childBarcode)}.prn", childPrn);
+
+        //            if (!string.IsNullOrWhiteSpace(parentPrn) && !string.IsNullOrWhiteSpace(parentBarcode))
+        //            {
+        //                AddFileToZip(archive, $"{CleanFileName(parentBarcode)}.prn", parentPrn);
+        //            }
+        //        }
+
+        //        memoryStream.Position = 0;
+        //        memoryStream.CopyTo(response.OutputStream);
+        //    }
+
+        //    response.Flush();
+        //    response.SuppressContent = true;
+        //    HttpContext.Current.ApplicationInstance.CompleteRequest(); // Graceful exit
+        //}
+
         private void DownloadZippedPRNs(string childBarcode, string childPrn, string parentBarcode, string parentPrn,
             string sUserID, string sLineCode, string sSiteCode)
         {
-            string cleanChildBarcode = CleanFileName(childBarcode.Split(' ')[0]); // Take first part if space exists
+            string cleanChildBarcode = CleanFileName(childBarcode.Split(' ')[0]);
 
             string zipFileName = $"BCI_{CleanFileName(sUserID)}_{CleanFileName(sLineCode)}_{CleanFileName(sSiteCode)}_{cleanChildBarcode}.zip";
 
-            HttpResponse response = HttpContext.Current.Response;
-            response.Clear();
-            response.Buffer = true;
-            response.ContentType = "application/zip";
-            response.AddHeader("content-disposition", $"attachment;filename={zipFileName}");
-            response.Cache.SetCacheability(HttpCacheability.NoCache);
+            byte[] zipBytes;
 
             using (MemoryStream memoryStream = new MemoryStream())
             {
@@ -124,13 +154,11 @@ namespace BusinessLayer
                     }
                 }
 
-                memoryStream.Position = 0;
-                memoryStream.CopyTo(response.OutputStream);
+                zipBytes = memoryStream.ToArray();
             }
 
-            response.Flush();
-            response.SuppressContent = true;
-            HttpContext.Current.ApplicationInstance.CompleteRequest(); // Graceful exit
+            HttpContext.Current.Session["DOWNLOAD_BYTES"] = zipBytes;
+            HttpContext.Current.Session["DOWNLOAD_NAME"] = zipFileName;
         }
 
         private void AddFileToZip(ZipArchive archive, string fileName, string content)

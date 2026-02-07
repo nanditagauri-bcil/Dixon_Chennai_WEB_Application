@@ -75,7 +75,7 @@ namespace DataLayer
                 oDbm.AddParameters(5, "@LINECODE", sLineCode);
 
                 oDbm.Open();
-                dt = oDbm.ExecuteDataSet(System.Data.CommandType.StoredProcedure, "USP_WIP_REELSPLIT").Tables[0];
+                dt = oDbm.ExecuteDataSet(CommandType.StoredProcedure, "USP_WIP_REELSPLIT").Tables[0];
             }
             catch (Exception ex)
             {

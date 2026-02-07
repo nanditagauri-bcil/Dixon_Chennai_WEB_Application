@@ -47,6 +47,74 @@ namespace DIXON.INE.WIP
             }
         }
 
+        public void BindReelID()
+        {
+            try
+            {
+                txtQuantity.Text = string.Empty;
+                txtQty.Text = string.Empty;
+                blobj = new BL_ReelSplitPrinting();
+                DataTable dtPcode = blobj.BindReelBarcode(Session["SiteCode"].ToString());
+                if (dtPcode.Rows.Count > 0)
+                {
+                    clsCommon.FillComboBox(drpReelID, dtPcode, true);
+                    drpReelID.Focus();
+                }
+                else
+                {
+                    CommonHelper.ShowMessage("Part Barcode not available", msgerror, CommonHelper.MessageType.Error.ToString());
+                }
+
+            }
+            catch (Exception ex)
+            {
+                CommonHelper.ShowCustomErrorMessage(ex.Message, msgerror);
+                CommonHelper.mBcilLogger.LogMessage(BcilLib.EventNotice.EventTypes.evtError, System.Reflection.Assembly.GetExecutingAssembly().GetName() + "::" + System.Reflection.MethodBase.GetCurrentMethod().Name, ex.Message);
+            }
+        }
+
+        protected void drpReelID_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                txtQuantity.Text = string.Empty;
+                txtQty.Text = string.Empty;
+                CommonHelper.HideMessage(msginfo, msgsuccess, msgwarning, msgerror);
+                if (drpReelID.Text == "--Select Reel ID--" || drpReelID.Text == "0")
+                {
+                    txtQty.Text = string.Empty;
+                    txtQuantity.Text = string.Empty;
+                    drpReelID.Focus();
+                    return;
+                }
+                blobj = new BL_ReelSplitPrinting();
+                DataTable dt = new DataTable();
+                dt = blobj.ValidateReelBarcode(drpReelID.Text, Session["SiteCode"].ToString());
+                if (dt.Rows.Count > 0)
+                {
+                    if (dt.Rows[0][0].ToString().StartsWith("N~") || dt.Rows[0][0].ToString().StartsWith("ERROR~"))
+                    {
+                        CommonHelper.ShowMessage(dt.Rows[0][0].ToString().Split('~')[1], msgerror, CommonHelper.MessageType.Error.ToString());
+                        return;
+                    }
+                    else
+                    {
+                        Message = dt.Rows[0][0].ToString();
+                        txtQty.Text = Convert.ToString(Message.Split('~')[1]);
+                    }
+                }
+                else
+                {
+                    CommonHelper.ShowMessage("No result found, Please try again", msgerror, CommonHelper.MessageType.Error.ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                CommonHelper.ShowCustomErrorMessage(ex.Message, msgerror);
+                CommonHelper.mBcilLogger.LogMessage(BcilLib.EventNotice.EventTypes.evtError, System.Reflection.Assembly.GetExecutingAssembly().GetName() + "::" + System.Reflection.MethodBase.GetCurrentMethod().Name, ex.Message);
+            }
+        }
+
         protected void btnPrint_Click(object sender, EventArgs e)
         {
             try
@@ -105,6 +173,16 @@ namespace DIXON.INE.WIP
                         drpReelID.Items.Clear();
                         txtQty.Text = "";
                         txtQuantity.Text = "";
+                        BindReelID();
+
+                        string script = @"
+                            var iframe = document.createElement('iframe');
+                            iframe.src = '../PrintLabel.aspx';
+                            iframe.style.display = 'none';
+                            document.body.appendChild(iframe);
+                        ";
+
+                        ScriptManager.RegisterStartupScript(this, GetType(), "DownloadFile", script, true);
                     }
                 }
                 else
@@ -130,76 +208,6 @@ namespace DIXON.INE.WIP
                 txtQuantity.Text = "";
             }
             BindReelID();
-        }
-
-        public void BindReelID()
-        {
-            try
-            {
-                txtQuantity.Text = string.Empty;
-                txtQty.Text = string.Empty;
-                CommonHelper.HideMessage(msginfo, msgsuccess, msgwarning, msgerror);
-                blobj = new BL_ReelSplitPrinting();
-                DataTable dtPcode = blobj.BindReelBarcode(Session["SiteCode"].ToString());
-                if (dtPcode.Rows.Count > 0)
-                {
-                    CommonHelper.HideSuccessMessage(msginfo, msgwarning, msgerror);
-                    clsCommon.FillComboBox(drpReelID, dtPcode, true);
-                    drpReelID.Focus();
-                }
-                else
-                {
-                    CommonHelper.ShowMessage("Part Barcode not available", msgerror, CommonHelper.MessageType.Error.ToString());
-                }
-
-            }
-            catch (Exception ex)
-            {
-                CommonHelper.ShowCustomErrorMessage(ex.Message, msgerror);
-                CommonHelper.mBcilLogger.LogMessage(BcilLib.EventNotice.EventTypes.evtError, System.Reflection.Assembly.GetExecutingAssembly().GetName() + "::" + System.Reflection.MethodBase.GetCurrentMethod().Name, ex.Message);
-            }
-        }
-
-        protected void drpReelID_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                txtQuantity.Text = string.Empty;
-                txtQty.Text = string.Empty;
-                CommonHelper.HideMessage(msginfo, msgsuccess, msgwarning, msgerror);
-                if (drpReelID.Text == "--Select Reel ID--" || drpReelID.Text == "0")
-                {
-                    txtQty.Text = string.Empty;
-                    txtQuantity.Text = string.Empty;
-                    drpReelID.Focus();
-                    return;
-                }
-                blobj = new BL_ReelSplitPrinting();
-                DataTable dt = new DataTable();
-                dt = blobj.ValidateReelBarcode(drpReelID.Text, Session["SiteCode"].ToString());
-                if (dt.Rows.Count > 0)
-                {
-                    if (dt.Rows[0][0].ToString().StartsWith("N~") || dt.Rows[0][0].ToString().StartsWith("ERROR~"))
-                    {
-                        CommonHelper.ShowMessage(dt.Rows[0][0].ToString().Split('~')[1], msgerror, CommonHelper.MessageType.Error.ToString());
-                        return;
-                    }
-                    else
-                    {
-                        Message = dt.Rows[0][0].ToString();
-                        txtQty.Text = Convert.ToString(Message.Split('~')[1]);
-                    }
-                }
-                else
-                {
-                    CommonHelper.ShowMessage("No result found, Please try again", msgerror, CommonHelper.MessageType.Error.ToString());
-                }
-            }
-            catch (Exception ex)
-            {
-                CommonHelper.ShowCustomErrorMessage(ex.Message, msgerror);
-                CommonHelper.mBcilLogger.LogMessage(BcilLib.EventNotice.EventTypes.evtError, System.Reflection.Assembly.GetExecutingAssembly().GetName() + "::" + System.Reflection.MethodBase.GetCurrentMethod().Name, ex.Message);
-            }
         }
     }
 }
