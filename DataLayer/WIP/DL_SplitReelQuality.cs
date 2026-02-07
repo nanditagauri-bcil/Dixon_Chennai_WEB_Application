@@ -12,13 +12,13 @@ namespace DataLayer
             oDbm = c.SqlDBProvider();
         }
 
-        public DataTable BINDINEL_PARTNO(string sSiteCode)
+        public DataTable BindReelBarcode(string sSiteCode)
         {
             DataTable dt = new DataTable();
             try
             {
                 oDbm.CreateParameters(2);
-                oDbm.AddParameters(0, "@TYPE", "BINDPRINTINGTYPE");
+                oDbm.AddParameters(0, "@TYPE", "BINDREELBARCODE");
                 oDbm.AddParameters(1, "@SITECODE", sSiteCode);
                 oDbm.Open();
                 dt = oDbm.ExecuteDataSet(CommandType.StoredProcedure, "USP_WIP_REELSPLIT_QUALITY").Tables[0];
@@ -36,44 +36,18 @@ namespace DataLayer
             return dt;
         }
 
-        public DataTable BindReelBarcode(string sPartCode, string sSiteCode)
+        public DataTable SaveQuality(string sPartBarcode, int qualityType, string qualityBy, string sSiteCode, string sLineCode)
         {
             DataTable dt = new DataTable();
             try
             {
-                oDbm.CreateParameters(3);
-                oDbm.AddParameters(0, "@TYPE", "BINDREELBARCODE");
-                oDbm.AddParameters(1, "@PARTCODE", sPartCode);
-                oDbm.AddParameters(2, "@SITECODE", sSiteCode);
-                oDbm.Open();
-                dt = oDbm.ExecuteDataSet(System.Data.CommandType.StoredProcedure, "USP_WIP_REELSPLIT_QUALITY").Tables[0];
-            }
-            catch (Exception ex)
-            {
-                PCommon.mBcilLogger.LogMessage(BcilLib.EventNotice.EventTypes.evtError, System.Reflection.MethodBase.GetCurrentMethod().Name, ex.Message);
-                throw ex;
-            }
-            finally
-            {
-                oDbm.Close();
-                oDbm.Dispose();
-            }
-            return dt;
-        }
-
-        public DataTable SaveQuality(string sPartCode, string sPartBarcode, int qualityType, string qualityBy, string sSiteCode, string sLineCode)
-        {
-            DataTable dt = new DataTable();
-            try
-            {
-                oDbm.CreateParameters(7);
+                oDbm.CreateParameters(6);
                 oDbm.AddParameters(0, "@TYPE", "Save_Quality");
-                oDbm.AddParameters(1, "@PARTCODE", sPartCode);
-                oDbm.AddParameters(2, "@PARTBARCODE", sPartBarcode);
-                oDbm.AddParameters(3, "@QualityType", qualityType);
-                oDbm.AddParameters(4, "@PRINTEDBY", qualityBy);
-                oDbm.AddParameters(5, "@SITECODE", sSiteCode);
-                oDbm.AddParameters(6, "@LINECODE", sLineCode);
+                oDbm.AddParameters(1, "@PARTBARCODE", sPartBarcode);
+                oDbm.AddParameters(2, "@QualityType", qualityType);
+                oDbm.AddParameters(3, "@PRINTEDBY", qualityBy);
+                oDbm.AddParameters(4, "@SITECODE", sSiteCode);
+                oDbm.AddParameters(5, "@LINECODE", sLineCode);
 
                 oDbm.Open();
                 dt = oDbm.ExecuteDataSet(System.Data.CommandType.StoredProcedure, "USP_WIP_REELSPLIT_QUALITY").Tables[0];

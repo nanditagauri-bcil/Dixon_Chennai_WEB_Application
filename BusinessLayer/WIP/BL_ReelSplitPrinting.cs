@@ -2,36 +2,24 @@
 using DataLayer;
 using System;
 using System.Data;
+using System.IO;
+using System.IO.Compression;
 using System.Reflection;
+using System.Web;
 
 namespace BusinessLayer
 {
     public class BL_ReelSplitPrinting
     {
         DL_ReelSplitPrinting dlobj = null;
-        public DataTable BindINELPartNo(string sSiteCode)
-        {
-            DataTable dtINELPartNo = new DataTable();
-            dlobj = new DL_ReelSplitPrinting();
-            try
-            {
-                dtINELPartNo = dlobj.BINDINEL_PARTNO(sSiteCode);
-            }
-            catch (Exception ex)
-            {
-                PCommon.mBcilLogger.LogMessage(BcilLib.EventNotice.EventTypes.evtError, System.Reflection.MethodBase.GetCurrentMethod().Name, ex.Message);
-                throw ex;
-            }
-            return dtINELPartNo;
-        }
 
-        public DataTable BindReelBarcode(string sItemCode, string sSiteCode)
+        public DataTable BindReelBarcode(string sSiteCode)
         {
             DataTable dtReelBarcode = new DataTable();
             dlobj = new DL_ReelSplitPrinting();
             try
             {
-                dtReelBarcode = dlobj.BindReelBarcode(sItemCode, sSiteCode);
+                dtReelBarcode = dlobj.BindReelBarcode(sSiteCode);
             }
             catch (Exception ex)
             {
@@ -41,13 +29,13 @@ namespace BusinessLayer
             return dtReelBarcode;
         }
 
-        public DataTable SCANBARCODE(string sINELPartNo, string sReelID, string sSiteCode)
+        public DataTable ValidateReelBarcode(string sReelID, string sSiteCode)
         {
             DataTable dtReelBarcode = new DataTable();
             dlobj = new DL_ReelSplitPrinting();
             try
             {
-                dtReelBarcode = dlobj.ValidateReelBarcode(sINELPartNo, sReelID, sSiteCode);
+                dtReelBarcode = dlobj.ValidateReelBarcode(sReelID, sSiteCode);
             }
             catch (Exception ex)
             {
@@ -57,137 +45,107 @@ namespace BusinessLayer
             return dtReelBarcode;
         }
 
-        //public string ChildLabelPrint(string _PartCode, string _ReelID, string sPrintedBy, decimal dUpdatedQty, string sPrinterIP,
-        //    string sPrinterPort, string sUserID, string sLineCode, string sSiteCode)
-        //{
-        //    dlobj = new DL_ReelSplitPrinting();
-        //    string sResult = string.Empty;
-
-        //    BL_Common objBL_Common = new BL_Common();
-        //    try
-        //    {
-        //        DataTable dtSplitResult = dlobj.ChildLabelPrinting(_PartCode, _ReelID, dUpdatedQty, sPrintedBy, sSiteCode, sLineCode);
-
-        //        if (dtSplitResult != null && dtSplitResult.Rows.Count > 0)
-        //        {
-        //            var dbMessage = dtSplitResult.Rows[0][0].ToString();
-
-        //            if (string.IsNullOrWhiteSpace(dbMessage))
-        //            {
-        //                return "N~Failed to generated split label";
-        //            }
-
-        //            if (dbMessage.ToUpper().StartsWith("N~") || dbMessage.ToUpper().StartsWith("ERROR~"))
-        //            {
-        //                return dbMessage;
-        //            }
-
-        //            var finalPRN = dtSplitResult.Rows[0]["FINAL_PRN"].ToString();
-        //            var newPartbarcode = dtSplitResult.Rows[0]["PART_BARCODE"].ToString();
-        //            sResult = dtSplitResult.Rows[0]["MESSAGE"].ToString();
-
-        //            if (string.IsNullOrWhiteSpace(finalPRN))
-        //            {
-        //                return "N~Split label printing failed";
-        //            }
-
-        //            if (sResult.StartsWith("SUCCESS~"))
-        //            {
-        //                try
-        //                {
-        //                    PCommon.mBcilLogger.LogMessage(BcilLib.EventNotice.EventTypes.evtMessage, MethodBase.GetCurrentMethod().Name, "Kitting Label Printing Prn Page Called : Barcode  " + sResult.Split('~')[2]);
-
-        //                    sResult = objBL_Common.sPrintDataLabel(sPrinterIP, finalPRN, _ReelID, "Split", sUserID, sLineCode);
-        //                }
-        //                catch (Exception ex)
-        //                {
-        //                    PCommon.mBcilLogger.LogMessage(BcilLib.EventNotice.EventTypes.evtData, Assembly.GetExecutingAssembly().GetName() + "::" + System.Reflection.MethodBase.GetCurrentMethod().Name, ex.Message);
-        //                    sResult = "N~Qty updated but printing data not found";
-        //                }
-        //            }
-        //        }
-        //        else
-        //        {
-        //            sResult = "N~No result found, Please try again";
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        PCommon.mBcilLogger.LogMessage(BcilLib.EventNotice.EventTypes.evtData, Assembly.GetExecutingAssembly().GetName() + "::" + MethodBase.GetCurrentMethod().Name, ex.Message);
-        //        sResult = "ERROR~" + ex.Message;
-        //    }
-        //    return sResult;
-        //}
-
-        public string ChildLabelPrint(string _PartCode, string _ReelID, string sPrintedBy, decimal dUpdatedQty, string sPrinterIP, string sPrinterPort,
-            string sUserID, string sLineCode, string sSiteCode)
+        public string ChildLabelPrint(string _ReelID, string sPrintedBy, decimal dUpdatedQty, string sLineCode, string sSiteCode)
         {
             dlobj = new DL_ReelSplitPrinting();
             string sResult = string.Empty;
 
-            BL_Common objBL_Common = new BL_Common();
             try
             {
-                DataTable dtSplitResult = dlobj.ChildLabelPrinting(_PartCode, _ReelID, dUpdatedQty, sPrintedBy, sSiteCode, sLineCode);
+                DataTable dt = dlobj.ChildLabelPrinting(_ReelID, dUpdatedQty, sPrintedBy, sSiteCode, sLineCode);
 
-                if (dtSplitResult != null && dtSplitResult.Rows.Count > 0)
+                if (dt == null || dt.Rows.Count == 0)
                 {
-                    foreach (DataRow dr in dtSplitResult.Rows)
-                    {
-                        var dbMessage = dr[0].ToString();
-
-                        if (string.IsNullOrWhiteSpace(dbMessage))
-                        {
-                            return "N~Failed to generated split label";
-                        }
-
-                        if (dbMessage.ToUpper().StartsWith("N~") || dbMessage.ToUpper().StartsWith("ERROR~"))
-                        {
-                            return dbMessage;
-                        }
-
-                        var finalPRN = dr["FINAL_PRN"].ToString();
-                        var newPartbarcode = dr["PART_BARCODE"].ToString(); // Note: variable declared but not used in original logic
-                        sResult = dr["MESSAGE"].ToString();
-
-                        if (string.IsNullOrWhiteSpace(finalPRN))
-                        {
-                            return "N~Split label printing failed";
-                        }
-
-                        if (sResult.StartsWith("SUCCESS~"))
-                        {
-                            try
-                            {
-                                PCommon.mBcilLogger.LogMessage(BcilLib.EventNotice.EventTypes.evtMessage, MethodBase.GetCurrentMethod().Name,
-                                    "Kitting Label Printing Prn Page Called : Barcode  " + sResult.Split('~')[2]);
-
-                                sResult = objBL_Common.sPrintDataLabel(sPrinterIP, finalPRN, newPartbarcode, "Split", sUserID, sLineCode);
-
-                                if (sResult.StartsWith("N~") || sResult.StartsWith("ERROR~"))
-                                {
-                                    return sResult;
-                                }
-                            }
-                            catch (Exception ex)
-                            {
-                                PCommon.mBcilLogger.LogMessage(BcilLib.EventNotice.EventTypes.evtData, Assembly.GetExecutingAssembly().GetName() + "::" + System.Reflection.MethodBase.GetCurrentMethod().Name, ex.Message);
-                                return "N~Qty updated but printing data not found";
-                            }
-                        }
-                    }
+                    return "N~No result returned from server. Please try again.";
                 }
-                else
+
+                DataRow row = dt.Rows[0];
+
+                sResult = row[0].ToString();
+                if (sResult.StartsWith("N~") || sResult.StartsWith("ERROR~"))
                 {
-                    sResult = "N~No result found, Please try again";
+                    return sResult;
                 }
+
+                sResult = SafeGetString(row, "RESULT");
+                string childBarcode = SafeGetString(row, "CHILD_BARCODE");
+                string childPrn = SafeGetString(row, "CHILD_PRN");
+                string parentBarcode = SafeGetString(row, "PARENT_BARCODE");
+                string parentPrn = SafeGetString(row, "PARENT_PRN");
+
+                if (string.IsNullOrWhiteSpace(childBarcode) || string.IsNullOrWhiteSpace(childPrn))
+                {
+                    return "N~Split successful, but label data (Child) is missing";
+                }
+
+                PCommon.mBcilLogger.LogMessage(BcilLib.EventNotice.EventTypes.evtMessage, MethodBase.GetCurrentMethod().Name,
+                    $"Split Success. Child: {childBarcode}, Parent: {parentBarcode}");
+
+                DownloadZippedPRNs(childBarcode, childPrn, parentBarcode, parentPrn, sPrintedBy, sLineCode, sSiteCode);
             }
             catch (Exception ex)
             {
                 PCommon.mBcilLogger.LogMessage(BcilLib.EventNotice.EventTypes.evtData, Assembly.GetExecutingAssembly().GetName() + "::" + MethodBase.GetCurrentMethod().Name, ex.Message);
                 sResult = "ERROR~" + ex.Message;
             }
+
             return sResult;
+        }
+
+        private string SafeGetString(DataRow row, string columnName)
+        {
+            if (!row.Table.Columns.Contains(columnName)) return string.Empty;
+            return row[columnName] != DBNull.Value ? row[columnName].ToString() : string.Empty;
+        }
+
+        private void DownloadZippedPRNs(string childBarcode, string childPrn, string parentBarcode, string parentPrn,
+            string sUserID, string sLineCode, string sSiteCode)
+        {
+            string cleanChildBarcode = CleanFileName(childBarcode.Split(' ')[0]); // Take first part if space exists
+
+            string zipFileName = $"BCI_{CleanFileName(sUserID)}_{CleanFileName(sLineCode)}_{CleanFileName(sSiteCode)}_{cleanChildBarcode}.zip";
+
+            HttpResponse response = HttpContext.Current.Response;
+            response.Clear();
+            response.Buffer = true;
+            response.ContentType = "application/zip";
+            response.AddHeader("content-disposition", $"attachment;filename={zipFileName}");
+            response.Cache.SetCacheability(HttpCacheability.NoCache);
+
+            using (MemoryStream memoryStream = new MemoryStream())
+            {
+                using (ZipArchive archive = new ZipArchive(memoryStream, ZipArchiveMode.Create, true))
+                {
+                    AddFileToZip(archive, $"{CleanFileName(childBarcode)}.prn", childPrn);
+
+                    if (!string.IsNullOrWhiteSpace(parentPrn) && !string.IsNullOrWhiteSpace(parentBarcode))
+                    {
+                        AddFileToZip(archive, $"{CleanFileName(parentBarcode)}.prn", parentPrn);
+                    }
+                }
+
+                memoryStream.Position = 0;
+                memoryStream.CopyTo(response.OutputStream);
+            }
+
+            response.Flush();
+            response.SuppressContent = true;
+            HttpContext.Current.ApplicationInstance.CompleteRequest(); // Graceful exit
+        }
+
+        private void AddFileToZip(ZipArchive archive, string fileName, string content)
+        {
+            var entry = archive.CreateEntry(fileName);
+            using (var streamWriter = new StreamWriter(entry.Open()))
+            {
+                streamWriter.Write(content);
+            }
+        }
+
+        private string CleanFileName(string name)
+        {
+            if (string.IsNullOrEmpty(name)) return "Unknown";
+            return name.Replace('/', '-').Replace(':', '-').Replace('*', '-').Replace('?', '-').Replace('\\', '-').Trim();
         }
     }
 }

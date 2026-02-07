@@ -60,13 +60,13 @@ namespace DIXON.INE.WIP
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl msgsuccess;
 
         /// <summary>
-        /// drpItemCode control.
+        /// drpReelID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList drpItemCode;
+        protected global::System.Web.UI.WebControls.DropDownList drpReelID;
 
         /// <summary>
         /// txtQty control.
@@ -76,33 +76,6 @@ namespace DIXON.INE.WIP
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtQty;
-
-        /// <summary>
-        /// dvPrintergrup control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvPrintergrup;
-
-        /// <summary>
-        /// drpPrinterName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList drpPrinterName;
-
-        /// <summary>
-        /// drpReelID control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList drpReelID;
 
         /// <summary>
         /// txtQuantity control.
@@ -130,32 +103,5 @@ namespace DIXON.INE.WIP
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnReset;
-
-        /// <summary>
-        /// hidRNO control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hidRNO;
-
-        /// <summary>
-        /// hidqty control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hidqty;
-
-        /// <summary>
-        /// hidEXPDATE control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hidEXPDATE;
     }
 }

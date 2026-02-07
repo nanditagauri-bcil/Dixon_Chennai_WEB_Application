@@ -58,14 +58,6 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Part Code : </label>
-                                <asp:DropDownList ID="drpItemCode" runat="server" class="form-control select2"
-                                    Style="width: 100%;" AutoPostBack="true" OnSelectedIndexChanged="drpItemCode_SelectedIndexChanged">
-                                </asp:DropDownList>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
                                 <label>Part Barcode : </label>
                                 <asp:DropDownList ID="drpReelID" runat="server" class="form-control select2" AutoPostBack="true"
                                     Style="width: 100%;">

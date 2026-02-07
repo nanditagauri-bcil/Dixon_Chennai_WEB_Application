@@ -16,8 +16,6 @@
             return true;
         }
     </script>
-    <!-- Control Sidebar -->
-    <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <div id="msgdiv" runat="server">
             <div id='msgerror' runat='server' style="display: none;" class="alert alert-danger alert-dismissable">
@@ -45,41 +43,16 @@
                     <i class="icon fa fa-check"></i></h4>
             </div>
         </div>
-        <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>Split Reel</h1>
-
         </section>
-        <!-- Main content -->
         <section class="content">
-            <!-- SELECT2 EXAMPLE -->
             <div class="box box-default">
                 <div class="box-header with-border">
                     <h3 class="box-title">WIP Reel Split</h3>
-
                 </div>
-                <!-- /.box-header -->
                 <div class="box-body">
                     <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Part Code : </label>
-                                <asp:DropDownList ID="drpItemCode" runat="server" class="form-control select2"
-                                    Style="width: 100%;" AutoPostBack="true" OnSelectedIndexChanged="drpItemCode_SelectedIndexChanged">
-                                </asp:DropDownList>
-                            </div>
-                            <div class="form-group">
-                                <label>Quantity :  </label>
-                                <asp:TextBox ID="txtQty" runat="server" class="form-control" ReadOnly="true"
-                                    Style="width: 100%;"></asp:TextBox>
-                            </div>
-                            <div class="form-group" id="dvPrintergrup" runat="server">
-                                <label>Printer Name</label>
-                                <asp:DropDownList ID="drpPrinterName" runat="server" class="form-control select2" Style="width: 100%;"></asp:DropDownList>
-                            </div>
-                            <!-- /.form-group -->
-                        </div>
-                        <!-- /.col -->
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Part Barcode : </label>
@@ -88,7 +61,13 @@
                                 </asp:DropDownList>
                             </div>
 
-                            <!-- /.form-group -->
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Quantity :  </label>
+                                <asp:TextBox ID="txtQty" runat="server" class="form-control" ReadOnly="true"
+                                    Style="width: 100%;"></asp:TextBox>
+                            </div>
                             <div class="form-group">
                                 <label>Enter Quantity : </label>
                                 <asp:TextBox ID="txtQuantity" runat="server" class="form-control" placeholder="Enter Quantity" Style="width: 100%;" MaxLength="5" onkeypress="javascript:return isNumber(event)"></asp:TextBox>
@@ -100,17 +79,9 @@
                                 <asp:Button ID="btnReset" runat="server" UseSubmitBehavior="false" Text="Reset" class="btn btn-primary btn-block btn-flat" OnClick="btnReset_Click" />
                             </div>
                         </div>
-                        <!-- /.col -->
                     </div>
-                    <br />
-                    <br />
-                    <asp:HiddenField ID="hidRNO" runat="server" />
-                    <asp:HiddenField ID="hidqty" runat="server" />
-                    <asp:HiddenField ID="hidEXPDATE" runat="server" />
-                    <!-- /.row -->
                 </div>
             </div>
         </section>
-        <!-- /.content -->
     </div>
 </asp:Content>
