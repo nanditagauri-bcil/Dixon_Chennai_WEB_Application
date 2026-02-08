@@ -3410,6 +3410,7 @@
     <Content Include="INE\Reports\ASNWifiAPSAPReport.aspx" />
     <Content Include="INE\Reports\BOMMasterDataReport.aspx" />
     <Content Include="INE\Reports\QCVerificationReport.aspx" />
+    <Content Include="INE\Reports\WIPReelSplitReport.aspx" />
     <Content Include="INE\Reports\WIPRsnAndMacIDMappingReport.aspx" />
     <Content Include="INE\Reports\WallMountKitReport.aspx" />
     <Content Include="INE\Reports\MSNvsSecPackingComparisonReport.aspx" />
@@ -4427,6 +4428,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helper\DynamicRDLCGenerator.cs" />
     <Compile Include="INE\Masters\AccessoresScanning.aspx.cs">
       <DependentUpon>AccessoresScanning.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -4601,6 +4603,13 @@
     </Compile>
     <Compile Include="INE\Reports\QCVerificationReport.aspx.designer.cs">
       <DependentUpon>QCVerificationReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="INE\Reports\WIPReelSplitReport.aspx.cs">
+      <DependentUpon>WIPReelSplitReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="INE\Reports\WIPReelSplitReport.aspx.designer.cs">
+      <DependentUpon>WIPReelSplitReport.aspx</DependentUpon>
     </Compile>
     <Compile Include="INE\Reports\WIPRsnAndMacIDMappingReport.aspx.cs">
       <DependentUpon>WIPRsnAndMacIDMappingReport.aspx</DependentUpon>

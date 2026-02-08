@@ -76,6 +76,7 @@
     <Compile Include="Reports\DL_ASNReport.cs" />
     <Compile Include="Reports\DeviceVsGBComparisonReportDL.cs" />
     <Compile Include="Reports\DL_QCVerificationReport.cs" />
+    <Compile Include="Reports\DL_WIPReelSplitReport.cs" />
     <Compile Include="Reports\DL_WIPRsn_And_MacID_Mapping_Report.cs" />
     <Compile Include="Reports\DL_WallMountKitReport.cs" />
     <Compile Include="Reports\DL_MSNvsSecPackingComparisonReport.cs" />

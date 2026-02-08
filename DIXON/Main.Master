@@ -424,6 +424,7 @@
                                 <li><a class="menu-link" href="../Reports/WIPReworkReport.aspx"><i class="fa fa-circle-o"></i>WIP Rework Report</a></li>
                                 <li><a class="menu-link" href="../Reports/WIPPrimaryPackingReport.aspx"><i class="fa fa-circle-o"></i>Primary Packing</a></li>
                                 <li><a class="menu-link" href="../Reports/WIPRsnAndMacIDMappingReport.aspx"><i class="fa fa-circle-o"></i>WIP Rsn And MacID Mapping Report</a></li>
+                                <li><a class="menu-link" href="../Reports/WIPReelSplitReport.aspx"><i class="fa fa-circle-o"></i>WIP Reel Split Report</a></li>
                                 <li><%--<a class="menu-link" href="../Reports/RMWorkOrderReport.aspx"><i class="fa fa-circle-o"></i>Work Order Traceability Report</a>--%></li>
                                 <%--<li><a class="menu-link" href="../Reports/WIPQualityReport.aspx"><i class="fa fa-circle-o"></i>FG Quality Report</a></li>--%>
                                 <%--<li><a class="menu-link" href="../Reports/StageWisePCBreportNew.aspx"><i class="fa fa-circle-o"></i>Machine Wise PCB Report</a></li>
