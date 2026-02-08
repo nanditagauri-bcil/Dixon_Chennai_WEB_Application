@@ -13,6 +13,19 @@ namespace DIXON.INE.Reports
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["usertype"].ToString() != "ADMIN")
+            {
+                string _strRights = CommonHelper.GetRights("WIP SPLIT REEL REPORT", (DataTable)Session["USER_RIGHTS"]);
+                CommonHelper._strRights = _strRights.Split('^');
+                if (CommonHelper._strRights[0] == "0")  //Check view rights
+                {
+                    Response.Redirect("~/NoAccess/UnAuthorized.aspx");
+                }
+            }
+            Response.AddHeader("Cache-Control", "no-cache, no-store, max-age=0, must-revalidate");
+            Response.AddHeader("Pragma", "no-cache");
+            Response.AddHeader("Expires", "0");
+
             if (!IsPostBack)
             {
                 BindReportType();
@@ -49,6 +62,7 @@ namespace DIXON.INE.Reports
         {
             try
             {
+                CommonHelper.HideMessage(msginfo, msgsuccess, msgwarning, msgerror);
                 if (drpReportType.SelectedIndex == 0)
                 {
                     CommonHelper.ShowMessage("Please select a Report Type.", msgerror, CommonHelper.MessageType.Error.ToString());

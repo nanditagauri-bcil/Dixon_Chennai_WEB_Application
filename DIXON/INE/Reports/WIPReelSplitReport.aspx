@@ -88,11 +88,25 @@
                     </div>
 
                     <br />
-                    <div class="row">
+                  <%--  <div class="row">
                         <div class="col-md-12">
                             <rsweb:ReportViewer ID="rvSplitHistory" runat="server" Width="100%" Height="800px"
                                 AsyncRendering="False" SizeToReportContent="False" ZoomMode="PageWidth" ShowPrintButton="true">
                             </rsweb:ReportViewer>
+                        </div>
+                    </div>--%>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div style="overflow: auto; max-height: 75vh; border: 1px solid #ddd;">
+                                <rsweb:ReportViewer ID="rvSplitHistory" runat="server"
+                                    Width="100%" Height="100%"
+                                    AsyncRendering="False"
+                                    SizeToReportContent="True"
+                                    ZoomMode="PageWidth"
+                                    ShowPrintButton="true">
+                                </rsweb:ReportViewer>
+                            </div>
                         </div>
                     </div>
                 </div>

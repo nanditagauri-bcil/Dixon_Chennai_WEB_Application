@@ -13,76 +13,76 @@ namespace DIXON.Helper
 
             // 1. Page Settings (A4 Landscape)
             rdl.Append(@"<?xml version='1.0' encoding='utf-8'?>
-<Report xmlns='http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition' xmlns:rd='http://schemas.microsoft.com/SQLServer/reporting/reportdesigner'>
-  <Width>40cm</Width>
-  <Page>
-    <PageHeight>21cm</PageHeight>
-    <PageWidth>29.7cm</PageWidth>
-    <LeftMargin>0.5cm</LeftMargin>
-    <RightMargin>0.5cm</RightMargin>
-    <TopMargin>0.5cm</TopMargin>
-    <BottomMargin>0.5cm</BottomMargin>
-  </Page>
-  <AutoRefresh>0</AutoRefresh>
-  <DataSources>
-    <DataSource Name='DynamicDS'>
-      <ConnectionProperties>
-        <DataProvider>System.Data.DataSet</DataProvider>
-        <ConnectString>/* Local Connection */</ConnectString>
-      </ConnectionProperties>
-    </DataSource>
-  </DataSources>");
+            <Report xmlns='http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition' xmlns:rd='http://schemas.microsoft.com/SQLServer/reporting/reportdesigner'>
+                <Width>40cm</Width>
+                <Page>
+                <PageHeight>21cm</PageHeight>
+                <PageWidth>29.7cm</PageWidth>
+                <LeftMargin>0.5cm</LeftMargin>
+                <RightMargin>0.5cm</RightMargin>
+                <TopMargin>0.5cm</TopMargin>
+                <BottomMargin>0.5cm</BottomMargin>
+                </Page>
+                <AutoRefresh>0</AutoRefresh>
+                <DataSources>
+                <DataSource Name='DynamicDS'>
+                    <ConnectionProperties>
+                    <DataProvider>System.Data.DataSet</DataProvider>
+                    <ConnectString>/* Local Connection */</ConnectString>
+                    </ConnectionProperties>
+                </DataSource>
+                </DataSources>");
 
             // 2. DataSets
+            // We ensure the Field Name is clean (Original_Reel) but map it to the actual Data Column
             rdl.Append(@"<DataSets><DataSet Name='DataSet1'><Query><DataSourceName>DynamicDS</DataSourceName><CommandText>/* CMD */</CommandText></Query><Fields>");
             foreach (DataColumn col in dt.Columns)
             {
-                string colName = CleanName(col.ColumnName);
-                rdl.AppendFormat(@"<Field Name='{0}'><DataField>{0}</DataField><rd:TypeName>{1}</rd:TypeName></Field>",
-                    colName, col.DataType.ToString());
+                string internalName = CleanName(col.ColumnName);
+                rdl.AppendFormat(@"<Field Name='{0}'><DataField>{1}</DataField><rd:TypeName>{2}</rd:TypeName></Field>",
+                    internalName, col.ColumnName, col.DataType.ToString());
             }
             rdl.Append(@"</Fields></DataSet></DataSets>");
 
             // 3. Parameters
             rdl.Append(@"<ReportParameters>
-    <ReportParameter Name='rptLogo'><DataType>String</DataType><Nullable>true</Nullable><AllowBlank>true</AllowBlank><Prompt>ReportLogo</Prompt></ReportParameter>
-    <ReportParameter Name='rptTitle'><DataType>String</DataType><Nullable>true</Nullable><AllowBlank>true</AllowBlank><Prompt>ReportTitle</Prompt></ReportParameter>
-    <ReportParameter Name='rptGeneratedBy'><DataType>String</DataType><Nullable>true</Nullable><AllowBlank>true</AllowBlank><Prompt>GeneratedBy</Prompt></ReportParameter>
-    <ReportParameter Name='rptGeneratedOn'><DataType>String</DataType><Nullable>true</Nullable><AllowBlank>true</AllowBlank><Prompt>GeneratedOn</Prompt></ReportParameter>
-  </ReportParameters>");
+                <ReportParameter Name='rptLogo'><DataType>String</DataType><Nullable>true</Nullable><AllowBlank>true</AllowBlank><Prompt>ReportLogo</Prompt></ReportParameter>
+                <ReportParameter Name='rptTitle'><DataType>String</DataType><Nullable>true</Nullable><AllowBlank>true</AllowBlank><Prompt>ReportTitle</Prompt></ReportParameter>
+                <ReportParameter Name='rptGeneratedBy'><DataType>String</DataType><Nullable>true</Nullable><AllowBlank>true</AllowBlank><Prompt>GeneratedBy</Prompt></ReportParameter>
+                <ReportParameter Name='rptGeneratedOn'><DataType>String</DataType><Nullable>true</Nullable><AllowBlank>true</AllowBlank><Prompt>GeneratedOn</Prompt></ReportParameter>
+              </ReportParameters>");
 
             // 4. Body
             rdl.Append(@"<Body><ReportItems>");
 
             // --- Header Section ---
             rdl.Append(@"<Rectangle Name='HeaderRect'>
-          <ReportItems>
-             <Image Name='rptLogoImg'>
-              <Source>External</Source>
-              <Value>=Parameters!rptLogo.Value</Value>
-              <Sizing>Fit</Sizing>
-              <Height>1.5cm</Height>
-              <Width>4cm</Width>
-              <Style><Border><Style>None</Style></Border></Style>
-            </Image>
+              <ReportItems>
+                 <Image Name='rptLogoImg'>
+                  <Source>External</Source>
+                  <Value>=Parameters!rptLogo.Value</Value>
+                  <Sizing>Fit</Sizing>
+                  <Height>1.5cm</Height>
+                  <Width>4cm</Width>
+                  <Style><Border><Style>None</Style></Border></Style>
+                </Image>
             
-            <Textbox Name='txtTitle'>
-              <Paragraphs><Paragraph><TextRuns><TextRun><Value>=Parameters!rptTitle.Value</Value><Style><FontSize>16pt</FontSize><FontWeight>Bold</FontWeight></Style></TextRun></TextRuns><Style><TextAlign>Center</TextAlign></Style></Paragraph></Paragraphs>
-              <Left>5cm</Left><Height>1.5cm</Height><Width>15cm</Width><Style><VerticalAlign>Middle</VerticalAlign></Style>
-            </Textbox>
+                <Textbox Name='txtTitle'>
+                  <Paragraphs><Paragraph><TextRuns><TextRun><Value>=Parameters!rptTitle.Value</Value><Style><FontSize>16pt</FontSize><FontWeight>Bold</FontWeight></Style></TextRun></TextRuns><Style><TextAlign>Center</TextAlign></Style></Paragraph></Paragraphs>
+                  <Left>5cm</Left><Height>1.5cm</Height><Width>15cm</Width><Style><VerticalAlign>Middle</VerticalAlign></Style>
+                </Textbox>
 
-            <Textbox Name='txtGenBy'>
-              <Paragraphs><Paragraph><TextRuns><TextRun><Value>=""Generated By: "" &amp; Parameters!rptGeneratedBy.Value &amp; vbCrLf &amp; ""On: "" &amp; Parameters!rptGeneratedOn.Value</Value><Style><FontSize>8pt</FontSize></Style></TextRun></TextRuns><Style><TextAlign>Right</TextAlign></Style></Paragraph></Paragraphs>
-              <Left>22cm</Left><Height>1.5cm</Height><Width>6cm</Width>
-            </Textbox>
-          </ReportItems>
-          <Height>1.8cm</Height><Width>28cm</Width>
-        </Rectangle>");
+                <Textbox Name='txtGenBy'>
+                  <Paragraphs><Paragraph><TextRuns><TextRun><Value>=""Generated By: "" &amp; Parameters!rptGeneratedBy.Value &amp; vbCrLf &amp; ""On: "" &amp; Parameters!rptGeneratedOn.Value</Value><Style><FontSize>8pt</FontSize></Style></TextRun></TextRuns><Style><TextAlign>Right</TextAlign></Style></Paragraph></Paragraphs>
+                  <Left>22cm</Left><Height>1.5cm</Height><Width>6cm</Width>
+                </Textbox>
+              </ReportItems>
+              <Height>1.8cm</Height><Width>28cm</Width>
+            </Rectangle>");
 
             // --- Table (Tablix) ---
             rdl.Append(@"<Tablix Name='Tablix1'><Top>2cm</Top><Left>0cm</Left><DataSetName>DataSet1</DataSetName>");
 
-            // Fixed: Increased column width to 4.5cm for better spacing
             rdl.Append(@"<TablixBody><TablixColumns>");
             foreach (DataColumn col in dt.Columns)
             {
@@ -92,25 +92,33 @@ namespace DIXON.Helper
 
             rdl.Append(@"<TablixRows>");
 
-            // Header Row
+            // =====================================================================================
+            // HEADER ROW (The Fix is Here)
+            // =====================================================================================
             rdl.Append(@"<TablixRow><Height>0.8cm</Height><TablixCells>");
             foreach (DataColumn col in dt.Columns)
             {
+                // 1. Get the Safe Name for the ID (H_Original_Reel)
+                string safeName = CleanName(col.ColumnName);
+
+                // 2. Get the Display Name (Original Reel) by replacing underscores with spaces
+                string displayName = col.ColumnName.Replace("_", " ");
+
                 rdl.AppendFormat(@"<TablixCell><CellContents><Textbox Name='H_{0}'><Paragraphs><Paragraph><TextRuns><TextRun><Value>{1}</Value><Style><FontWeight>Bold</FontWeight></Style></TextRun></TextRuns><Style><TextAlign>Center</TextAlign></Style></Paragraph></Paragraphs><Style><Border><Color>LightGrey</Color><Style>Solid</Style></Border><BackgroundColor>#efefef</BackgroundColor><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom></Style></Textbox></CellContents></TablixCell>",
-                    CleanName(col.ColumnName), col.ColumnName);
+                    safeName, displayName);
             }
             rdl.Append(@"</TablixCells></TablixRow>");
 
-            // Detail Row (Fixed: Added CanGrow=true and removed fixed Height)
+            // Detail Row
             rdl.Append(@"<TablixRow><Height>0.6cm</Height><TablixCells>");
             foreach (DataColumn col in dt.Columns)
             {
-                string colName = CleanName(col.ColumnName);
+                string internalName = CleanName(col.ColumnName);
                 rdl.AppendFormat(@"<TablixCell><CellContents><Textbox Name='D_{0}'>" +
-                    @"<CanGrow>true</CanGrow><CanShrink>true</CanShrink>" + // Allows text wrapping
+                    @"<CanGrow>true</CanGrow><CanShrink>true</CanShrink>" +
                     @"<Paragraphs><Paragraph><TextRuns><TextRun><Value>=Fields!{0}.Value</Value><Style /></TextRun></TextRuns><Style><TextAlign>Left</TextAlign></Style></Paragraph></Paragraphs>" +
                     @"<Style><Border><Color>LightGrey</Color><Style>Solid</Style></Border><PaddingLeft>2pt</PaddingLeft><PaddingRight>2pt</PaddingRight><PaddingTop>2pt</PaddingTop><PaddingBottom>2pt</PaddingBottom></Style>" +
-                    @"</Textbox></CellContents></TablixCell>", colName);
+                    @"</Textbox></CellContents></TablixCell>", internalName);
             }
             rdl.Append(@"</TablixCells></TablixRow>");
 
