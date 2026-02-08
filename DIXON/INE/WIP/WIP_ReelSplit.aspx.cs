@@ -22,7 +22,7 @@ namespace DIXON.INE.WIP
         {
             if (Session["usertype"].ToString() != "ADMIN")
             {
-                string _strRights = CommonHelper.GetRights("SPLITREEL", (DataTable)Session["USER_RIGHTS"]);
+                string _strRights = CommonHelper.GetRights("WIP REEL SPLIT", (DataTable)Session["USER_RIGHTS"]);
                 CommonHelper._strRights = _strRights.Split('^');
                 if (CommonHelper._strRights[0] == "0")  //Check view rights
                 {

@@ -45,7 +45,7 @@ namespace DIXON.INE.WIP
         {
             if (Session["usertype"] == null || Session["usertype"].ToString() != "ADMIN")
             {
-                string _strRights = CommonHelper.GetRights("SPLITREELQUALITY", (DataTable)Session["USER_RIGHTS"]);
+                string _strRights = CommonHelper.GetRights("WIP SPLIT REEL QUALITY", (DataTable)Session["USER_RIGHTS"]);
                 CommonHelper._strRights = _strRights.Split('^');
                 if (CommonHelper._strRights[0] == "0")  
                 {
