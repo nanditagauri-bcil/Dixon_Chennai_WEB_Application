@@ -13,39 +13,14 @@ namespace DataLayer.Reports
             oDbm = c.SqlDBProvider();
         }
 
-        //public DataTable BindPartCode()
-        //{
-        //    DataTable dtResult = new DataTable();
-        //    try
-        //    {
-        //        oDbm.Open();
-        //        oDbm.CreateParameters(1);
-        //        oDbm.AddParameters(0, "@TYPE", "BINDPARTCODE");
-        //        dtResult = oDbm.ExecuteDataSet(CommandType.StoredProcedure, "USP_WIP_GET_SPLIT_HISTORY").Tables[0];
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        PCommon.mBcilLogger.LogMessage(BcilLib.EventNotice.EventTypes.evtError, System.Reflection.MethodBase.GetCurrentMethod().Name, ex.Message);
-        //        throw ex;
-        //    }
-        //    finally
-        //    {
-        //        oDbm.Close();
-        //        oDbm.Dispose();
-        //    }
-        //    return dtResult;
-        //}
-
-        public DataTable GetReport(string fromDate, string toDate, string sPartCode)
+        public DataTable GetReportTypes()
         {
             DataTable dtResult = new DataTable();
             try
             {
                 oDbm.Open();
-                oDbm.CreateParameters(3);
-                oDbm.AddParameters(0, "@FROMDATE", fromDate);
-                oDbm.AddParameters(1, "@TODATE", toDate);
-                oDbm.AddParameters(2, "@BARCODE", sPartCode);
+                oDbm.CreateParameters(1);
+                oDbm.AddParameters(0, "@TYPE", "GET_REPORT_TYPE");
                 dtResult = oDbm.ExecuteDataSet(CommandType.StoredProcedure, "USP_WIP_GET_SPLIT_HISTORY").Tables[0];
             }
             catch (Exception ex)
@@ -60,5 +35,33 @@ namespace DataLayer.Reports
             }
             return dtResult;
         }
+
+        public DataTable GetReport(string fromDate, string toDate, string sPartCode, string reporType)
+        {
+            DataTable dtResult = new DataTable();
+            try
+            {
+                oDbm.Open();
+                oDbm.CreateParameters(5);
+                oDbm.AddParameters(0, "@TYPE", "GET_REPORT");
+                oDbm.AddParameters(1, "@FROMDATE", fromDate);
+                oDbm.AddParameters(2, "@TODATE", toDate);
+                oDbm.AddParameters(3, "@BARCODE", sPartCode);
+                oDbm.AddParameters(4, "@REPORT_TYPE", reporType);
+                dtResult = oDbm.ExecuteDataSet(CommandType.StoredProcedure, "USP_WIP_GET_SPLIT_HISTORY").Tables[0];
+            }
+            catch (Exception ex)
+            {
+                PCommon.mBcilLogger.LogMessage(BcilLib.EventNotice.EventTypes.evtError, System.Reflection.MethodBase.GetCurrentMethod().Name, ex.Message);
+                throw ex;
+            }
+            finally
+            {
+                oDbm.Close();
+                oDbm.Dispose();
+            }
+            return dtResult;
+        }
+
     }
 }

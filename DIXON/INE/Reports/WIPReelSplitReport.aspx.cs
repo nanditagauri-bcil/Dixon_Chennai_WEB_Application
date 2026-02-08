@@ -4,21 +4,44 @@ using DIXON.Helper;
 using Microsoft.Reporting.WebForms;
 using System;
 using System.Data;
-using System.Web.UI.WebControls;
 
 namespace DIXON.INE.Reports
 {
     public partial class WIPReelSplitReport : System.Web.UI.Page
     {
-        DL_WIPReelSplitReport blobj = new DL_WIPReelSplitReport();
+        private readonly DL_WIPReelSplitReport blobj = new DL_WIPReelSplitReport();
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                // Set Default Dates
-                txtFromDate.Text = DateTime.Now.ToString("yyyy-MM-dd");
-                txtToDate.Text = DateTime.Now.ToString("yyyy-MM-dd");
+                BindReportType();
+
+                txtFromDate.Text = string.Empty;
+                txtToDate.Text = string.Empty;
+            }
+        }
+
+        private void BindReportType()
+        {
+            try
+            {
+                DataTable dt = blobj.GetReportTypes();
+
+                if (dt != null && dt.Rows.Count > 0)
+                {
+                    clsCommon.FillComboBox(drpReportType, dt, true);
+                    drpReportType.Focus();
+                }
+                else
+                {
+                    drpReportType.Items.Clear();
+                    CommonHelper.ShowMessage("Part Barcode not available", msgerror, CommonHelper.MessageType.Error.ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                CommonHelper.ShowCustomErrorMessage(ex.Message, msgerror);
             }
         }
 
@@ -26,7 +49,18 @@ namespace DIXON.INE.Reports
         {
             try
             {
-                DataTable dt = blobj.GetReport(txtFromDate.Text, txtToDate.Text, txtBarcode.Text.Trim());
+                if (drpReportType.SelectedIndex == 0)
+                {
+                    CommonHelper.ShowMessage("Please select a Report Type.", msgerror, CommonHelper.MessageType.Error.ToString());
+                    return;
+                }
+
+                string fromDate = string.IsNullOrWhiteSpace(txtFromDate.Text) ? null : txtFromDate.Text;
+                string toDate = string.IsNullOrWhiteSpace(txtToDate.Text) ? null : txtToDate.Text;
+                string barcode = txtBarcode.Text.Trim();
+                string reportType = drpReportType.SelectedValue;
+
+                DataTable dt = blobj.GetReport(fromDate, toDate, barcode, reportType);
 
                 if (dt != null && dt.Rows.Count > 0)
                 {
@@ -34,11 +68,13 @@ namespace DIXON.INE.Reports
                 }
                 else
                 {
+                    CommonHelper.ShowMessage("No records found.", msgerror, CommonHelper.MessageType.Info.ToString());
                     rvSplitHistory.Visible = false;
                 }
             }
             catch (Exception ex)
             {
+                CommonHelper.ShowCustomErrorMessage(ex.Message, msgerror);
             }
         }
 
@@ -52,7 +88,6 @@ namespace DIXON.INE.Reports
 
             rvSplitHistory.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", dt));
 
-            // 3. Set Parameters (Logo, Date, User)
             string imagePath = new Uri(Server.MapPath("~/images/ReportLogo.png")).AbsoluteUri;
             string userName = Session["UserID"] != null ? Session["UserID"].ToString() : "Admin";
 
