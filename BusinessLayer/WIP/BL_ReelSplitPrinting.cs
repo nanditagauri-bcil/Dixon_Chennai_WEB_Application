@@ -138,7 +138,7 @@ namespace BusinessLayer
         {
             string cleanChildBarcode = CleanFileName(childBarcode.Split(' ')[0]);
 
-            string zipFileName = $"BCI_{CleanFileName(sUserID)}_{CleanFileName(sLineCode)}_{CleanFileName(sSiteCode)}_{cleanChildBarcode}.zip";
+            string zipFileName = $"SGSTPrinting_{CleanFileName(sUserID)}_{CleanFileName(sLineCode)}_{CleanFileName(sSiteCode)}_{cleanChildBarcode}.zip";
 
             byte[] zipBytes;
 
