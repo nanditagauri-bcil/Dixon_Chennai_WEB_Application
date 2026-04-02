@@ -123,6 +123,15 @@ namespace DIXON.INE.WIP
         protected global::System.Web.UI.WebControls.DropDownList drpCustomerCode;
 
         /// <summary>
+        /// drpModelCode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList drpModelCode;
+
+        /// <summary>
         /// divTMO control.
         /// </summary>
         /// <remarks>

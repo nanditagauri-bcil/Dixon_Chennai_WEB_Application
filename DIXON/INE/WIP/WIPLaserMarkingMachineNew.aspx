@@ -122,6 +122,19 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Select Model Code : </label>
+                                <asp:DropDownList ID="drpModelCode" runat="server"
+                                    class="form-control select2" placeholder="Select Model Code"
+                                    autocomplete="off">
+                                </asp:DropDownList>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="row" id="divTMO" runat="server" visible="false">
                         <div class="col-md-6">
                             <div class="form-group">
@@ -134,6 +147,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">

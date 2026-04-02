@@ -128,6 +128,23 @@ namespace BusinessLayer.WIP
             }
             return dtBarcodeInfo;
         }
+
+        public DataTable BindModelCode(string sFGItemCode, string sSiteCode)
+        {
+            DataTable dtModelDetail = new DataTable();
+            dlboj = new DL_WIPLaserMachinePrinting();
+            try
+            {
+                dtModelDetail = dlboj.BindModelCode(sFGItemCode, sSiteCode);
+            }
+            catch (Exception ex)
+            {
+                PCommon.mBcilLogger.LogMessage(BcilLib.EventNotice.EventTypes.evtError, System.Reflection.MethodBase.GetCurrentMethod().Name, ex.Message);
+                throw ex;
+            }
+            return dtModelDetail;
+        }
+
         public DataTable GetPurchaseOrderDetails(string sFGItemCode, string sSiteCode)
         {
             DataTable dtBarcodeInfo = new DataTable();
@@ -200,7 +217,7 @@ namespace BusinessLayer.WIP
             string PartCode, string sBatchNo, int iQty,
           int iArraySize, string sReelBarcode, string CustomerPartCode, string sFGItemCode
             , string sSiteCode, string sUseriD, string sLineCode, string sDesignerFormat, string sPacketType
-            , int iNOSCount, string sPrefix, string LaserfolderPath, string serialType
+            , int iNOSCount, string sPrefix, string LaserfolderPath, string serialType, string sModelCode
             )
         {
             string sResult = string.Empty;
@@ -413,7 +430,7 @@ namespace BusinessLayer.WIP
                     sPrintingSNNNo = Convert.ToString(Convert.ToInt32(sPrintingSNNNo) - 1);
                     ds = dlboj.StoreData(sGRPONO, sWorkOrderNo, PartCode, sReelBarcode, dtStoreLaserFile,
                     iActualQty, iActualArraySize, sBatchNo, Convert.ToInt32(sPrintingSNNNo)
-                    , sSiteCode, sUseriD, sLineCode, sPacketType
+                    , sSiteCode, sUseriD, sLineCode, sPacketType, sModelCode
                     );
                     if (ds.Tables.Count > 0)
                     {
@@ -489,7 +506,7 @@ namespace BusinessLayer.WIP
                 int iQty,
                 int iArraySize, string sReelBarcode, string CustomerPartCode, string sFGItemCode
                 , string sSiteCode, string sUseriD, string sLineCode, string sDesignerFormat, string sPacketType
-                , int iNOSCount, DataTable dtPCBLogicPrinting, string sPrefix, string serialType
+                , int iNOSCount, DataTable dtPCBLogicPrinting, string sPrefix, string serialType, string sModelCode
             )
         {
             string sResult = string.Empty;
@@ -730,7 +747,7 @@ namespace BusinessLayer.WIP
                     sPrintingSNNNo = Convert.ToString(Convert.ToInt32(sPrintingSNNNo) - 1);
                     ds = dlboj.StoreData(sGRPONO, sWorkOrderNo, PartCode, sReelBarcode, dtStoreLaserFile,
                     iActualQty, iActualArraySize, sBatchNo, Convert.ToInt32(sPrintingSNNNo)
-                    , sSiteCode, sUseriD, sLineCode, sPacketType
+                    , sSiteCode, sUseriD, sLineCode, sPacketType, sModelCode
                     );
                     if (ds.Tables.Count > 0)
                     {
@@ -1058,7 +1075,6 @@ namespace BusinessLayer.WIP
             }
             return dtSerialType;
         }
-
         #endregion
     }
 }
