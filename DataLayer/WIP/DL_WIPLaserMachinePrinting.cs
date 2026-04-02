@@ -183,6 +183,31 @@ namespace DataLayer
             return dt;
         }
 
+        public DataTable BindModelCode(string sFGItemCode, string sSiteCode)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                oDbm.CreateParameters(3);
+                oDbm.AddParameters(0, "@TYPE", "BINDMODELCODE");
+                oDbm.AddParameters(1, "@FGITEMCODE", sFGItemCode);
+                oDbm.AddParameters(2, "@SITECODE", sSiteCode);
+                oDbm.Open();
+                dt = oDbm.ExecuteDataSet(CommandType.StoredProcedure, "USP_STORE_LASER_FILE").Tables[0];
+            }
+            catch (Exception ex)
+            {
+                PCommon.mBcilLogger.LogMessage(BcilLib.EventNotice.EventTypes.evtError, System.Reflection.MethodBase.GetCurrentMethod().Name, ex.Message);
+                throw ex;
+            }
+            finally
+            {
+                oDbm.Close();
+                oDbm.Dispose();
+            }
+            return dt;
+        }
+
         public DataTable GetPurchaseOrderDetails(string sSiteCode, string sFGItemCode)
         {
             DataTable dt = new DataTable();
@@ -375,14 +400,14 @@ namespace DataLayer
             string sPartBarcode, DataTable dtLaserFile,
            int iQty, int iArraySize, string sBatchNo
             , int iLastGeneratedSN, string sSiteCode, string sUserID, string sLineCode
-            , string sPacketType
+            , string sPacketType, string sModelCode
             )
         {
             DataSet ds = new DataSet();
             try
             {
                 oDbm.Open();
-                oDbm.CreateParameters(14);
+                oDbm.CreateParameters(15);
                 oDbm.AddParameters(0, "@TYPE", "STORELASERFILE");
                 oDbm.AddParameters(1, "@GRPONO", sGRPONo);
                 oDbm.AddParameters(2, "@ISSUE_SLIPNO", sWorkOrderNo);
@@ -397,6 +422,7 @@ namespace DataLayer
                 oDbm.AddParameters(11, "@SITECODE", sSiteCode);
                 oDbm.AddParameters(12, "@LINECODE", sLineCode);
                 oDbm.AddParameters(13, "@PACKETTYPE", sPacketType);
+                oDbm.AddParameters(14, "@MODELCODE", sModelCode);
                 PCommon.mBcilLogger.LogMessage(BcilLib.EventNotice.EventTypes.evtData,
                     System.Reflection.MethodBase.GetCurrentMethod().Name, "Packet Barcode : " + sPartBarcode +
                     ",Array Size:" + iArraySize.ToString() + ",Last SN Generation : " + iLastGeneratedSN.ToString()

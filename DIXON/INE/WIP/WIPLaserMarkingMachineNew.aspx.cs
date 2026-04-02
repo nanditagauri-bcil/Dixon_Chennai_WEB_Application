@@ -86,6 +86,7 @@ namespace DIXON.INE.WIP
                 CommonHelper.mBcilLogger.LogMessage(BcilLib.EventNotice.EventTypes.evtError, System.Reflection.MethodBase.GetCurrentMethod().Name, ex.Message);
             }
         }
+
         protected void BindCustomerCode(string sFGItemCode, DropDownList drp)
         {
             try
@@ -115,6 +116,28 @@ namespace DIXON.INE.WIP
                 CommonHelper.mBcilLogger.LogMessage(BcilLib.EventNotice.EventTypes.evtError, System.Reflection.MethodBase.GetCurrentMethod().Name, ex.Message);
             }
         }
+
+        protected void BindModelCode(string sFGItemCode, DropDownList drp)
+        {
+            try
+            {
+                if (sFGItemCode.Length > 0)
+                {
+                    blobj = new BL_WIP_LaserMachine();
+                    DataTable dtCustomerCode = blobj.BindModelCode(sFGItemCode, Session["SiteCode"].ToString());
+                    if (dtCustomerCode.Rows.Count > 0)
+                    {
+                        clsCommon.FillComboBox(drp, dtCustomerCode, true);
+                        drpModelCode.SelectedIndex = 1;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                CommonHelper.mBcilLogger.LogMessage(BcilLib.EventNotice.EventTypes.evtError, System.Reflection.MethodBase.GetCurrentMethod().Name, ex.Message);
+            }
+        }
+
         private void ScannedReelBarcode()
         {
 
@@ -534,7 +557,7 @@ namespace DIXON.INE.WIP
                    sReelBarcode, CustomerPartCode_RH, drpFGItemCodeRH.Text
                    , Session["SiteCode"].ToString(), Session["UserID"].ToString()
                    , Session["LINECODE"].ToString(), sDesignerFormat, sPCBType, iPCBQty
-                   , sPrefix, txtlaserpath.Text, serialType
+                   , sPrefix, txtlaserpath.Text, serialType, drpModelCode.Text.Trim()
                     );
                 }
                 else
@@ -545,7 +568,7 @@ namespace DIXON.INE.WIP
                     sReelBarcode, drpCustomerCode.Text, drpFGItemCodeRH.Text
                     , Session["SiteCode"].ToString(), Session["UserID"].ToString()
                     , Session["LINECODE"].ToString(), sDesignerFormat, sPCBType, iPCBQty, dtPacket
-                    , sPrefix, serialType
+                    , sPrefix, serialType, drpModelCode.Text.Trim()
                      );
                 }
 
@@ -871,7 +894,10 @@ namespace DIXON.INE.WIP
                             }
                         }
                     }
+
                     BindCustomerCode(drpFGItemCodeRH.Text, drpCustomerCode);
+                    BindModelCode(drpFGItemCodeRH.Text, drpModelCode);
+
                     if (drpType.Text == "TMO_PROCESS")
                     {
                         CommonHelper.HideMessage(msginfo, msgsuccess, msgwarning, msgerror);
