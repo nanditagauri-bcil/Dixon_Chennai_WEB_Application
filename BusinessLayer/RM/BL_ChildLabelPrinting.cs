@@ -73,8 +73,7 @@ namespace BusinessLayer
                     DataTable dt = objBL_Common.GetPRN("RM");
                     if (dt.Rows.Count > 0)
                     {
-                        DataTable dtGetdetails = dlobj.ChildLabelPrinting(_PartCode, _ReelID
-             , dUpdatedQty, sPrintedBy, sSiteCode, sLineCode);
+                        DataTable dtGetdetails = dlobj.ChildLabelPrinting(_PartCode, _ReelID, dUpdatedQty, sPrintedBy, sSiteCode, sLineCode);
                         if (dtGetdetails.Rows.Count > 0)
                         {
                             sResult = dtGetdetails.Rows[0][0].ToString();

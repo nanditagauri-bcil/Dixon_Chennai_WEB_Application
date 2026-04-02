@@ -165,6 +165,57 @@ namespace BusinessLayer
             return sFinalPRN;
         }
 
+        public string GetWIPSplitLabel(string sPRN, string sPartCode, string sPartBarcode, string sType)
+        {
+            string sFinalPRN = string.Empty;
+            StringBuilder sb = new StringBuilder();
+            try
+            {
+                DL_Common dlobj = new DL_Common();
+                sb.AppendLine(" SELECT TR.GRPONO,format(TR.GRPO_DATE,'dd/MM/yyyy')PO_DATE,TR.SUP_INV_NO,TRI.RI_ID, ");
+                sb.AppendLine(" TR.SUP_INV_DATE,TR.MPN,TRI.PART_CODE,TR.PART_DESC, ");
+                sb.AppendLine(" TRI.BATCHNO,TR.VENDOR_NAME,TRI.EXP_DATE,TRI.MFG_DATE ");
+                sb.AppendLine(", TRI.APPROVED_QTY, TRI.REJECT_QTY,TRI.LOT_QTY ");
+                sb.AppendLine(", TRI.LH_RH, TRI.MSL_INFO, TRI.PRINTED_BY ");
+                sb.AppendLine(" from RM_RECEIVING TR ");
+                sb.AppendLine(" INNER JOIN ");
+                sb.AppendLine(" RM_INVENTORY TRI ON TRI.RM_ID = TR.RM_ID  ");
+                sb.AppendLine(" WHERE PART_BARCODE ='" + sPartBarcode + "'");
+                sb.AppendLine(" AND TRI.PART_CODE ='" + sPartCode + "'");
+                sb.AppendLine(" ORDER BY TRI.RI_ID DESC ");
+                DataTable dt = dlobj.dtBindData(sb);
+                if (dt.Rows.Count > 0)
+                {
+                    string prn = sPRN;
+                    prn = prn.Replace("{MPN}", dt.Rows[0]["MPN"].ToString());
+                    prn = prn.Replace("{BATCHNO}", dt.Rows[0]["BATCHNO"].ToString());
+                    prn = prn.Replace("{USERID}", dt.Rows[0]["PRINTED_BY"].ToString());
+                    prn = prn.Replace("{BARCODE}", sPartBarcode);
+                    prn = prn.Replace("{BARCODE_HR}", sPartBarcode.Split(',')[1] + "," + sPartBarcode.Split(',')[2] + "," + sPartBarcode.Split(',')[3]);
+                    prn = prn.Replace("{SAPPARTCODE}", dt.Rows[0]["PART_CODE"].ToString());
+                    prn = prn.Replace("{PARTDESC}", dt.Rows[0]["PART_DESC"].ToString());
+                    prn = prn.Replace("{GRPO}", dt.Rows[0]["GRPONO"].ToString().Split('(')[0]);
+                    prn = prn.Replace("{GRPODT}", dt.Rows[0]["PO_DATE"].ToString());
+                    prn = prn.Replace("{LOT}", dt.Rows[0]["MFG_DATE"].ToString());
+                    prn = prn.Replace("{LF}", dt.Rows[0]["LH_RH"].ToString());
+                    prn = prn.Replace("{MSL}", dt.Rows[0]["MSL_INFO"].ToString());
+                    prn = prn.Replace("{LOC}", PCommon.sSiteCode);
+                    prn = prn.Replace("{Qty}", dt.Rows[0]["LOT_QTY"].ToString());
+                    sFinalPRN = prn;
+                }
+                else
+                {
+                    sFinalPRN = "";
+                }
+            }
+            catch (Exception ex)
+            {
+                PCommon.mBcilLogger.LogMessage(BcilLib.EventNotice.EventTypes.evtError, System.Reflection.MethodBase.GetCurrentMethod().Name, ex.Message + ", Query " + sb.ToString());
+                throw ex;
+            }
+            return sFinalPRN;
+        }
+
         public string PrintMaterialTransfer_ReprintBarcode(string sPRN, string sPartCode, string sPartBarcode, string sType)
         {
             string sFinalPRN = string.Empty;
@@ -771,7 +822,7 @@ namespace BusinessLayer
                     {
                         if (sFileCreated == "1")
                         {
-                            System.IO.FileInfo file = new System.IO.FileInfo(sApplicationPrintingFullFilePath);
+                            FileInfo file = new FileInfo(sApplicationPrintingFullFilePath);
                             if (file.Exists)
                             {
                                 PCommon.sFileNam = sFileName;

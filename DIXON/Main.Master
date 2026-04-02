@@ -299,6 +299,8 @@
                                 <li><a class="menu-link" href="../WIP/MSNvsGBComparison.aspx"><i class="fa fa-circle-o"></i>MSN vs GB Comparison</a></li>--%>
 
                                 <li><a class="menu-link" href="../WIP/PDIQuality.aspx"><i class="fa fa-circle-o"></i>PDI Quality</a></li>
+                                <li><a class="menu-link" href="../WIP/WIP_ReelSplit.aspx"><i class="fa fa-circle-o"></i>Reel Split</a></li>
+                                <li><a class="menu-link" href="../WIP/WIPSplitReelQuality.aspx"><i class="fa fa-circle-o"></i>Reel Split Quality</a></li>
 
                                 <li class="treeview"><a href="javascript:void(0)"><i class="fa fa-circle-o"></i>Re Printing               
                                         <span class="pull-right-container">
@@ -422,6 +424,7 @@
                                 <li><a class="menu-link" href="../Reports/WIPReworkReport.aspx"><i class="fa fa-circle-o"></i>WIP Rework Report</a></li>
                                 <li><a class="menu-link" href="../Reports/WIPPrimaryPackingReport.aspx"><i class="fa fa-circle-o"></i>Primary Packing</a></li>
                                 <li><a class="menu-link" href="../Reports/WIPRsnAndMacIDMappingReport.aspx"><i class="fa fa-circle-o"></i>WIP Rsn And MacID Mapping Report</a></li>
+                                <li><a class="menu-link" href="../Reports/WIPReelSplitReport.aspx"><i class="fa fa-circle-o"></i>WIP Reel Split Report</a></li>
                                 <li><%--<a class="menu-link" href="../Reports/RMWorkOrderReport.aspx"><i class="fa fa-circle-o"></i>Work Order Traceability Report</a>--%></li>
                                 <%--<li><a class="menu-link" href="../Reports/WIPQualityReport.aspx"><i class="fa fa-circle-o"></i>FG Quality Report</a></li>--%>
                                 <%--<li><a class="menu-link" href="../Reports/StageWisePCBreportNew.aspx"><i class="fa fa-circle-o"></i>Machine Wise PCB Report</a></li>

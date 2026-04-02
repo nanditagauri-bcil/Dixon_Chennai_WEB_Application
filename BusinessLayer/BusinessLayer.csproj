@@ -53,6 +53,7 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression" />
     <Reference Include="System.IO.FileSystem.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.IO.FileSystem.Primitives.4.0.1\lib\net46\System.IO.FileSystem.Primitives.dll</HintPath>
       <Private>True</Private>
@@ -156,6 +157,7 @@
     <Compile Include="Reports\BL_WIP_TOOL_Report.cs" />
     <Compile Include="Reports\BL_WORK_ORDER_TRACEABILITY_REPORT.cs" />
     <Compile Include="Reports\BL_YIELD_Summary_Report.cs" />
+    <Compile Include="WIP\BL_ReelSplitPrinting.cs" />
     <Compile Include="RM\BL_ProductionLoss.cs" />
     <Compile Include="RM\BL_RM_CustomerReturn.cs" />
     <Compile Include="RM\BL_RM_Issue.cs" />
@@ -193,6 +195,7 @@
     <Compile Include="WIP\BL_SetProfile.cs" />
     <Compile Include="Masters\BL_SolderPastConfig.cs" />
     <Compile Include="WIP\BL_SolderPastMcDetails.cs" />
+    <Compile Include="WIP\BL_SplitReelQuality.cs" />
     <Compile Include="WIP\BL_WIPCastingLabelMapping.cs" />
     <Compile Include="WIP\BL_MSNvsGBComparison.cs" />
     <Compile Include="WIP\BL_WIPAutoSampleClear.cs" />

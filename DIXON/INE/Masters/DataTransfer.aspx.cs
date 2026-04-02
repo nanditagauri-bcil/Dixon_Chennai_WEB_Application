@@ -137,7 +137,7 @@ namespace DIXON.INE.Masters
                     return;
                 }
                 blobj = new BL_DataTransfer();
-                DataTable dt = blobj.DataTranfer(drpType.Text, drpIssueSlipNo.SelectedValue.Trim(), drpWorkOrderNo.SelectedValue.Trim(), Session["UserID"].ToString());
+                DataTable dt = blobj.DataTransfer(drpType.Text, drpIssueSlipNo.SelectedValue.Trim(), drpWorkOrderNo.SelectedValue.Trim(), Session["UserID"].ToString());
                 if (dt.Rows.Count > 0)
                 {
                     string sResult = dt.Rows[0][0].ToString();

@@ -76,6 +76,7 @@
     <Compile Include="Reports\DL_ASNReport.cs" />
     <Compile Include="Reports\DeviceVsGBComparisonReportDL.cs" />
     <Compile Include="Reports\DL_QCVerificationReport.cs" />
+    <Compile Include="Reports\DL_WIPReelSplitReport.cs" />
     <Compile Include="Reports\DL_WIPRsn_And_MacID_Mapping_Report.cs" />
     <Compile Include="Reports\DL_WallMountKitReport.cs" />
     <Compile Include="Reports\DL_MSNvsSecPackingComparisonReport.cs" />
@@ -116,6 +117,8 @@
     <Compile Include="Reports\DL_WorkOrderTraceablityReport.cs" />
     <Compile Include="Reports\DL_Yield_Summary_Report.cs" />
     <Compile Include="Reports\WIPQualityReport.cs" />
+    <Compile Include="WIP\DL_SplitReelQuality.cs" />
+    <Compile Include="WIP\DL_ReelSplitPrinting.cs" />
     <Compile Include="RM\DL_CustomerReturn.cs" />
     <Compile Include="RM\DL_MaterialToMaterialTransfer.cs" />
     <Compile Include="RM\DL_ProductionLoss.cs" />

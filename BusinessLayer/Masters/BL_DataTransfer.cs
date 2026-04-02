@@ -41,7 +41,7 @@ namespace BusinessLayer.Masters
             return dtBins;
         }
 
-        public DataTable DataTranfer(string sType, string issueSlipNo, string workOrderNo, string sUserID)
+        public DataTable DataTransfer(string sType, string issueSlipNo, string workOrderNo, string sUserID)
         {
             DataTable dtBins = new DataTable();
             dlboj = new DL_DataTransfer();
