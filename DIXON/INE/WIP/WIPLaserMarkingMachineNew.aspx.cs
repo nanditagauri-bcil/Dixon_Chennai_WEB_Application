@@ -10,6 +10,7 @@ namespace DIXON.INE.WIP
     public partial class WIPLaserFileGenerationNew : System.Web.UI.Page
     {
         BL_WIP_LaserMachine blobj = new BL_WIP_LaserMachine();
+        
         protected void Page_Init(object sender, EventArgs e)
         {
             if (Session["UserID"] == null)
@@ -139,7 +140,7 @@ namespace DIXON.INE.WIP
         }
 
         private void ScannedReelBarcode()
-        {
+     {
 
             CommonHelper.HideMessage(msginfo, msgsuccess, msgwarning, msgerror);
             try
@@ -465,6 +466,9 @@ namespace DIXON.INE.WIP
                 string sBatchNo = string.Empty;
                 string CustomerPartCode_RH = string.Empty;
                 string sReelBarcode = string.Empty;
+                int inputQty1 = 0;
+                int inputQty = Convert.ToInt32(txtInputQty.Text);
+
                 foreach (GridViewRow item in dvLaserFileData.Rows)
                 {
                     Part_Code = dvLaserFileData.Rows[item.RowIndex].Cells[1].Text;
@@ -485,6 +489,16 @@ namespace DIXON.INE.WIP
                     txtBarcode.Focus();
                     return;
                 }
+                if (Convert.ToInt32(txtInputQty.Text) > iQty)
+                {
+                    CommonHelper.ShowMessage(
+                        $"Input Qty ({Convert.ToInt32(txtInputQty.Text)}) should not be greater than available Qty ({iQty})",
+                        msgerror,
+                        CommonHelper.MessageType.Error.ToString()
+                    );
+                    txtInputQty.Focus();
+                    return;
+                }
                 string sPCBType = "N";
                 if (drpPacketType.SelectedIndex == 1)
                 {
@@ -499,15 +513,15 @@ namespace DIXON.INE.WIP
                         iArraySize = 1;
                     }
                 }
-                if (iQty % iArraySize != 0)
-                {
-                    string sResult1 = "N~Packet size is not divisible by array size,Please check the array size(" + iArraySize.ToString() + ") or packet size(" + iQty.ToString() + ") for scanned barcode ";
-                    CommonHelper.ShowMessage(sResult1, msgerror, CommonHelper.MessageType.Error.ToString());
-                    txtBarcode.Focus();
-                    txtBarcode.Text = "";
-                    txtBarcode.ReadOnly = false;
-                    return;
-                }
+                //if (iQty % iArraySize != 0)
+                //{
+                //    string sResult1 = "N~Packet size is not divisible by array size,Please check the array size(" + iArraySize.ToString() + ") or packet size(" + iQty.ToString() + ") for scanned barcode ";
+                //    CommonHelper.ShowMessage(sResult1, msgerror, CommonHelper.MessageType.Error.ToString());
+                //    txtBarcode.Focus();
+                //    txtBarcode.Text = "";
+                //    txtBarcode.ReadOnly = false;
+                //    return;
+                //}
 
                 string sDesignerFormat = string.Empty;
                 string sPrefix = string.Empty;
@@ -551,14 +565,24 @@ namespace DIXON.INE.WIP
                 }
                 else if (drpType.Text == "TOP_SIDED" || drpType.Text == "IJL_XF3Z")
                 {
-                    sResult = blobj.SinglePrintLasserSerailNosXLS(
-                   sPONO, drpIssueSlipNo.SelectedItem.Text,
-                   Part_Code, sBatchNo, iQty, iArraySize,
-                   sReelBarcode, CustomerPartCode_RH, drpFGItemCodeRH.Text
-                   , Session["SiteCode"].ToString(), Session["UserID"].ToString()
-                   , Session["LINECODE"].ToString(), sDesignerFormat, sPCBType, iPCBQty
-                   , sPrefix, txtlaserpath.Text, serialType, drpModelCode.Text.Trim()
-                    );
+                    
+                    if (txtInputQty.Text != "" && txtInputQty.Text!="0") { 
+                        iQty = Convert.ToInt32(txtInputQty.Text);
+                          inputQty1 = Convert.ToInt32(txtInputQty.Text);
+                    }
+                    else
+                    {
+                        inputQty1 = iQty;
+                    }
+
+                        sResult = blobj.SinglePrintLasserSerailNosXLS(
+                       sPONO, drpIssueSlipNo.SelectedItem.Text,
+                       Part_Code, sBatchNo, iQty, iArraySize,
+                       sReelBarcode, CustomerPartCode_RH, drpFGItemCodeRH.Text
+                       , Session["SiteCode"].ToString(), Session["UserID"].ToString()
+                       , Session["LINECODE"].ToString(), sDesignerFormat, sPCBType, iPCBQty
+                       , sPrefix, txtlaserpath.Text, serialType, drpModelCode.Text.Trim(), inputQty1
+                        );
                 }
                 else
                 {
@@ -568,7 +592,7 @@ namespace DIXON.INE.WIP
                     sReelBarcode, drpCustomerCode.Text, drpFGItemCodeRH.Text
                     , Session["SiteCode"].ToString(), Session["UserID"].ToString()
                     , Session["LINECODE"].ToString(), sDesignerFormat, sPCBType, iPCBQty, dtPacket
-                    , sPrefix, serialType, drpModelCode.Text.Trim()
+                    , sPrefix, serialType, drpModelCode.Text.Trim(),inputQty1
                      );
                 }
 
@@ -577,6 +601,7 @@ namespace DIXON.INE.WIP
                     Message = sResult.Split('~')[1].ToString();
                     CommonHelper.ShowMessage("PCB SN Generated Successfully", msgsuccess, CommonHelper.MessageType.Success.ToString());
                     txtBarcode.Text = string.Empty;
+                    txtInputQty.Text = "";
                     txtBarcode.ReadOnly = false;
                     txtBarcode.Focus();
                     DataTable dt = new DataTable();
@@ -601,6 +626,7 @@ namespace DIXON.INE.WIP
                 {
                     txtBarcode.Text = string.Empty;
                     txtBarcode.ReadOnly = false;
+                    txtInputQty.Text = "";
                     txtBarcode.Focus();
                     Message = sResult.Split('~')[1].ToString();
                     if (Message.ToUpper().Contains("PRIMARY KEY"))
@@ -706,6 +732,7 @@ namespace DIXON.INE.WIP
                 lblAvailableQty.Text = "0";
                 lblModel.Text = "";
                 ViewState["PARTBARCODE"] = null;
+                txtInputQty.Text = "";
             }
             catch (Exception ex)
             {

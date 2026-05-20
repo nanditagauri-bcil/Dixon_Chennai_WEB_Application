@@ -158,6 +158,24 @@
                                     AutoPostBack="true"></asp:TextBox>
                                 <asp:HiddenField ID="HiddenField1" runat="server" />
                             </div>
+                            <!-- ✅ ADD HERE -->
+                          <%--  <div class="form-group">
+                                <label>Total Qty :</label>
+                                <asp:TextBox ID="txtTotalQty" runat="server"
+                                    CssClass="form-control" ReadOnly="true"></asp:TextBox>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Remaining Qty :</label>
+                                <asp:TextBox ID="txtRemainingQty" runat="server"
+                                    CssClass="form-control" ReadOnly="true"></asp:TextBox>
+                            </div>--%>
+
+                            <div class="form-group">
+                                <label>Input Qty :</label>
+                                <asp:TextBox ID="txtInputQty" runat="server" Text="0"
+                                    CssClass="form-control"></asp:TextBox>
+                            </div>
                             <div class="col-md-12 scroll">
                                 <div class="form-group">
                                     <asp:GridView ID="dvLaserFileData" runat="server" class="table table-bordered table-hover" AutoGenerateColumns="false" AllowPaging="true" PageSize="10">
@@ -176,6 +194,8 @@
                                             <asp:BoundField HeaderText="Part Barcode" DataField="PARTBARCODE" HeaderStyle-HorizontalAlign="Left" ItemStyle-HorizontalAlign="Left" ItemStyle-Width="300" />
                                         </Columns>
                                     </asp:GridView>
+
+
                                 </div>
                             </div>
                         </div>

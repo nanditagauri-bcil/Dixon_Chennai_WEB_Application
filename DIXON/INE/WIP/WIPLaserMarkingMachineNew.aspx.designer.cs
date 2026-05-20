@@ -186,6 +186,15 @@ namespace DIXON.INE.WIP
         protected global::System.Web.UI.WebControls.HiddenField HiddenField1;
 
         /// <summary>
+        /// txtInputQty control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtInputQty;
+
+        /// <summary>
         /// dvLaserFileData control.
         /// </summary>
         /// <remarks>

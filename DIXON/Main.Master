@@ -276,6 +276,7 @@
                                 <li><a class="menu-link" href="../WIP/PCBScanningNew.aspx"><i class="fa fa-circle-o"></i>PCB Scanning</a></li>
                                 <li><a class="menu-link" href="../WIP/WIPFQAScanning.aspx"><i class="fa fa-circle-o"></i>FQA Testing</a></li>
                                 <li><a class="menu-link" href="../WIP/WIPAutoSampleClear.aspx"><i class="fa fa-circle-o"></i>WIP Sample Clear</a></li>
+                                <li><a class="menu-link" href="../WIP/VISampling.aspx"><i class="fa fa-circle-o"></i>Visual Inspection Quality</a></li>
                                 <%--<li><a class="menu-link" href="../WIP/mobLTAssembly.aspx"><i class="fa fa-circle-o"></i>Life Testing</a></li>
                                 <li><a class="menu-link" href="../WIP/WIPComponentReelPrinting.aspx"><i class="fa fa-circle-o"></i>Component Forming</a></li>
                                 <li><a class="menu-link" href="../WIP/WIPFGAssembly.aspx"><i class="fa fa-circle-o"></i>SFG To FG SN Generation</a></li>

@@ -400,14 +400,14 @@ namespace DataLayer
             string sPartBarcode, DataTable dtLaserFile,
            int iQty, int iArraySize, string sBatchNo
             , int iLastGeneratedSN, string sSiteCode, string sUserID, string sLineCode
-            , string sPacketType, string sModelCode
+            , string sPacketType, string sModelCode, int inputQty1
             )
         {
             DataSet ds = new DataSet();
             try
             {
                 oDbm.Open();
-                oDbm.CreateParameters(15);
+                oDbm.CreateParameters(16);
                 oDbm.AddParameters(0, "@TYPE", "STORELASERFILE");
                 oDbm.AddParameters(1, "@GRPONO", sGRPONo);
                 oDbm.AddParameters(2, "@ISSUE_SLIPNO", sWorkOrderNo);
@@ -423,6 +423,7 @@ namespace DataLayer
                 oDbm.AddParameters(12, "@LINECODE", sLineCode);
                 oDbm.AddParameters(13, "@PACKETTYPE", sPacketType);
                 oDbm.AddParameters(14, "@MODELCODE", sModelCode);
+                oDbm.AddParameters(15, "@inputQty1", inputQty1);
                 PCommon.mBcilLogger.LogMessage(BcilLib.EventNotice.EventTypes.evtData,
                     System.Reflection.MethodBase.GetCurrentMethod().Name, "Packet Barcode : " + sPartBarcode +
                     ",Array Size:" + iArraySize.ToString() + ",Last SN Generation : " + iLastGeneratedSN.ToString()
