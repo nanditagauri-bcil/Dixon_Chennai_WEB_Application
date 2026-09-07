@@ -96,6 +96,33 @@ namespace DIXON.INE.Masters
         protected global::System.Web.UI.WebControls.TextBox txtLcfcCode;
 
         /// <summary>
+        /// txtSbSuffix control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtSbSuffix;
+
+        /// <summary>
+        /// txtUsbsfCode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtUsbsfCode;
+
+        /// <summary>
+        /// txtSb2Suffix control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtSb2Suffix;
+
+        /// <summary>
         /// txtMbFruCode control.
         /// </summary>
         /// <remarks>

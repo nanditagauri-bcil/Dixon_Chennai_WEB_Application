@@ -457,6 +457,41 @@ namespace BusinessLayer.WIP
                     dtSerial = ds.Tables[1];
                     int loopcount = dtSerial.Rows.Count / iActualArraySize;
 
+                    //for (int j = 0; j < loopcount; j++)
+                    //{
+                    //    // Get the MB_SN value from the first row of the current chunk
+                    //    string fileName = dtSerial.Rows[j * iActualArraySize]["MB_SN"].ToString() + ".csv";
+                    //    string filePath = Path.Combine(LaserfolderPath, fileName);
+
+                    //    using (StreamWriter writer = new StreamWriter(filePath))
+                    //    {
+                    //        // Write the header
+                    //        for (int i = 0; i < dtSerial.Columns.Count; i++)
+                    //        {
+                    //            writer.Write(dtSerial.Columns[i]);
+
+                    //            if (i < dtSerial.Columns.Count - 1)
+                    //                writer.Write(","); // Add a comma delimiter between columns
+                    //        }
+                    //        writer.WriteLine();
+
+                    //        // Write the data rows for the current chunk
+                    //        for (int k = 0; k < iActualArraySize; k++)
+                    //        {
+                    //            DataRow row = dtSerial.Rows[j * iActualArraySize + k];
+                    //            for (int i = 0; i < row.ItemArray.Length; i++)
+                    //            {
+                    //                writer.Write(row[i].ToString());
+
+                    //                if (i < row.ItemArray.Length - 1)
+                    //                    writer.Write(","); // Add a comma delimiter between columns
+                    //            }
+                    //            writer.WriteLine();
+                    //        }
+                    //    }
+                    //}
+
+
                     for (int j = 0; j < loopcount; j++)
                     {
                         // Get the MB_SN value from the first row of the current chunk
@@ -468,7 +503,8 @@ namespace BusinessLayer.WIP
                             // Write the header
                             for (int i = 0; i < dtSerial.Columns.Count; i++)
                             {
-                                writer.Write(dtSerial.Columns[i]);
+                                // Use the helper method to escape column names just in case
+                                writer.Write(CommonHelper.EscapeCsvField(dtSerial.Columns[i].ColumnName));
 
                                 if (i < dtSerial.Columns.Count - 1)
                                     writer.Write(","); // Add a comma delimiter between columns
@@ -478,10 +514,15 @@ namespace BusinessLayer.WIP
                             // Write the data rows for the current chunk
                             for (int k = 0; k < iActualArraySize; k++)
                             {
+                                // Safety check: break if we exceed the DataTable's row count in the final chunk
+                                if ((j * iActualArraySize + k) >= dtSerial.Rows.Count)
+                                    break;
+
                                 DataRow row = dtSerial.Rows[j * iActualArraySize + k];
                                 for (int i = 0; i < row.ItemArray.Length; i++)
                                 {
-                                    writer.Write(row[i].ToString());
+                                    // Use the helper method to escape row data
+                                    writer.Write(CommonHelper.EscapeCsvField(row[i].ToString()));
 
                                     if (i < row.ItemArray.Length - 1)
                                         writer.Write(","); // Add a comma delimiter between columns
@@ -490,8 +531,7 @@ namespace BusinessLayer.WIP
                             }
                         }
                     }
-                   
-                }
+                    }
                 else
                 {
                     PCommon.mBcilLogger.LogMessage(BcilLib.EventNotice.EventTypes.evtMessage, MethodBase.GetCurrentMethod().Name, "PCB Generate Final Result : N~File generation fail, Please try again ");

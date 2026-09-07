@@ -69,7 +69,7 @@ namespace DataLayer
             int iResult = 0;
             try
             {
-                oDbm.CreateParameters(45);
+                oDbm.CreateParameters(48);
                 oDbm.AddParameters(0, "@SITECODE", objPl.sSiteCode);
                 oDbm.AddParameters(1, "@MODELCODE", objPl.sModelName);
                 oDbm.AddParameters(2, "@MODELDESC", objPl.sModelType);
@@ -115,6 +115,9 @@ namespace DataLayer
                 oDbm.AddParameters(42, "@LASERPATH", objPl.Laser_Path);
                 oDbm.AddParameters(43, "@LCFCCODE", objPl.sLcfcCode);
                 oDbm.AddParameters(44, "@MBFRUCODE", objPl.sMbFruCode);
+                oDbm.AddParameters(45, "@USBSFCODE", objPl.sUsbCode);
+                oDbm.AddParameters(46, "@SB_SNSuffix", objPl.SB_SNSuffix);
+                oDbm.AddParameters(47, "@SB2_SNSuffix", objPl.SB2_SNSuffix);
                 oDbm.Open();
                 DataTable dt = oDbm.ExecuteDataSet(System.Data.CommandType.StoredProcedure, "USP_MODEL_MASTER").Tables[0];
                 if (dt.Rows.Count > 0)
@@ -152,7 +155,7 @@ namespace DataLayer
             int iResult = 0;
             try
             {
-                oDbm.CreateParameters(45);
+                oDbm.CreateParameters(48);
                 oDbm.AddParameters(0, "@SITECODE", objPl.sSiteCode);
                 oDbm.AddParameters(1, "@MODELCODE", objPl.sModelName);
                 oDbm.AddParameters(2, "@MODELDESC", objPl.sModelType);
@@ -198,6 +201,9 @@ namespace DataLayer
                 oDbm.AddParameters(42, "@LASERPATH", objPl.Laser_Path);
                 oDbm.AddParameters(43, "@LCFCCODE", objPl.sLcfcCode);
                 oDbm.AddParameters(44, "@MBFRUCODE", objPl.sMbFruCode);
+                oDbm.AddParameters(45, "@USBSFCODE", objPl.sUsbCode);
+                oDbm.AddParameters(46, "@SB_SNSuffix", objPl.SB_SNSuffix);
+                oDbm.AddParameters(47, "@SB2_SNSuffix", objPl.SB2_SNSuffix);
                 oDbm.Open();
                 DataTable dt = oDbm.ExecuteDataSet(System.Data.CommandType.StoredProcedure, "USP_MODEL_MASTER").Tables[0];
                 if (dt.Rows.Count > 0)

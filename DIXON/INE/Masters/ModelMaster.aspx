@@ -73,11 +73,62 @@
                                     autocomplete="off" class="form-control" Style="width: 100%;" MaxLength="50">                                  
                                 </asp:TextBox>
                             </div>
-                            <div class="form-group">
-                                <label>LCFC Code : </label>
-                                <asp:TextBox ID="txtLcfcCode" runat="server" placeholder="Enter LCFC Code"
+                            <%--<div class="form-group">
+                                <label>SB_SN Code : </label>
+                                <asp:TextBox ID="txtLcfcCode" runat="server" placeholder="Enter SB_SN Code"
                                     autocomplete="off" class="form-control" Style="width: 100%;" MaxLength="40">                                  
                                 </asp:TextBox>
+                            </div>
+                            <div class="form-group">
+                                <label>SB2_SN Code : </label>
+                                <asp:TextBox ID="txtUsbsfCode" runat="server" placeholder="Enter SB2_SN Code"
+                                    autocomplete="off" class="form-control" Style="width: 100%;" MaxLength="40">                                  
+                                </asp:TextBox>
+                            </div>--%>
+                            <div class="form-group">
+                                <label>SB_SN Code : </label>
+
+                                <div class="input-group">
+                                    <asp:TextBox ID="txtLcfcCode" runat="server"
+                                        placeholder="Enter SB_SN Code"
+                                        autocomplete="off"
+                                        CssClass="form-control"
+                                        MaxLength="40">
+                                    </asp:TextBox>
+
+                                    <span class="input-group-addon" style="font-weight:bold;">Suffix</span>
+
+                                    <asp:TextBox ID="txtSbSuffix" runat="server"
+                                        placeholder="A1"
+                                        autocomplete="off"
+                                        CssClass="form-control"
+                                        MaxLength="10"
+                                        Style="max-width:90px;">
+                                    </asp:TextBox>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>SB2_SN Code : </label>
+
+                                <div class="input-group">
+                                    <asp:TextBox ID="txtUsbsfCode" runat="server"
+                                        placeholder="Enter SB2_SN Code"
+                                        autocomplete="off"
+                                        CssClass="form-control"
+                                        MaxLength="40">
+                                    </asp:TextBox>
+
+                                    <span class="input-group-addon" style="font-weight:bold;">Suffix</span>
+
+                                    <asp:TextBox ID="txtSb2Suffix" runat="server"
+                                        placeholder="B1"
+                                        autocomplete="off"
+                                        CssClass="form-control"
+                                        MaxLength="10"
+                                        Style="max-width:90px;">
+                                    </asp:TextBox>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label>MB FRU Code : </label>

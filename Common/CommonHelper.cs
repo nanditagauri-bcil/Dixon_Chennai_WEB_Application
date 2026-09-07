@@ -124,5 +124,20 @@ namespace Common
                 CommonHelper.ShowMessage(CommonHelper.sCustomMessage, msgerror, CommonHelper.MessageType.Error.ToString());
             }
         }
+
+        public static string EscapeCsvField(string field)
+        {
+            if (string.IsNullOrEmpty(field))
+                return "";
+
+            // If the data contains a comma, quote, or newline, it must be wrapped in quotes
+            if (field.Contains(",") || field.Contains("\"") || field.Contains("\r") || field.Contains("\n"))
+            {
+                // Escape any existing double-quotes by doubling them up ("")
+                return "\"" + field.Replace("\"", "\"\"") + "\"";
+            }
+
+            return field;
+        }
     }
 }

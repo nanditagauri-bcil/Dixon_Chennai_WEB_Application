@@ -115,7 +115,7 @@ namespace DIXON.INE.Masters
                     CommonHelper.ShowMessage("Enter model name", msgerror, CommonHelper.MessageType.Error.ToString());
                     ScriptManager.RegisterStartupScript(Page, this.GetType(), "ScrollPage", "window.scroll(0,0);", true);
                     txtModelName.Focus();
-                    return;
+                    return; 
                 }
                 if (txtModelType.Text.Trim() == "")
                 {
@@ -209,6 +209,23 @@ namespace DIXON.INE.Masters
                     txtMacAddress.Focus();
                     return;
                 }
+
+                if (txtSbSuffix.Text.Trim() =="")
+                {
+                    CommonHelper.ShowMessage("SB_SN_SUFFIX is mandatory. Please provide a value.", msgerror, CommonHelper.MessageType.Error.ToString());
+                    ScriptManager.RegisterStartupScript(Page, this.GetType(), "ScrollPage", "window.scroll(0,0);", true);
+                    txtSbSuffix.Focus();
+                    return;
+                }
+
+                if (!string.IsNullOrWhiteSpace(txtUsbsfCode.Text.Trim()) && string.IsNullOrWhiteSpace(txtSb2Suffix.Text.Trim()))
+                {
+                    CommonHelper.ShowMessage("SB2_SN_SUFFIX is mandatory when SB2_SN is provided.", msgerror, CommonHelper.MessageType.Error.ToString());
+                    ScriptManager.RegisterStartupScript(Page, this.GetType(), "ScrollPage", "window.scroll(0,0);", true);
+                    txtSb2Suffix.Focus();
+                    return;
+                }
+
                 //if (txtMacAddress.Text == "0")
                 //{
                 //    CommonHelper.ShowMessage("Enter valid No Of Mac Address", msgerror, CommonHelper.MessageType.Error.ToString());
@@ -222,6 +239,7 @@ namespace DIXON.INE.Masters
                 plobj.sCreatedBy = Session["UserID"].ToString();
                 plobj.sModelName = txtModelName.Text.Trim();
                 plobj.sLcfcCode = txtLcfcCode.Text.Trim();
+                plobj.sUsbCode = txtUsbsfCode.Text.Trim();
                 plobj.sMbFruCode = txtMbFruCode.Text.Trim();
                 plobj.dMRP = Convert.ToDecimal(txtMRP.Text.Trim());
                 plobj.sSWVER = txtSWVersion.Text.Trim();
@@ -256,6 +274,8 @@ namespace DIXON.INE.Masters
                 plobj.Supplier = txtSupplier.Text;
                 plobj.Destination = txtDestination.Text;
                 plobj.U_of_M = txtUOM.Text;
+                plobj.SB_SNSuffix = txtSbSuffix.Text;
+                plobj.SB2_SNSuffix = txtSb2Suffix.Text;
                 //ADDED BY SHIVAM (16/05/2024)
                 plobj.sWMPrefix = txtWallMountPrefix.Text.Trim();
                 plobj.dWMWT = Convert.ToDecimal(txtWallMountWt.Text.Trim());
@@ -327,6 +347,7 @@ namespace DIXON.INE.Masters
                 txtModelName.Text = "";
                 txtMbFruCode.Text = "";
                 txtLcfcCode.Text = "";
+                txtUsbsfCode.Text = "";
                 txtMRP.Text = "";
                 txtSWVersion.Text = "";
                 txtEAN.Text = "";
@@ -360,6 +381,8 @@ namespace DIXON.INE.Masters
                 txtSupplier.Text = "";
                 txtDestination.Text = "";
                 txtUOM.Text = "";
+                txtSbSuffix.Text = "";
+                txtSb2Suffix.Text = "";
                 gvDuplicateColumn.DataSource = null;
                 gvDuplicateColumn.DataBind();
             }
@@ -446,6 +469,10 @@ namespace DIXON.INE.Masters
                     txtSupplier.Text = dtDetails.Rows[0]["Supplier"].ToString();
                     txtDestination.Text = dtDetails.Rows[0]["Destination"].ToString();
                     txtUOM.Text = dtDetails.Rows[0]["U_of_M"].ToString();
+                    txtUsbsfCode.Text = dtDetails.Rows[0]["USBSF_CODE"].ToString();
+                    txtSb2Suffix.Text = dtDetails.Rows[0]["SB2_SN_SUFFIX"].ToString();
+                    txtSbSuffix.Text = dtDetails.Rows[0]["SB_SN_SUFFIX"].ToString();
+
 
                     if (dtDetails.Rows[0]["DEVICE_2_REQUIRED"].ToString() == "1" || dtDetails.Rows[0]["DEVICE_2_REQUIRED"].ToString() == "True")
                     {

@@ -179,6 +179,7 @@ namespace DIXON.INE.Reports
                     string EID = string.Empty;
                     string IMEI = string.Empty;
                     string BTMAC = string.Empty;
+                    string SB2_SN = string.Empty;
                     string BOOTLOADER_PASSWORD = string.Empty;
                     if (dtmasterdata.Rows.Count > 0)
                     {
@@ -192,6 +193,7 @@ namespace DIXON.INE.Reports
                         EID = dtmasterdata.Rows[0]["EID"].ToString();
                         IMEI = dtmasterdata.Rows[0]["IMEI"].ToString();
                         BTMAC = dtmasterdata.Rows[0]["BT_MAC"].ToString();
+                        //SB2_SN = dtmasterdata.Rows[0]["SB2_SN"].ToString();
                         BOOTLOADER_PASSWORD = dtmasterdata.Rows[0]["BOOTLOADER_PASSWORD"].ToString();
                     }
                     if (drpType.Text == "PCB Barcode")
@@ -274,6 +276,7 @@ namespace DIXON.INE.Reports
                     ReportParameter paramete22 = new ReportParameter("rptBTMAC", BTMAC);
                     ReportParameter paramete23 = new ReportParameter("rptGPONSN", GPONSN);
                     ReportParameter paramete24 = new ReportParameter("rptUBOOTPWD", BOOTLOADER_PASSWORD);
+                    //ReportParameter paramete25 = new ReportParameter("rptSB2SN", SB2_SN);
 
                     ReportViewer1.LocalReport.SetParameters(parameter);
                     ReportViewer1.LocalReport.SetParameters(paramete);
@@ -303,6 +306,7 @@ namespace DIXON.INE.Reports
                         ReportViewer1.LocalReport.SetParameters(paramete22);
                         ReportViewer1.LocalReport.SetParameters(paramete23);
                         ReportViewer1.LocalReport.SetParameters(paramete24);
+                        //ReportViewer1.LocalReport.SetParameters(paramete25);
                     }
                     ReportViewer1.LocalReport.Refresh();
                     ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "script", "ShowMessage();", true);

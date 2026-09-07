@@ -9,6 +9,7 @@ namespace PL
         public string sModelName { get; set; }
         public string sEAN { get; set; }
         public string sLcfcCode { get; set; }
+        public string sUsbCode { get; set; }
         public string sMbFruCode { get; set; }
         public string sBOM { get; set; }
         public string sModelType { get; set; }
@@ -81,5 +82,8 @@ namespace PL
         public string Destination { get; set; }
 
         public string U_of_M { get; set; }
+
+        public string SB_SNSuffix { get; set; }
+        public string SB2_SNSuffix { get; set; }
     }
 }
