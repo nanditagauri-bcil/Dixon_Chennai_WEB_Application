@@ -286,19 +286,19 @@ namespace DIXON.INE.WIP
                     //    }
                     //    return;
                     //}
-                    if (dt.Rows[0]["STATUS"].ToString().ToUpper() == "2")
-                    {
-                        CommonHelper.ShowMessage("Barcode is already scanned", msgerror, CommonHelper.MessageType.Error.ToString());
-                        txtBarcode.ReadOnly = false;
-                        txtBarcode.Text = string.Empty;
-                        txtBarcode.Focus();
-                        if (drpType.Text == "TOP_SIDED" || drpType.Text == "TMO_PROCESS")
-                        {
-                            dvLaserFileData.DataSource = null;
-                            dvLaserFileData.DataBind();
-                        }
-                        return;
-                    }
+                    //if (dt.Rows[0]["STATUS"].ToString().ToUpper() == "2")
+                    //{
+                    //    CommonHelper.ShowMessage("Barcode is already scanned", msgerror, CommonHelper.MessageType.Error.ToString());
+                    //    txtBarcode.ReadOnly = false;
+                    //    txtBarcode.Text = string.Empty;
+                    //    txtBarcode.Focus();
+                    //    if (drpType.Text == "TOP_SIDED" || drpType.Text == "TMO_PROCESS")
+                    //    {
+                    //        dvLaserFileData.DataSource = null;
+                    //        dvLaserFileData.DataBind();
+                    //    }
+                    //    return;
+                    //}
                     if (_FIFORequired == "1")
                     {
                         DataTable dtValidateTopBarcode = blobj.GetTopBarcode(dt.Rows[0]["PART_CODE"].ToString().ToUpper()

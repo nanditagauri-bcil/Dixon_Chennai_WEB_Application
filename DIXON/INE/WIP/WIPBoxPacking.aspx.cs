@@ -853,7 +853,7 @@ namespace DIXON.INE.WIP
                         gvCartonLabelPrint.DataSource = null;
                         gvCartonLabelPrint.DataBind();
                         lblLastScanned.Text = txtPCBID.Text;
-                        txtPCBID.Text = string.Empty;
+                        txtPCBID.Text = string.Empty;   
                         txtPCBID.Focus();
                     }
                     else if (_sResult.StartsWith("OKAY~"))
